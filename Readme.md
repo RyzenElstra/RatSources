@@ -15,8 +15,8 @@
 
 ##Remote Administration Tool Source Library v1
 
-This was made dedicated to [Ax0nes] (https://ax0nes.com) family for Education purpose.
-Every changes related to the source, please contact me via [Ax0nes] (https://ax0nes.com/profile/1950-ryzen/) :)
+This was made dedicated to [Ax0nes](https://ax0nes.com) family for Education purpose.
+Every changes related to the source, please contact me via [Ax0nes](https://ax0nes.com/profile/1950-ryzen/) :)
 
 ####**Every copyright belongs to the original owner.**
 
