@@ -1,0 +1,33 @@
+# Project: agony
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = agony_private.res
+OBJ  = agony.o $(RES)
+LINKOBJ  = agony.o $(RES)
+LIBS =  -L"E:/Dev-Cpp/lib" -lwsock32 -lwinmm -lws2_32  
+INCS =  -I"E:/Dev-Cpp/include" 
+CXXINCS =  -I"E:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/Dev-Cpp/include/c++/3.4.2/backward"  -I"E:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"E:/Dev-Cpp/include/c++/3.4.2"  -I"E:/Dev-Cpp/include" 
+BIN  = agony.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before agony.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "agony.exe" $(LIBS)
+
+agony.o: agony.c
+	$(CC) -c agony.c -o agony.o $(CFLAGS)
+
+agony_private.res: agony_private.rc sysfile.rc 
+	$(WINDRES) -i agony_private.rc --input-format=rc -o agony_private.res -O coff 

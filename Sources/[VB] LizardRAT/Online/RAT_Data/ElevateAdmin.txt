@@ -1,0 +1,15 @@
+﻿Sub ElevateAdmin()        
+		Dim proc As New System.Diagnostics.ProcessStartInfo
+        proc.UseShellExecute = True
+        proc.WorkingDirectory = System.Environment.CurrentDirectory
+        proc.FileName = System.Reflection.Assembly.GetExecutingAssembly().Location
+        proc.Verb = "runas"
+
+        Try
+            System.Diagnostics.Process.Start(proc)
+        Catch
+            Return
+        End Try
+
+        CloseProg()
+End Sub

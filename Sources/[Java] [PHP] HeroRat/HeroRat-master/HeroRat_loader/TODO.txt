@@ -1,0 +1,2 @@
+JNI
+Decrypt AES secret key

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Fkn0wnedRAT
+</name>
+</assembly>
+<members>
+<member name="P:fkn0wned_rat.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:fkn0wned_rat.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:fkn0wned_rat.My.Resources.Resources.Bot">
+	<summary>
+  Looks up a localized string similar to Imports System
+Imports System.Text
+Imports System.Threading
+Imports System.Net
+Imports System.Net.Sockets
+Imports System.Diagnostics
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.Windows.Forms
+Imports System.IO
+Imports System.Runtime.InteropServices
+Imports Microsoft.Win32
+Imports System.Collections.Generic
+Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Reflection
+Imports System.Management
+&lt;Assembly: AssemblyTitle("")&gt; 
+&lt;Assembly: AssemblyDescri [rest of string was truncated]";.
+</summary>
+</member><member name="T:fkn0wned_rat.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

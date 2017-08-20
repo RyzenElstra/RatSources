@@ -1,0 +1,293 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A4D24F6C-B8BF-45B7-9A5E-0BC7FB28C5DC}</ProjectGuid>
+        <MainSource>PureRAT.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <FrameworkType>VCL</FrameworkType>
+        <ProjectVersion>18.2</ProjectVersion>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_E>false</DCC_E>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+        <DCC_N>true</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_ImageBase>00400000</DCC_ImageBase>
+        <DCC_DebugInformation>1</DCC_DebugInformation>
+        <DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+        <DCC_Hints>false</DCC_Hints>
+        <DCC_Warnings>false</DCC_Warnings>
+        <DCC_UnitSearchPath>Units\DirectX;Units\GDIP;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UsePackage>vcl;rtl;dbrtl;inet;inetdb;dsnap;bdertl;vclx;vcldb;vcldbx;visualclx;visualdbclx;vclactnband;vclshlctrls;vclie;xmlrtl;inetdbbde;inetdbxpress;webdsnap;soaprtl;websnap;adortl;dbexpress;dsnapcon;dbxcds;ibxpress;teeui;teedb;tee;dss;indy;VclSmp;qrpt;teeqr;Rave50CLX;Rave50VCL;IntrawebDB_50_70;Intraweb_50_70;VclNewlyext;acntD7_R;madBasic_;LTEffects;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UNSAFE_TYPE>true</DCC_UNSAFE_TYPE>
+        <DCC_UNSAFE_CODE>true</DCC_UNSAFE_CODE>
+        <DCC_UNSAFE_CAST>true</DCC_UNSAFE_CAST>
+        <SanitizedProjectName>PureRAT</SanitizedProjectName>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
+        <VerInfo_MajorVer>10</VerInfo_MajorVer>
+        <VerInfo_MinorVer>3</VerInfo_MinorVer>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=J3kill Soft.;FileDescription=Pure Remote Administration Tool;FileVersion=10.3.0.0;InternalName=PureRAT;LegalCopyright=Copyright © 2016-2017 J3kill Soft.;LegalTrademarks=PureRAT;OriginalFilename=PureRAT.exe;ProductName=;ProductVersion=1.0.0.0</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <Icon_MainIcon>PureRAT_Icon.ico</Icon_MainIcon>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppEnableHighDPI>true</AppEnableHighDPI>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppEnableHighDPI>true</AppEnableHighDPI>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="UnitMain.pas">
+            <Form>FormMain</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSelectPort.pas">
+            <Form>FormSelectPort</Form>
+        </DCCReference>
+        <DCCReference Include="UnitTasksManager.pas">
+            <Form>FormTasksManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitInformations.pas">
+            <Form>FormInformations</Form>
+        </DCCReference>
+        <DCCReference Include="UnitFilesManager.pas">
+            <Form>FormFilesManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitRegistryManager.pas">
+            <Form>FormRegistryManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitShell.pas">
+            <Form>FormShell</Form>
+        </DCCReference>
+        <DCCReference Include="UnitDesktop.pas">
+            <Form>FormDesktop</Form>
+        </DCCReference>
+        <DCCReference Include="UnitWebcam.pas">
+            <Form>FormWebcam</Form>
+        </DCCReference>
+        <DCCReference Include="UnitMicrophone.pas">
+            <Form>FormMicrophone</Form>
+        </DCCReference>
+        <DCCReference Include="UnitPasswords.pas">
+            <Form>FormPasswords</Form>
+        </DCCReference>
+        <DCCReference Include="UnitLogger.pas">
+            <Form>FormLogger</Form>
+        </DCCReference>
+        <DCCReference Include="UnitMessagesBox.pas">
+            <Form>FormMessagesBox</Form>
+        </DCCReference>
+        <DCCReference Include="UnitScripts.pas">
+            <Form>FormScripts</Form>
+        </DCCReference>
+        <DCCReference Include="UnitPortScanner.pas">
+            <Form>FormPortScanner</Form>
+        </DCCReference>
+        <DCCReference Include="UnitPortSniffer.pas">
+            <Form>FormPortSniffer</Form>
+        </DCCReference>
+        <DCCReference Include="UnitFlooder.pas">
+            <Form>FormFlooder</Form>
+        </DCCReference>
+        <DCCReference Include="UnitFun.pas">
+            <Form>FormFun</Form>
+        </DCCReference>
+        <DCCReference Include="UnitChat.pas">
+            <Form>FormChat</Form>
+        </DCCReference>
+        <DCCReference Include="UnitEditFile.pas">
+            <Form>FormEditFile</Form>
+        </DCCReference>
+        <DCCReference Include="..\Global units\UnitCommands.pas"/>
+        <DCCReference Include="..\Global units\UnitConstants.pas"/>
+        <DCCReference Include="Units\SocketUnitEx.pas"/>
+        <DCCReference Include="Units\UnitFunctions.pas"/>
+        <DCCReference Include="Units\UnitVariables.pas"/>
+        <DCCReference Include="..\Global units\UnitEncryption.pas"/>
+        <DCCReference Include="UnitNotification.pas">
+            <Form>FormNotification</Form>
+        </DCCReference>
+        <DCCReference Include="Units\GeoIP.pas"/>
+        <DCCReference Include="Units\UnitCountry.pas"/>
+        <DCCReference Include="Units\UnitRepository.pas"/>
+        <DCCReference Include="..\Global units\BTMemoryModule.pas"/>
+        <DCCReference Include="UnitProcessModules.pas">
+            <Form>FormProcessModules</Form>
+        </DCCReference>
+        <DCCReference Include="UnitEditService.pas">
+            <Form>FormEditService</Form>
+        </DCCReference>
+        <DCCReference Include="Units\ListarDispositivos.pas"/>
+        <DCCReference Include="..\Global units\Common.pas"/>
+        <DCCReference Include="..\Global units\DeviceHelper.pas"/>
+        <DCCReference Include="..\Global units\ModuleLoader.pas"/>
+        <DCCReference Include="..\Global units\SetupApi.pas"/>
+        <DCCReference Include="Units\ZLibEx\ZLibEx.pas"/>
+        <DCCReference Include="UnitFtpManager.pas">
+            <Form>FormFTPManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitRegistryEditor.pas">
+            <Form>FormRegistryEditor</Form>
+        </DCCReference>
+        <DCCReference Include="UnitBuilder.pas">
+            <Form>FormBuilder</Form>
+        </DCCReference>
+        <DCCReference Include="Units\UnitIconChanger.pas"/>
+        <DCCReference Include="..\Global units\uftp.pas"/>
+        <DCCReference Include="UnitDisclamer.pas">
+            <Form>FormDisclamer</Form>
+        </DCCReference>
+        <DCCReference Include="UnitDnsUpdater.pas">
+            <Form>FormDnsUpdater</Form>
+        </DCCReference>
+        <DCCReference Include="..\Global units\Base64.pas"/>
+        <DCCReference Include="UnitManager.pas">
+            <Form>FormManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitRecords.pas">
+            <Form>FormRecords</Form>
+        </DCCReference>
+        <DCCReference Include="UnitAbout.pas">
+            <Form>FormAbout</Form>
+        </DCCReference>
+        <DCCReference Include="Units\uJSONConfig.pas"/>
+        <DCCReference Include="Units\ACM\ACMConvertor.pas"/>
+        <DCCReference Include="Units\ACM\ACMIn.pas"/>
+        <DCCReference Include="Units\ACM\ACMOut.pas"/>
+        <DCCReference Include="Units\ACM\ListUnit.pas"/>
+        <DCCReference Include="Units\ACM\MSACM.pas"/>
+        <DCCReference Include="UnitPluginsBuilder.pas">
+            <Form>FormPluginsBuilder</Form>
+        </DCCReference>
+        <DCCReference Include="Units\UnitHardware.pas"/>
+        <DCCReference Include="UnitClientEdit.pas">
+            <Form>FormClientEdit</Form>
+        </DCCReference>
+        <DCCReference Include="UnitMultiDesktop.pas">
+            <Form>FormMultiDesktop</Form>
+        </DCCReference>
+        <DCCReference Include="UnitMultiWebcam.pas">
+            <Form>FormMultiWebcam</Form>
+        </DCCReference>
+        <DCCReference Include="..\Global units\uDEP.pas"/>
+        <DCCReference Include="Units\ClassesMOD.pas"/>
+        <DCCReference Include="UnitImagePreview.pas">
+            <Form>FormImagePreview</Form>
+        </DCCReference>
+        <DCCReference Include="Units\UnitDB.pas"/>
+        <DCCReference Include="UnitSystem.pas">
+            <Form>FormSystem</Form>
+        </DCCReference>
+        <DCCReference Include="UnitAttributes.pas">
+            <Form>FormAttributes</Form>
+        </DCCReference>
+        <DCCReference Include="UnitNotes.pas">
+            <Form>FormNotes</Form>
+        </DCCReference>
+        <DCCReference Include="UnitPluginsManager.pas">
+            <Form>FormPluginsManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitClientsTasks.pas">
+            <Form>FormClientsTasks</Form>
+        </DCCReference>
+        <DCCReference Include="UnitTasks.pas">
+            <Form>FormTasks</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSplash.pas">
+            <Form>FormSplash</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSettings.pas">
+            <Form>FormSettings</Form>
+        </DCCReference>
+        <DCCReference Include="Units\MD5.pas"/>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">PureRAT.dpr</Source>
+                </Source>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>

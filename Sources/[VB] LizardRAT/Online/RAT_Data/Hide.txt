@@ -1,0 +1,5 @@
+﻿Sub Hide()
+Try
+		Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", True).SetValue("Hidden", "0", Microsoft.Win32.RegistryValueKind.DWord)
+Catch : End Try
+End Sub

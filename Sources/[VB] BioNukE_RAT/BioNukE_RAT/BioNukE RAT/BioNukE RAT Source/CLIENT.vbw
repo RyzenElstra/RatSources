@@ -1,0 +1,7 @@
+frmMain = -26, -2, 934, 646, C, 22, 29, 629, 544, C
+Style = 132, 174, 739, 689, C
+MainModule = 154, 203, 761, 718, C
+ChameleonButton = 0, 0, 0, 0, C, 154, 203, 751, 716, C
+CommandModule = 0, 0, 0, 0, C
+Parser = 0, 0, 0, 0, C
+frmTransfer = 0, 0, 0, 0, C, 0, 0, 0, 0, C

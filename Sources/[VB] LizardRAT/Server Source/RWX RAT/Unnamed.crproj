@@ -1,0 +1,13 @@
+<project outputDir="C:\Users\chN\Desktop\Greyhat\RAT New\RWX RAT\RWX RAT\EXE" baseDir="C:\Users\chN\Desktop\Greyhat\RAT New\RWX RAT\RWX RAT\FinalBuild" xmlns="http://confuser.codeplex.com">
+  <module path="RWX RAT.exe">
+    <rule pattern="true" inherit="false">
+      <protection id="anti ildasm" />
+      <protection id="anti tamper" />
+      <protection id="constants" />
+      <protection id="anti dump" />
+      <protection id="anti debug" />
+      <protection id="ctrl flow" />
+      <protection id="invalid metadata" />
+    </rule>
+  </module>
+</project>

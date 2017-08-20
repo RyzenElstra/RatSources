@@ -1,0 +1,20 @@
+ §§§§§§§Developeur:lessaad djamel université ferhat abbas sétif algérié§§§
+                §§§§§§§E-mail : Ldjamel1@caramail.com§§§§§§§§
+
+ 
+  Cette code source est une amelioration de mon premiere projet PC à distance
+qui basé sur archetecture du client/serveur (TCP/IP)
+cette programme je suis appelle "REMOTE PC" 
+ les nauvoutés :
+1-le serveur lance automatiquement lorsque démmarer votre windows
+2-envoyer fichier à pc distant sous le protocole UDP (TFTP)
+3-contient le module manifest qui donne le style windows XP
+3-enriche par les API32
+4-ouverture le client(programe exe) avec animation de hout vers la bas
+5-la chat(tchatche)
+  et aussi plusieurs astuce 
+  cette programme est gratuit à utilisation
+  si vous contre un probleme svp contectez moi sur E-mail :
+            &&&& ldjamel1@caramail.com &&&&&
+
+                                 merci!!!!!!!!!

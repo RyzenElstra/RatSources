@@ -1,0 +1,19 @@
+Thanks
+======
+
+- To peoples who shared sources codes of Spynet RAT, Xtreme RAT,  
+  Aero RAT, Schwarze Sonne RAT and Coolvibes RAT
+- To MaxX0r for passwords and cookies stealer in Quasar RAT
+- To Doddy Hackman for some useful functions in DH RAt 2.0
+- To Rodrigo Ruz for map viewer (www.theraodtodelphi.com)
+- To OpenSC.ws, rohitab.com and StackOverflow.com
+
+Extras tools
+============
+
+- FFmpeg (version: 20160808-ce2217b) win32 static build by Kyle Schwarz
+- verpatch (version 1.0.10 (02-Sep-2012)) from https://ddverpatch.codeplex.com/
+- The Ultimate Packer for eXecutables (version 3.91) from Markus 
+  Oberhumer, Laszlo Molnar & John Reiser
+- Matcode comPRESSor (version 2.19) from Vitaly Evseenko
+- GeoIp.dat from MaxMind LLC - 2005

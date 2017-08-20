@@ -1,0 +1,3 @@
+PER RCDATA test.dll
+CFG RCDATA pap
+MFT RCDATA MyDll.dll

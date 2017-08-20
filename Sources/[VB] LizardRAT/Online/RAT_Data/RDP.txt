@@ -1,0 +1,908 @@
+﻿Imports System.Runtime.InteropServices
+Imports System.Collections.Generic
+Imports System.Net.Sockets
+Imports System.Net
+Imports System.ComponentModel
+Imports System.IO
+Imports System.Text
+Imports System.Security.Cryptography
+Imports System
+
+'------------------
+'Creator: aeonhack
+'Site: nimoru.com
+'Name: Buffered Client
+'Created: 9/12/2012
+'Changed: 6/13/2013
+'Version: 1.2.0.3
+'------------------
+
+NotInheritable Class UserClient
+    Implements System.IDisposable
+
+    'TODO: Lock objects where needed.
+    'TODO: Create and handle ReadQueue?
+    'TODO: Provide option to disable buffering.
+
+#Region " Events "
+
+    Public Event ExceptionThrown As ExceptionThrownEventHandler
+    Public Delegate Sub ExceptionThrownEventHandler(sender As UserClient, ex As System.Exception)
+
+    Private Sub OnExceptionThrown(ex As System.Exception)
+        RaiseEvent ExceptionThrown(Me, ex)
+    End Sub
+
+    Public Event StateChanged As StateChangedEventHandler
+    Public Delegate Sub StateChangedEventHandler(sender As UserClient, connected As Boolean)
+
+    Private Sub OnStateChanged(connected As Boolean)
+        RaiseEvent StateChanged(Me, connected)
+    End Sub
+
+    Public Event ReadPacket As ReadPacketEventHandler
+    Public Delegate Sub ReadPacketEventHandler(sender As UserClient, data As Byte())
+
+    Private Sub OnReadPacket(data As Byte())
+        RaiseEvent ReadPacket(Me, data)
+    End Sub
+
+    Public Event ReadProgressChanged As ReadProgressChangedEventHandler
+    Public Delegate Sub ReadProgressChangedEventHandler(sender As UserClient, progress As Double, bytesRead As Integer, bytesToRead As Integer)
+
+    Private Sub OnReadProgressChanged(progress As Double, bytesRead As Integer, bytesToRead As Integer)
+        RaiseEvent ReadProgressChanged(Me, progress, bytesRead, bytesToRead)
+    End Sub
+
+    Public Event WritePacket As WritePacketEventHandler
+    Public Delegate Sub WritePacketEventHandler(sender As UserClient, size As Integer)
+
+    Private Sub OnWritePacket(size As Integer)
+        RaiseEvent WritePacket(Me, size)
+    End Sub
+
+    Public Event WriteProgressChanged As WriteProgressChangedEventHandler
+    Public Delegate Sub WriteProgressChangedEventHandler(sender As UserClient, progress As Double, bytesWritten As Integer, bytesToWrite As Integer)
+
+    Private Sub OnWriteProgressChanged(progress As Double, bytesWritten As Integer, bytesToWrite As Integer)
+        RaiseEvent WriteProgressChanged(Me, progress, bytesWritten, bytesToWrite)
+    End Sub
+
+#End Region
+
+#Region " Properties "
+
+    Private _BufferSize As UShort = 8192
+    Public Property BufferSize() As UShort
+        Get
+            Return _BufferSize
+        End Get
+        Set(value As UShort)
+            If value < 1 Then
+                Throw New System.Exception("Value must be greater than 0.")
+            Else
+                _BufferSize = value
+            End If
+        End Set
+    End Property
+
+    Private _MaxPacketSize As Integer = 10485760
+    Public Property MaxPacketSize() As Integer
+        Get
+            Return _MaxPacketSize
+        End Get
+        Set(value As Integer)
+            If value < 1 Then
+                Throw New System.Exception("Value must be greater than 0.")
+            Else
+                _MaxPacketSize = value
+            End If
+        End Set
+    End Property
+
+    Private _KeepAlive As Boolean = True
+    Public Property KeepAlive() As Boolean
+        Get
+            Return _KeepAlive
+        End Get
+        Set(value As Boolean)
+            If _Connected Then
+                Throw New System.Exception("Unable to change this option while connected.")
+            Else
+                _KeepAlive = value
+            End If
+        End Set
+    End Property
+
+    Private _UserState As Object
+    Public Property UserState() As Object
+        Get
+            Return _UserState
+        End Get
+        Set(value As Object)
+            _UserState = value
+        End Set
+    End Property
+
+    Private _EndPoint As System.Net.IPEndPoint
+    Public ReadOnly Property EndPoint() As System.Net.IPEndPoint
+        Get
+            If _EndPoint IsNot Nothing Then
+                Return _EndPoint
+            Else
+                Return New System.Net.IPEndPoint(System.Net.IPAddress.None, 0)
+            End If
+        End Get
+    End Property
+
+    Private _Connected As Boolean
+    Public ReadOnly Property Connected() As Boolean
+        Get
+            Return _Connected
+        End Get
+    End Property
+
+#End Region
+
+    Private O As System.ComponentModel.AsyncOperation
+    Private Handle As System.Net.Sockets.Socket
+
+    Private SendIndex As Integer
+    Private SendBuffer As Byte()
+
+    Private ReadIndex As Integer
+    Private ReadBuffer As Byte()
+
+    Private SendQueue As System.Collections.Generic.Queue(Of Byte())
+
+    Private Items As System.Net.Sockets.SocketAsyncEventArgs()
+    Private Processing As Boolean() = New Boolean(1) {}
+
+    Public Sub New()
+        O = System.ComponentModel.AsyncOperationManager.CreateOperation(Nothing)
+    End Sub
+
+    Public Sub Connect(host As String, port As UShort)
+        Try
+            Disconnect()
+            Initialize()
+
+            Dim IP As System.Net.IPAddress = System.Net.IPAddress.None
+            If System.Net.IPAddress.TryParse(host, IP) Then
+                DoConnect(IP, port)
+            Else
+                System.Net.Dns.BeginGetHostEntry(host, AddressOf EndGetHostEntry, port)
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub EndGetHostEntry(r As System.IAsyncResult)
+        Try
+            DoConnect(System.Net.Dns.EndGetHostEntry(r).AddressList(0), DirectCast(r.AsyncState, UShort))
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub DoConnect(ip As System.Net.IPAddress, port As UShort)
+        Try
+            Handle = New System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp)
+            Handle.NoDelay = True
+
+            If _KeepAlive Then
+                Handle.SetSocketOption(System.Net.Sockets.SocketOptionLevel.Socket, System.Net.Sockets.SocketOptionName.KeepAlive, 20000)
+            End If
+
+            Items(0).RemoteEndPoint = New System.Net.IPEndPoint(ip, port)
+            If Not Handle.ConnectAsync(Items(0)) Then
+                Process(Nothing, Items(0))
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub Initialize()
+        Processing = New Boolean(1) {}
+
+        SendIndex = 0
+        ReadIndex = 0
+
+        SendBuffer = New Byte(-1) {}
+        ReadBuffer = New Byte(-1) {}
+
+        SendQueue = New System.Collections.Generic.Queue(Of Byte())()
+
+        Items = New System.Net.Sockets.SocketAsyncEventArgs(1) {}
+
+        Items(0) = New System.Net.Sockets.SocketAsyncEventArgs()
+        Items(1) = New System.Net.Sockets.SocketAsyncEventArgs()
+        AddHandler Items(0).Completed, AddressOf Process
+        AddHandler Items(1).Completed, AddressOf Process
+    End Sub
+
+    Private Sub Process(s As Object, e As System.Net.Sockets.SocketAsyncEventArgs)
+        Try
+            If e.SocketError = System.Net.Sockets.SocketError.Success Then
+                Select Case e.LastOperation
+                    Case System.Net.Sockets.SocketAsyncOperation.Connect
+                        _EndPoint = DirectCast(Handle.RemoteEndPoint, System.Net.IPEndPoint)
+                        _Connected = True
+                        Items(0).SetBuffer(New Byte(_BufferSize - 1) {}, 0, _BufferSize)
+
+                        OnStateChanged(True)
+                        If Not Handle.ReceiveAsync(e) Then
+                            Process(Nothing, e)
+                        End If
+                    Case System.Net.Sockets.SocketAsyncOperation.Receive
+                        If Not _Connected Then Return
+
+                        If Not e.BytesTransferred = 0 Then
+                            HandleRead(e.Buffer, 0, e.BytesTransferred)
+
+                            If Not Handle.ReceiveAsync(e) Then
+                                Process(Nothing, e)
+                            End If
+                        Else
+                            Disconnect()
+                        End If
+                    Case System.Net.Sockets.SocketAsyncOperation.Send
+                        If Not _Connected Then Return
+
+                        Dim EOS As Boolean
+                        SendIndex += e.BytesTransferred
+
+                        O.Post(AddressOf WriteProgressChangedCallback, New Object() {(SendIndex / SendBuffer.Length) * 100, SendIndex, SendBuffer.Length})
+
+                        If (SendIndex >= SendBuffer.Length) Then
+                            EOS = True
+                            OnWritePacket(SendBuffer.Length - 4)
+                        End If
+
+                        If SendQueue.Count = 0 AndAlso EOS Then
+                            Processing(1) = False
+                        Else
+                            HandleSendQueue()
+                        End If
+                End Select
+            Else
+                OnExceptionThrown(New System.Net.Sockets.SocketException(e.SocketError))
+                Disconnect()
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Public Sub Disconnect()
+        On Error Resume Next
+        If Processing(0) Then
+            Return
+        Else
+            Processing(0) = True
+        End If
+
+        Dim Raise As Boolean = _Connected
+        _Connected = False
+
+        If Handle IsNot Nothing Then
+            Handle.Close()
+        End If
+
+        If SendQueue IsNot Nothing Then
+            SendQueue.Clear()
+        End If
+
+        SendBuffer = New Byte(-1) {}
+        ReadBuffer = New Byte(-1) {}
+
+        If Raise Then
+            OnStateChanged(False)
+        End If
+
+        If Items IsNot Nothing Then
+            Items(0).Dispose()
+            Items(1).Dispose()
+        End If
+
+        _UserState = Nothing
+        _EndPoint = Nothing
+    End Sub
+
+    Public Sub Send(data As Byte())
+        If Not _Connected Then Return
+
+        SendQueue.Enqueue(data)
+
+        If Not Processing(1) Then
+            Processing(1) = True
+            HandleSendQueue()
+        End If
+    End Sub
+
+    Private Sub HandleSendQueue()
+        Try
+            If SendIndex >= SendBuffer.Length Then
+                SendIndex = 0
+                SendBuffer = Header(SendQueue.Dequeue())
+            End If
+
+            Dim Write As Integer = System.Math.Min(SendBuffer.Length - SendIndex, _BufferSize)
+            Items(1).SetBuffer(SendBuffer, SendIndex, Write)
+
+            If Not Handle.SendAsync(Items(1)) Then
+                Process(Nothing, Items(1))
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Shared Function Header(data As Byte()) As Byte()
+        Dim T As Byte() = New Byte(data.Length + 3) {}
+        System.Buffer.BlockCopy(System.BitConverter.GetBytes(data.Length), 0, T, 0, 4)
+        System.Buffer.BlockCopy(data, 0, T, 4, data.Length)
+        Return T
+    End Function
+
+    Private Sub HandleRead(data As Byte(), index As Integer, length As Integer)
+        If ReadIndex >= ReadBuffer.Length Then
+            ReadIndex = 0
+            If data.Length < 4 Then
+                OnExceptionThrown(New System.Exception("Missing or corrupt packet header."))
+                Disconnect()
+                Return
+            End If
+
+            Dim PacketSize As Integer = System.BitConverter.ToInt32(data, index)
+            If PacketSize > _MaxPacketSize Then
+                OnExceptionThrown(New System.Exception("Packet size exceeds MaxPacketSize."))
+                Disconnect()
+                Return
+            End If
+
+            System.Array.Resize(ReadBuffer, PacketSize)
+            index += 4
+        End If
+
+        Dim Read As Integer = System.Math.Min(ReadBuffer.Length - ReadIndex, length - index)
+        System.Buffer.BlockCopy(data, index, ReadBuffer, ReadIndex, Read)
+        ReadIndex += Read
+
+        O.Post(AddressOf ReadProgressChangedCallback, New Object() {(ReadIndex / ReadBuffer.Length) * 100, ReadIndex, ReadBuffer.Length})
+
+        If ReadIndex >= ReadBuffer.Length Then
+            Dim BufferClone(ReadBuffer.Length - 1) As Byte 'Race condition fail-safe.
+            System.Buffer.BlockCopy(ReadBuffer, 0, BufferClone, 0, ReadBuffer.Length)
+
+            OnReadPacket(BufferClone)
+        End If
+
+        If Read < (length - index) Then
+            HandleRead(data, index + Read, length)
+        End If
+    End Sub
+
+    Private Sub ReadProgressChangedCallback(arg As Object)
+        Dim Params As Object() = DirectCast(arg, Object())
+        OnReadProgressChanged(DirectCast(Params(0), Double), DirectCast(Params(1), Integer), DirectCast(Params(2), Integer))
+    End Sub
+
+    Private Sub WriteProgressChangedCallback(arg As Object)
+        Dim Params As Object() = DirectCast(arg, Object())
+        OnWriteProgressChanged(DirectCast(Params(0), Double), DirectCast(Params(1), Integer), DirectCast(Params(2), Integer))
+    End Sub
+
+#Region " IDisposable Support "
+
+    Private DisposedValue As Boolean
+
+    Private Sub Dispose(disposing As Boolean)
+        If Not DisposedValue AndAlso disposing Then Disconnect()
+        DisposedValue = True
+    End Sub
+
+    Public Sub Dispose() Implements System.IDisposable.Dispose
+        Dispose(True)
+        System.GC.SuppressFinalize(Me)
+    End Sub
+
+#End Region
+
+End Class
+
+NotInheritable Class Pack
+
+    Private Table As System.Collections.Generic.Dictionary(Of System.Type, Byte)
+    Public Sub New()
+        Table = New System.Collections.Generic.Dictionary(Of System.Type, Byte)()
+
+        Table.Add(GetType(Boolean), 0)
+        Table.Add(GetType(Byte), 1)
+        Table.Add(GetType(Byte()), 2)
+        Table.Add(GetType(Char), 3)
+        Table.Add(GetType(Char()), 4)
+        Table.Add(GetType(Decimal), 5)
+        Table.Add(GetType(Double), 6)
+        Table.Add(GetType(Integer), 7)
+        Table.Add(GetType(Long), 8)
+        Table.Add(GetType(SByte), 9)
+        Table.Add(GetType(Short), 10)
+        Table.Add(GetType(Single), 11)
+        Table.Add(GetType(String), 12)
+        Table.Add(GetType(UInteger), 13)
+        Table.Add(GetType(ULong), 14)
+        Table.Add(GetType(UShort), 15)
+        Table.Add(GetType(System.DateTime), 16)
+    End Sub
+
+    Public Function Serialize(ParamArray data As Object()) As Byte()
+        Dim Stream As New System.IO.MemoryStream()
+        Dim Writer As New System.IO.BinaryWriter(Stream, System.Text.Encoding.UTF8)
+        Dim Current As Byte = 0
+
+        Writer.Write(System.Convert.ToByte(data.Length))
+
+        For I As Integer = 0 To data.Length - 1
+            Current = Table(data(I).GetType())
+            Writer.Write(Current)
+
+            Select Case Current
+                Case 0
+                    Writer.Write(DirectCast(data(I), Boolean))
+                Case 1
+                    Writer.Write(DirectCast(data(I), Byte))
+                Case 2
+                    Writer.Write(DirectCast(data(I), Byte()).Length)
+                    Writer.Write(DirectCast(data(I), Byte()))
+                Case 3
+                    Writer.Write(DirectCast(data(I), Char))
+                Case 4
+                    Writer.Write(DirectCast(data(I), Char()).ToString())
+                Case 5
+                    Writer.Write(DirectCast(data(I), Decimal))
+                Case 6
+                    Writer.Write(DirectCast(data(I), Double))
+                Case 7
+                    Writer.Write(DirectCast(data(I), Integer))
+                Case 8
+                    Writer.Write(DirectCast(data(I), Long))
+                Case 9
+                    Writer.Write(DirectCast(data(I), SByte))
+                Case 10
+                    Writer.Write(DirectCast(data(I), Short))
+                Case 11
+                    Writer.Write(DirectCast(data(I), Single))
+                Case 12
+                    Writer.Write(DirectCast(data(I), String))
+                Case 13
+                    Writer.Write(DirectCast(data(I), UInteger))
+                Case 14
+                    Writer.Write(DirectCast(data(I), ULong))
+                Case 15
+                    Writer.Write(DirectCast(data(I), UShort))
+                Case 16
+                    Writer.Write(DirectCast(data(I), Date).ToBinary())
+            End Select
+        Next
+
+        Writer.Close()
+        Return Stream.ToArray()
+    End Function
+
+    Public Function Deserialize(data As Byte()) As Object()
+        Dim Stream As New System.IO.MemoryStream(data)
+        Dim Reader As New System.IO.BinaryReader(Stream, System.Text.Encoding.UTF8)
+        Dim Items As New System.Collections.Generic.List(Of Object)()
+        Dim Current As Byte = 0
+        Dim Count As Byte = Reader.ReadByte()
+
+        For I As Integer = 0 To Count - 1
+            Current = Reader.ReadByte()
+
+            Select Case Current
+                Case 0
+                    Items.Add(Reader.ReadBoolean())
+                Case 1
+                    Items.Add(Reader.ReadByte())
+                Case 2
+                    Items.Add(Reader.ReadBytes(Reader.ReadInt32()))
+                Case 3
+                    Items.Add(Reader.ReadChar())
+                Case 4
+                    Items.Add(Reader.ReadString().ToCharArray())
+                Case 5
+                    Items.Add(Reader.ReadDecimal())
+                Case 6
+                    Items.Add(Reader.ReadDouble())
+                Case 7
+                    Items.Add(Reader.ReadInt32())
+                Case 8
+                    Items.Add(Reader.ReadInt64())
+                Case 9
+                    Items.Add(Reader.ReadSByte())
+                Case 10
+                    Items.Add(Reader.ReadInt16())
+                Case 11
+                    Items.Add(Reader.ReadSingle())
+                Case 12
+                    Items.Add(Reader.ReadString())
+                Case 13
+                    Items.Add(Reader.ReadUInt32())
+                Case 14
+                    Items.Add(Reader.ReadUInt64())
+                Case 15
+                    Items.Add(Reader.ReadUInt16())
+                Case 16
+                    Items.Add(System.DateTime.FromBinary(Reader.ReadInt64()))
+            End Select
+        Next
+
+        Reader.Close()
+        Return Items.ToArray()
+    End Function
+End Class
+
+Class Client
+    Private Packer As New Pack
+    Private WithEvents c As New UserClient
+
+    Public SecureConnection As Boolean
+
+    Private encryptor As System.Security.Cryptography.ICryptoTransform
+    Private decryptor As System.Security.Cryptography.ICryptoTransform
+    Private endpointer As String = "*-*endpoint*-*"
+
+    Public Function encrypt(data As Byte()) As Byte()
+        Return encryptor.TransformFinalBlock(data, 0, data.Length)
+    End Function
+
+    Public Function decrypt(data As Byte()) As Byte()
+        Return decryptor.TransformFinalBlock(data, 0, data.Length)
+    End Function
+
+    Enum PacketHeader As Byte
+        Handshake = 0
+        FunctionHandshake = 6
+        RDP = 10
+        Mousemove = 11
+	Mousedown = 29
+	Mouseup = 30
+        Quali = 12
+    End Enum
+
+    Dim sendit As Boolean = true
+
+#Region " Helper Methods "
+    Private Sub SendPacket(ParamArray args As Object())
+        Dim data As Byte() = Packer.Serialize(args)
+        If SecureConnection Then
+            data = encrypt(data)
+        End If
+        c.Send(data)
+    End Sub
+#End Region
+
+#Region " Packet Senders "
+
+    Private Sub SendHandshakePacket(data As Byte())
+        SendPacket(CByte(PacketHeader.FunctionHandshake), CByte(PacketHeader.RDP), data)
+    End Sub
+
+    Private Sub SendRDPPacket(data As Byte())
+        SendPacket(CByte(PacketHeader.RDP), data)
+    End Sub
+#End Region
+
+#Region " Packet Handlers "
+
+
+    Private Sub HandleHandshakePacket(values As Object())
+        Dim PublicKey As Byte() = DirectCast(values(1), Byte())
+
+        Dim RSA As New System.Security.Cryptography.RSACryptoServiceProvider(2048)
+        RSA.ImportCspBlob(PublicKey)
+
+        Dim r As New System.Security.Cryptography.RijndaelManaged()
+        encryptor = r.CreateEncryptor()
+        decryptor = r.CreateDecryptor()
+
+        Dim data As Byte() = Packer.Serialize(r.Key, r.IV)
+        data = RSA.Encrypt(data, True)
+
+        SendHandshakePacket(data)
+
+        SecureConnection = True
+    End Sub
+
+    Private Sub HandleRDPPacket()
+        Dim data As Byte() = Packer.Serialize(endpointer, RDP.GetImage(), RDP.GetPoint.X, RDP.GetPoint.Y)
+        SendRDPPacket(data)
+    End Sub
+
+    Private Sub HandleMousemovePacket(values as Object())
+	RDP.Mousemove(values(1).Tostring, values(2).tostring)
+    End Sub
+
+    Private Sub HandleMousedownPacket(values as Object())
+	RDP.Mousedown(values(1).Tostring)
+    End Sub
+
+    Private Sub HandleMouseupPacket(values as Object())
+	RDP.Mouseup(values(1).Tostring)
+    End Sub
+	
+
+#End Region
+    Sub Main()
+        c.Connect("*-*host*-*", *-*port*-*)
+    End Sub
+
+    Private Sub client_StateChanged(sender As UserClient, connected As Boolean) Handles c.StateChanged
+        If Not connected Then
+            SecureConnection = False
+        End If
+    End Sub
+
+    Private Sub client_ExceptionThrown(sender As UserClient, ex As System.Exception) Handles c.ExceptionThrown
+
+    End Sub
+
+    Private Sub client_ReadPacket(sender As UserClient, data() As Byte) Handles c.ReadPacket
+        If SecureConnection Then
+            data = decrypt(data)
+        End If
+
+        Dim values As Object() = Packer.Deserialize(data)
+        If values Is Nothing OrElse values.Length = 0 Then Return
+
+        Select Case DirectCast(values(0), PacketHeader)
+            Case PacketHeader.Handshake
+                HandleHandshakePacket(values)
+            Case PacketHeader.RDP
+                HandleRDPPacket()
+	    Case PacketHeader.Mousemove
+		HandleMousemovePacket(values)
+	    Case PacketHeader.Mousedown
+		HandleMousedownPacket(values)
+	    Case PacketHeader.Mouseup
+		HandleMouseupPacket(values)
+	    Case PacketHeader.Quali
+		RDP.SetQuali(values(1).tostring)
+        End Select
+    End Sub
+
+    Private Sub client_ReadProgressChanged(sender As UserClient, progress As Double, bytesRead As Integer, bytesToRead As Integer) Handles c.ReadProgressChanged
+
+    End Sub
+
+    Private Sub client_WritePacket(sender As UserClient, size As Integer) Handles c.WritePacket
+
+    End Sub
+
+    Private Sub client_WriteProgressChanged(sender As UserClient, progress As Double, bytesWritten As Integer, bytesToWrite As Integer) Handles c.WriteProgressChanged
+
+    End Sub
+
+End Class
+
+Module RDP
+
+    Dim szResult As String = ""
+    Dim qual as Integer = 5
+
+    Public Const INPUT_MOUSE As integer = 0
+    Public Const INPUT_KEYBOARD As Integer = 1
+    Public Const INPUT_HARDWARE As Integer = 2
+    Public Const XBUTTON1 As integer = &H1
+    Public Const XBUTTON2 As integer = &H2
+    Public Const MOUSEEVENTF_MOVE As integer = &H1
+    Public Const MOUSEEVENTF_LEFTDOWN As integer = &H2
+    Public Const MOUSEEVENTF_LEFTUP As integer = &H4
+    Public Const MOUSEEVENTF_RIGHTDOWN As integer = &H8
+    Public Const MOUSEEVENTF_RIGHTUP As integer = &H10
+    Public Const MOUSEEVENTF_MIDDLEDOWN As integer = &H20
+    Public Const MOUSEEVENTF_MIDDLEUP As integer = &H40
+    Public Const MOUSEEVENTF_XDOWN As integer = &H80
+    Public Const MOUSEEVENTF_XUP As integer = &H100
+    Public Const MOUSEEVENTF_WHEEL As integer = &H800
+    Public Const MOUSEEVENTF_VIRTUALDESK As integer = &H4000
+    Public Const MOUSEEVENTF_ABSOLUTE As integer = &H8000
+    Declare Auto Sub mouse_event Lib "user32" (ByVal dwFlags As Integer, ByVal dx As Integer, ByVal dy As Integer, ByVal cButtons As Integer, ByVal dwExtraInfo As System.IntPtr)
+
+    Public Function GetImage() as String
+	GetImage = ConvertImageToString(imagefromstream(jpgstream(ResizeImage(CaptureScreen()), qual * 10)))
+	return GetImage
+    End Function
+
+    Public Function GetPoint() as System.Drawing.Point
+                Dim p As New System.drawing.point
+        Dim startLocation As New System.Drawing.Point(0, 0)
+
+        Dim endLocation As New System.Drawing.Point(0, 0)
+
+        Dim screens As System.Windows.Forms.Screen() = System.Windows.Forms.Screen.AllScreens
+
+        For Each tempScreen As System.Windows.Forms.Screen In screens
+
+
+
+            If tempScreen.Bounds.X < startLocation.X Then
+
+                startLocation.X = tempScreen.Bounds.X
+
+            End If
+
+
+
+            If tempScreen.Bounds.Y < startLocation.Y Then
+
+                startLocation.Y = tempScreen.Bounds.Y
+
+            End If
+
+
+
+            If tempScreen.Bounds.X + tempScreen.Bounds.Width > endLocation.X Then
+
+                endLocation.X = tempScreen.Bounds.X + tempScreen.Bounds.Width
+
+            End If
+
+
+
+            If tempScreen.Bounds.Y + tempScreen.Bounds.Height > endLocation.Y Then
+
+                endLocation.Y = tempScreen.Bounds.Y + tempScreen.Bounds.Height
+
+            End If
+
+
+
+        Next
+
+        p.X = startLocation.X
+        p.Y = startLocation.Y
+
+        Return p
+    End Function
+
+    Public Sub SetQuali(Byval quali as integer)
+	qual = quali
+    End Sub
+
+    Public Sub Mousemove(Byval x as integer, Byval y as integer)
+	System.Windows.Forms.Cursor.Position = New System.Drawing.Point(x,y)
+    End Sub
+
+    Public Sub Mousedown(byval mbut as string)
+	if mbut = "right" then
+		mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
+	elseif mbut = "left" then
+		mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+	else
+		mouse_event(MOUSEEVENTF_MIDDLEDOWN, 0, 0, 0, 0)
+	end if
+    end Sub
+
+    Public Sub Mouseup(byval mbut as string)
+	if mbut = "right" then
+		mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
+	elseif mbut = "left" then
+		mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+	else
+		mouse_event(MOUSEEVENTF_MIDDLEUP, 0, 0, 0, 0)
+	end if
+    end Sub
+
+    Public Function Capturescreen() As System.Drawing.Image
+
+        Dim startLocation As New System.Drawing.Point(0, 0)
+
+        Dim endLocation As New System.Drawing.Point(0, 0)
+
+        Dim screens As System.Windows.Forms.Screen() = System.Windows.Forms.Screen.AllScreens
+
+        For Each tempScreen As System.Windows.Forms.Screen In screens
+
+
+
+            If tempScreen.Bounds.X < startLocation.X Then
+
+                startLocation.X = tempScreen.Bounds.X
+
+            End If
+
+
+
+            If tempScreen.Bounds.Y < startLocation.Y Then
+
+                startLocation.Y = tempScreen.Bounds.Y
+
+            End If
+
+
+
+            If tempScreen.Bounds.X + tempScreen.Bounds.Width > endLocation.X Then
+
+                endLocation.X = tempScreen.Bounds.X + tempScreen.Bounds.Width
+
+            End If
+
+
+
+            If tempScreen.Bounds.Y + tempScreen.Bounds.Height > endLocation.Y Then
+
+                endLocation.Y = tempScreen.Bounds.Y + tempScreen.Bounds.Height
+
+            End If
+
+
+
+        Next
+
+
+
+        Dim screenGrab As New System.Drawing.Bitmap(endLocation.X + System.Math.Abs(startLocation.X), endLocation.Y + System.Math.Abs(startLocation.Y))
+
+        Dim g As System.Drawing.Graphics = System.Drawing.Graphics.FromImage(screenGrab)
+
+        g.CopyFromScreen(startLocation.X, startLocation.Y, 0, 0, New System.Drawing.Size(endLocation.X + System.Math.Abs(startLocation.X), endLocation.Y + System.Math.Abs(startLocation.Y)))
+
+        Return screenGrab
+
+    End Function
+
+    Public Function ConvertImageToString(ByVal value As System.Drawing.Image) As String
+
+        If value Is Nothing Then Return ""
+
+        Using ms As New System.IO.MemoryStream
+            value.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg)
+            ms.Flush()
+            ms.Position = 0
+            Dim buffer As Byte() = ms.ToArray
+            szResult = System.Convert.ToBase64String(buffer)
+        End Using
+
+        Return szResult
+
+    End Function
+
+	Public Function imagefromstream(ByVal s As System.IO.MemoryStream) As System.Drawing.Image
+        Return System.Drawing.Image.FromStream(s)
+    End Function
+
+	Private Function jpgstream(ByVal image As System.Drawing.Image, ByVal lCompression As Long) As System.IO.MemoryStream
+        Dim eps As System.Drawing.Imaging.EncoderParameters = New System.Drawing.Imaging.EncoderParameters(1)
+        eps.Param(0) = New System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, lCompression)
+        Dim ici As System.Drawing.Imaging.ImageCodecInfo = GetEncoderInfo("image/jpeg")
+        Dim s As System.IO.MemoryStream = New System.IO.MemoryStream
+        image.Save(s, ici, eps)
+        Return s
+    End Function
+
+    Private Function GetEncoderInfo(ByVal mimeType As String) As System.Drawing.Imaging.ImageCodecInfo
+        Dim j As Integer
+        Dim encoders As System.Drawing.Imaging.ImageCodecInfo()
+        encoders = System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders()
+        For j = 0 To encoders.Length
+            If encoders(j).MimeType = mimeType Then
+                Return encoders(j)
+            End If
+        Next j
+        Return Nothing
+    End Function
+
+	Public Function ResizeImage(ByVal InputImage As System.Drawing.Image) As System.Drawing.Image
+        Return New System.Drawing.Bitmap(InputImage, New System.Drawing.Size(InputImage.Width / 2, InputImage.Height / 2))
+    End Function
+
+End Module

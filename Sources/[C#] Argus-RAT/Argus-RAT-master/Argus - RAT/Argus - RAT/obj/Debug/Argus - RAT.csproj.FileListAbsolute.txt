@@ -1,0 +1,68 @@
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Argus - RAT.dll.config
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Argus - RAT.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Argus - RAT.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Argus___RAT.Argus___RAT.apk
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Argus___RAT.Argus___RAT-Signed.apk
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\FormsViewGroup.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\OpenPop.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.Design.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.v4.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Core.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Platform.Android.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Platform.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\FormsViewGroup.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Core.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Core.xml
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Xaml.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\Argus - RAT.csprojResolveAssemblyReference.cache
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\Argus - RAT.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\Argus - RAT.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\bin\Argus___RAT.Argus___RAT.apk
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\res\layout\main.xml
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\res\values\strings.xml
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\res\drawable\icon.png
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\R.cs.flag
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\uploadflags.txt
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Argus - RAT.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\FormsViewGroup.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Core.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Java.Interop.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Mono.Android.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\mscorlib.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.Core.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.Xml.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.Xml.Linq.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.ComponentModel.Composition.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.Net.Http.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.Runtime.Serialization.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\System.ServiceModel.Internals.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\Argus - RAT.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\FormsViewGroup.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\Java.Interop.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\Mono.Android.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\mscorlib.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.Core.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.Xml.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.ComponentModel.Composition.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.Net.Http.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.Runtime.Serialization.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Debug\Argus - RAT.dll.mdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\bin\Debug\Argus - RAT.dll.mdb

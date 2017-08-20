@@ -1,0 +1,60 @@
+PureRAT changes log
+===================
+
+[!] Current version: 10.4 beta (10.4b)
+[!] Generated date: 03/25/2017 09:38:18 PM
+
+[v10.4b - 03/24/2017]
+  [-] Server:
+    [*] Fixed: Remote hosts file datas reception
+    [!] Updated: Files manager and Registry manager UI
+
+[v10.3a - 03/19/2017]
+  [-] Server:
+    [*] Fixed: Message error when lauching a remote port scan
+    [*] Fixed: Desktop and webcam windows positions saving on close
+    [*] Fixed: Client id's icon changing when edit only id name
+    [*] Fixed: Screenlogger image reception
+    [*] Fixed: Desktop and webcam windows freeze when resizing windows on capture
+    [*] Fixed: Plugins builder thumbnail image changing
+    [!] Updated: Windows manager items menu
+    [!] Updated: Datas reception from client sockets
+    [!] Updated: Shell control is more like windows shell
+    [!] Updated: Showing tasks manager and files manager infos is more faster
+    [!] Updated: Whole UI
+    [!] Updated: License buying plans
+    [+] Added: Zoom options in image viewer for screenlogger window
+    [+] Added: "Maximize" and "Minimize" items in windows manager menu
+    [+] Added: "Quick build" item in builder profile menu
+    [+] Added: "Drag and drop" option in client manager to send and execute a file
+    [+] Added: "Fullscreen mode" button on Desktop capture window
+    [+] Added: Colored text on Client manager events log
+    [-] Removed: Keyboard control in desktop window, it can be used in windows manager
+    [-] Removed: Manage client by clicking on notification form
+    [-] Removed: Unique stub builder, now stub is pre-built for private account
+    [-] Removed: "Full license" buying plan
+  [-] Client:
+    [*] Fixed: Registry startup enrties retrieving
+    [*] Fixed: Starting new shell session after stopped one
+    [*] Fixed: Starting new webcam capture after stopped one
+    [!] Updated: Extras pack download method
+    [+] Added: Yandex browser passwords recovery
+
+[v10.3b1 - 02/18/2017]
+  [-] Server:
+    [*] Fixed: Plugin local uninistallation and transfer for remote installation
+    [+] Added: Log notification on remote plugin installation status
+    [+] Added: "Play" item for audio file in DB explore window
+    [+] Added: "Manage client" item in Crowd control menu 
+    [+] Added: Saving windows positions on close
+  [-] Client:
+    [*] Fixed: Process creation, for self-injection, tentatives increased to 5
+  [-] Beta testers: 
+    [*] Madara
+
+[v10.3b - 01/27/2017]
+  [-] First release
+  [-] Beta testers: Madara
+
+Copyright © 2016-2017 J3kill Soft. by wrh1d3
+  

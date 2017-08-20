@@ -1,0 +1,5 @@
+C:\Users\EGY\Desktop\StubEng\StubEng\bin\Debug\StubEng.exe
+C:\Users\EGY\Desktop\StubEng\StubEng\bin\Debug\StubEng.pdb
+C:\Users\EGY\Desktop\StubEng\StubEng\obj\Debug\StubEng.exe
+C:\Users\EGY\Desktop\StubEng\StubEng\obj\Debug\StubEng.pdb
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\StubEng\StubEng\obj\Debug\StubEng.pdb

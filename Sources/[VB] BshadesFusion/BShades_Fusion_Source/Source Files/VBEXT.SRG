@@ -1,0 +1,12 @@
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Shared Tools\Addin Designer\Visual Basic\Visual Basic 6.0]
+@="HKEY_CURRENT_USER\\Software\\Microsoft\\Visual Basic\\6.0"
+
+// VB Supported Add-In load behaviors
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Shared Tools\Addin Designer\Visual Basic\Visual Basic 6.0\LoadBehaviors]
+"None"="dword:00000000"
+"Startup"="dword:00000001"
+"Command Line"="dword:00000004"
+"Command Line / Startup"="dword:00000005"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Shared Tools\Addin Designer\Visual Basic\Visual Basic 6.0\Options]
+"CommandLine"="dword:00000001"

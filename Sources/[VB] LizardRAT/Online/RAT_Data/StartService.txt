@@ -1,0 +1,13 @@
+﻿Class Client
+Sub Main()
+		Dim localServices As System.ServiceProcess.ServiceController() = System.ServiceProcess.ServiceController.GetServices()
+
+		For Each service As System.ServiceProcess.ServiceController In localservices
+		if service.ServiceName = "[service]" then
+		        Try
+					service.start()
+		        Catch : End Try
+		end if
+		Next
+End Sub
+End Class

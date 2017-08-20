@@ -1,0 +1,804 @@
+date/time         : 2008-12-10, 18:28:39, 758ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 3 hours 15 minutes
+program up time   : 3 minutes 59 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 290/1014 MB (free/total)
+free disk space   : (C:) 6.02 GB
+display mode      : 1280x800, 32 bit
+process id        : $318
+allocated memory  : 27.67 MB
+executable        : ProjectUnhook.exe
+exec. date/time   : 2008-12-10 18:24
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $1d172880, $5950bca8, $fd1ef86e
+count             : 2
+exception number  : 2
+exception class   : EAccessViolation
+exception message : Access violation at address 30055371 in module 'ProjectUnhook.exe'. Write of address 03109000.
+
+thread $734:
+30055371 +36d ProjectUnhook.exe untaPlib       96  +0 ..
+30004794 +028 ProjectUnhook.exe System                ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept             CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept             ThreadExceptFrame
+77803831 +010 kernel32.dll                            BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                               LdrInitializeThunk
+>> created by thread $b04 at:
+3006e0dc +1d4 ProjectUnhook.exe ProjectUnhook 356 +36 ParseData
+
+main thread ($c38):
+77d0f7be +00a ntdll.dll                                 NtDelayExecution
+778078da +04c kernel32.dll                              SleepEx
+777c1d9b +00a kernel32.dll                              Sleep
+30070a8e +5ca ProjectUnhook.exe ProjectUnhook 1102 +122 initialization
+77803831 +010 kernel32.dll                              BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                                 LdrInitializeThunk
+
+thread $a14:
+77d0f7be +00a ntdll.dll                              NtDelayExecution
+778078da +04c kernel32.dll                           SleepEx
+777c1d9b +00a kernel32.dll                           Sleep
+3005f63a +13a ProjectUnhook.exe UnitCpuSpeed 105 +36 GetCPUUsage
+3004cd91 +00d ProjectUnhook.exe madExcept            CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept            ThreadExceptFrame
+77803831 +010 kernel32.dll                           BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                              LdrInitializeThunk
+>> created by main thread ($c38) at:
+3005f6cb +01b ProjectUnhook.exe UnitCpuSpeed 110  +1 initialization
+
+thread $eb4:
+77d0f7be +00a ntdll.dll                                 NtDelayExecution
+778078da +04c kernel32.dll                              SleepEx
+777c1d9b +00a kernel32.dll                              Sleep
+3006f210 +0cc ProjectUnhook.exe ProjectUnhook  641  +29 NewMaster
+30004794 +028 ProjectUnhook.exe System                  ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept               CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept               ThreadExceptFrame
+77803831 +010 kernel32.dll                              BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                                 LdrInitializeThunk
+>> created by main thread ($c38) at:
+30070a68 +5a4 ProjectUnhook.exe ProjectUnhook 1096 +116 initialization
+
+thread $b48:
+77d0f7be +00a ntdll.dll                                 NtDelayExecution
+778078da +04c kernel32.dll                              SleepEx
+777c1d9b +00a kernel32.dll                              Sleep
+3006efe2 +38a ProjectUnhook.exe ProjectUnhook  566  +46 CheckDataArrival
+3006f1f8 +0b4 ProjectUnhook.exe ProjectUnhook  634  +22 NewMaster
+30004794 +028 ProjectUnhook.exe System                  ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept               CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept               ThreadExceptFrame
+77803831 +010 kernel32.dll                              BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                                 LdrInitializeThunk
+>> created by main thread ($c38) at:
+30070a68 +5a4 ProjectUnhook.exe ProjectUnhook 1096 +116 initialization
+
+thread $f68:
+77d0f7be +00a ntdll.dll                               NtDelayExecution
+778078da +04c kernel32.dll                            SleepEx
+777c1d9b +00a kernel32.dll                            Sleep
+3006efe2 +38a ProjectUnhook.exe ProjectUnhook 566 +46 CheckDataArrival
+3006f126 +026 ProjectUnhook.exe ProjectUnhook 600  +5 NewConnection
+30004794 +028 ProjectUnhook.exe System                ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept             CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept             ThreadExceptFrame
+77803831 +010 kernel32.dll                            BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                               LdrInitializeThunk
+>> created by thread $b48 at:
+3006e0dc +1d4 ProjectUnhook.exe ProjectUnhook 356 +36 ParseData
+
+thread $b04:
+77d0f7be +00a ntdll.dll                               NtDelayExecution
+778078da +04c kernel32.dll                            SleepEx
+777c1d9b +00a kernel32.dll                            Sleep
+3006efe2 +38a ProjectUnhook.exe ProjectUnhook 566 +46 CheckDataArrival
+3006f126 +026 ProjectUnhook.exe ProjectUnhook 600  +5 NewConnection
+30004794 +028 ProjectUnhook.exe System                ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept             CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept             ThreadExceptFrame
+77803831 +010 kernel32.dll                            BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                               LdrInitializeThunk
+>> created by thread $b48 at:
+3006e0dc +1d4 ProjectUnhook.exe ProjectUnhook 356 +36 ParseData
+
+modules:
+30000000 ProjectUnhook.exe                  C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+72fe0000 dbghelp.dll       6.0.6000.16386   C:\Windows\system32
+73120000 pnrpnsp.dll       6.0.6000.16386   C:\Windows\system32
+73160000 napinsp.dll       6.0.6000.16386   C:\Windows\system32
+73170000 winrnr.dll        6.0.6000.16386   C:\Windows\System32
+73190000 rasadhlp.dll      6.0.6000.16386   C:\Windows\system32
+732b0000 advpack.dll       7.0.6000.16757   C:\Windows\system32
+73390000 wsock32.dll       6.0.6000.16386   C:\Windows\system32
+73de0000 comctl32.dll      5.82.6000.16386  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.6000.16386_none_87e0cb09378714f1
+747f0000 msacm32.dll       6.0.6000.16386   C:\Windows\system32
+74990000 pstorec.dll       6.0.6000.16386   C:\Windows\system32
+749a0000 MSVFW32.dll       6.0.6000.16513   C:\Windows\system32
+749d0000 avicap32.dll      6.0.6000.16513   C:\Windows\system32
+74ca0000 ATL.DLL           3.5.2284.0       C:\Windows\system32
+74ce0000 OLEACC.dll        4.2.5406.0       C:\Windows\system32
+74d20000 winmm.dll         6.0.6000.16386   C:\Windows\system32
+75310000 comctl32.dll      6.10.6000.16386  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+75610000 uxtheme.dll       6.0.6000.16386   C:\Windows\system32
+75710000 WINTRUST.dll      6.0.6000.16386   C:\Windows\system32
+757d0000 NLAapi.dll        6.0.6000.16386   C:\Windows\system32
+758a0000 wshtcpip.dll      6.0.6000.16386   C:\Windows\System32
+75c00000 mswsock.dll       6.0.6000.16386   C:\Windows\system32
+75c70000 version.dll       6.0.6000.16386   C:\Windows\system32
+75dc0000 dhcpcsvc6.DLL     6.0.6000.16512   C:\Windows\system32
+75de0000 WINNSI.DLL        6.0.6000.16386   C:\Windows\system32
+75df0000 dhcpcsvc.DLL      6.0.6000.16512   C:\Windows\system32
+75e30000 IPHLPAPI.DLL      6.0.6000.16386   C:\Windows\system32
+75ef0000 CRYPT32.dll       6.0.6000.16425   C:\Windows\system32
+76030000 MSASN1.dll        6.0.6000.16386   C:\Windows\system32
+760e0000 DNSAPI.dll        6.0.6000.16615   C:\Windows\system32
+76400000 Secur32.dll       6.0.6000.16386   C:\Windows\system32
+76420000 USERENV.dll       6.0.6000.16386   C:\Windows\system32
+764d0000 PSAPI.DLL         6.0.6000.16386   C:\Windows\system32
+76570000 msvcrt.dll        7.0.6000.16386   C:\Windows\system32
+76620000 ole32.dll         6.0.6000.16386   C:\Windows\system32
+76770000 shell32.dll       6.0.6000.16680   C:\Windows\system32
+77240000 MSCTF.dll         6.0.6000.16386   C:\Windows\system32
+77310000 NSI.dll           6.0.6000.16386   C:\Windows\system32
+77570000 user32.dll        6.0.6000.16438   C:\Windows\system32
+77610000 RPCRT4.dll        6.0.6000.16525   C:\Windows\system32
+776e0000 WLDAP32.dll       6.0.6000.16386   C:\Windows\system32
+777c0000 kernel32.dll      6.0.6000.16386   C:\Windows\system32
+778a0000 SHLWAPI.dll       6.0.6000.16386   C:\Windows\system32
+77900000 oleaut32.dll      6.0.6000.16609   C:\Windows\system32
+77990000 comdlg32.dll      6.0.6000.16386   C:\Windows\system32
+77a10000 ADVAPI32.dll      6.0.6000.16386   C:\Windows\system32
+77ad0000 GDI32.dll         6.0.6000.16643   C:\Windows\system32
+77b20000 SETUPAPI.dll      6.0.6000.16609   C:\Windows\system32
+77cb0000 ntdll.dll         6.0.6000.16386   C:\Windows\system32
+77de0000 IMAGEHLP.DLL      6.0.6000.16470   C:\Windows\system32
+77e10000 LPK.DLL           6.0.6000.16386   C:\Windows\system32
+77e20000 IMM32.DLL         6.0.6000.16386   C:\Windows\system32
+77e40000 USP10.dll         1.626.6000.16386 C:\Windows\system32
+77ec0000 WS2_32.dll        6.0.6000.16386   C:\Windows\system32
+
+processes:
+000 Idle                   0
+004 System                 0
+18c smss.exe               0
+214 csrss.exe              0
+23c wininit.exe            0
+248 csrss.exe              1
+268 services.exe           0
+274 lsass.exe              0
+280 lsm.exe                0
+2e8 winlogon.exe           1
+344 svchost.exe            0
+37c svchost.exe            0
+3a4 svchost.exe            0
+3f8 svchost.exe            0
+410 svchost.exe            0
+424 svchost.exe            0
+4ac audiodg.exe            0
+4dc SLsvc.exe              0
+500 svchost.exe            0
+588 svchost.exe            0
+650 spoolsv.exe            0
+66c svchost.exe            0
+7a4 Dwm.exe                1 high   C:\Windows\system32
+7cc Explorer.EXE           1 normal C:\Windows
+564 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+574 daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+5a8 DAP.exe                1 normal C:\Program Files\DAP
+00c mdm.exe                0
+3e0 svchost.exe            0
+698 TeamViewer_Service.exe 0
+320 svchost.exe            0
+804 SearchIndexer.exe      0
+90c taskeng.exe            1 normal C:\Windows\system32
+9f4 taskeng.exe            0
+da8 firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+f88 msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+a90 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+e9c wuauclt.exe            1 normal C:\Windows\system32
+738 msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+f90 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+8ac delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+7fc SearchProtocolHost.exe 0
+318 ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+2c8 Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+f2c taskeng.exe            0
+724 SearchFilterHost.exe   0 idle   C:\Windows\system32
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - ACANEWPW IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
+  - Generic volume shadow copy
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 03109000
+ebx = 00000000
+ecx = 01d2f86c
+edx = 02574f17
+esi = 01d2f8a8
+edi = 00000000
+eip = 30055371
+esp = 01d2f830
+ebp = 000f0403
+
+stack dump:
+01d2f830  00 00 00 00 a8 f8 d2 01 - b6 63 05 30 17 4f 57 02  .........c.0.OW.
+01d2f840  03 04 0f 00 18 00 00 03 - f0 fc d2 01 00 00 00 03  ................
+01d2f850  14 4b 48 02 95 4e 57 02 - 00 00 00 00 00 00 00 00  .KH..NW.........
+01d2f860  fa 03 0f 00 27 7d 01 00 - 09 00 00 00 e5 40 00 00  ....'}.......@..
+01d2f870  03 00 00 00 00 00 00 00 - 00 00 00 00 e5 40 00 00  .............@..
+01d2f880  03 00 00 00 00 00 00 00 - 00 00 00 00 d3 66 05 30  .............f.0
+01d2f890  14 4b 48 02 18 00 00 03 - 20 81 10 00 03 04 0f 00  .KH.............
+01d2f8a0  00 00 00 00 00 00 00 00 - 00 00 e8 01 18 a0 ed 01  ................
+01d2f8b0  18 a4 ed 01 18 a8 ed 01 - 18 ac ed 01 18 b0 ed 01  ................
+01d2f8c0  18 b4 ed 01 18 b8 ed 01 - 18 bc ed 01 18 c0 ed 01  ................
+01d2f8d0  18 c4 ed 01 18 c8 ed 01 - 18 cc ed 01 18 d0 ed 01  ................
+01d2f8e0  18 d4 ed 01 18 d8 ed 01 - 18 dc ed 01 18 e0 ed 01  ................
+01d2f8f0  18 e4 ed 01 18 e8 ed 01 - 18 ec ed 01 18 f0 ed 01  ................
+01d2f900  18 f4 ed 01 18 f8 ed 01 - 18 fc ed 01 18 00 ee 01  ................
+01d2f910  18 04 ee 01 18 08 ee 01 - 18 0c ee 01 18 10 ee 01  ................
+01d2f920  18 14 ee 01 18 18 ee 01 - 18 1c ee 01 18 20 ee 01  ................
+01d2f930  18 24 ee 01 18 28 ee 01 - 18 2c ee 01 18 30 ee 01  .$...(...,...0..
+01d2f940  18 34 ee 01 18 38 ee 01 - 18 3c ee 01 18 40 ee 01  .4...8...<...@..
+01d2f950  18 44 ee 01 18 48 ee 01 - 18 4c ee 01 18 50 ee 01  .D...H...L...P..
+01d2f960  18 54 ee 01 18 58 ee 01 - 18 5c ee 01 18 60 ee 01  .T...X...\...`..
+
+disassembling:
+30055004    public untaPlib...:              ; function entry point
+30055004 96   mov     eax, [esp+4]
+30055008      cmp     eax, 2
+3005500b      jge     loc_30055015
+3005500d      mov     eax, $64
+30055012      ret     4
+30055015      cmp     eax, 4
+30055018      jge     loc_30055022
+3005501a      mov     eax, 2
+3005501f      ret     4
+30055022      cmp     eax, 8
+30055025      jge     loc_3005502f
+30055027      mov     eax, 4
+3005502c      ret     4
+3005502f      cmp     eax, $10
+30055032      jge     loc_3005503c
+30055034      mov     eax, 6
+30055039      ret     4
+3005503c      cmp     eax, $20
+3005503f      jge     loc_30055049
+30055041      mov     eax, 8
+30055046      ret     4
+30055049      cmp     eax, $40
+3005504c      jge     loc_30055056
+3005504e      mov     eax, $a
+30055053      ret     4
+30055056      cmp     eax, $80
+3005505b      jge     loc_30055065
+3005505d      mov     eax, $c
+30055062      ret     4
+30055065      cmp     eax, $100
+3005506a      jge     loc_30055074
+3005506c      mov     eax, $e
+30055071      ret     4
+30055074      cmp     eax, $200
+30055079      jge     loc_30055083
+3005507b      mov     eax, $10
+30055080      ret     4
+30055083      cmp     eax, $400
+30055088      jge     loc_30055092
+3005508a      mov     eax, $12
+3005508f      ret     4
+30055092      cmp     eax, $800
+30055097      jge     loc_300550a1
+30055099      mov     eax, $14
+3005509e      ret     4
+300550a1      cmp     eax, $1000
+300550a6      jge     loc_300550b0
+300550a8      mov     eax, $16
+300550ad      ret     4
+300550b0      cmp     eax, $2000
+300550b5      jge     loc_300550bf
+300550b7      mov     eax, $18
+300550bc      ret     4
+300550bf      cmp     eax, $4000
+300550c4      jge     loc_300550ce
+300550c6      mov     eax, $1a
+300550cb      ret     4
+300550ce      cmp     eax, $8000
+300550d3      jge     loc_300550dd
+300550d5      mov     eax, $1c
+300550da      ret     4
+300550dd      xor     ecx, ecx
+300550df      cmp     eax, $10000
+300550e4      setge   cl
+300550e7      lea     ecx, [ecx+ecx+$1e]
+300550eb      mov     eax, ecx
+300550ed      ret     4
+
+date/time         : 2008-12-10, 22:14:40, 634ms
+computer name     : GARETH-PC
+user name         : Gareth <admin>
+registered owner  : Gareth
+operating system  : Windows Vista build 6000
+system language   : English
+system up time    : 7 hours 7 minutes
+program up time   : 19 minutes 13 seconds
+processors        : 2x Genuine Intel(R) CPU T2080 @ 1.73GHz
+physical memory   : 193/1014 MB (free/total)
+free disk space   : (C:) 6.01 GB
+display mode      : 1280x800, 32 bit
+process id        : $8cc
+allocated memory  : 26.49 MB
+executable        : ProjectUnhook.exe
+exec. date/time   : 2008-12-10 21:55
+compiled with     : Delphi 7
+madExcept version : 3.0h
+callstack crc     : $1d172880, $5950bca8, $fd1ef86e
+exception number  : 1
+exception class   : EAccessViolation
+exception message : Access violation at address 30055371 in module 'ProjectUnhook.exe'. Write of address 047A9000.
+
+thread $be8:
+30055371 +36d ProjectUnhook.exe untaPlib       96  +0 ..
+30004794 +028 ProjectUnhook.exe System                ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept             CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept             ThreadExceptFrame
+77803831 +010 kernel32.dll                            BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                               LdrInitializeThunk
+>> created by thread $ecc at:
+3006e0dc +1d4 ProjectUnhook.exe ProjectUnhook 356 +36 ParseData
+
+main thread ($d14):
+77d0f7be +00a ntdll.dll                                 NtDelayExecution
+778078da +04c kernel32.dll                              SleepEx
+777c1d9b +00a kernel32.dll                              Sleep
+30070a8e +5ca ProjectUnhook.exe ProjectUnhook 1102 +122 initialization
+77803831 +010 kernel32.dll                              BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                                 LdrInitializeThunk
+
+thread $904:
+77d0f7be +00a ntdll.dll                              NtDelayExecution
+778078da +04c kernel32.dll                           SleepEx
+777c1d9b +00a kernel32.dll                           Sleep
+3005f63a +13a ProjectUnhook.exe UnitCpuSpeed 105 +36 GetCPUUsage
+3004cd91 +00d ProjectUnhook.exe madExcept            CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept            ThreadExceptFrame
+77803831 +010 kernel32.dll                           BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                              LdrInitializeThunk
+>> created by main thread ($d14) at:
+3005f6cb +01b ProjectUnhook.exe UnitCpuSpeed 110  +1 initialization
+
+thread $ad4:
+77d0f7be +00a ntdll.dll                                 NtDelayExecution
+778078da +04c kernel32.dll                              SleepEx
+777c1d9b +00a kernel32.dll                              Sleep
+3006f210 +0cc ProjectUnhook.exe ProjectUnhook  641  +29 NewMaster
+30004794 +028 ProjectUnhook.exe System                  ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept               CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept               ThreadExceptFrame
+77803831 +010 kernel32.dll                              BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                                 LdrInitializeThunk
+>> created by main thread ($d14) at:
+30070a68 +5a4 ProjectUnhook.exe ProjectUnhook 1096 +116 initialization
+
+thread $efc:
+77d0f7be +00a ntdll.dll                                 NtDelayExecution
+778078da +04c kernel32.dll                              SleepEx
+777c1d9b +00a kernel32.dll                              Sleep
+3006efe2 +38a ProjectUnhook.exe ProjectUnhook  566  +46 CheckDataArrival
+3006f1f8 +0b4 ProjectUnhook.exe ProjectUnhook  634  +22 NewMaster
+30004794 +028 ProjectUnhook.exe System                  ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept               CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept               ThreadExceptFrame
+77803831 +010 kernel32.dll                              BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                                 LdrInitializeThunk
+>> created by main thread ($d14) at:
+30070a68 +5a4 ProjectUnhook.exe ProjectUnhook 1096 +116 initialization
+
+thread $8fc:
+77d0f7be +00a ntdll.dll                               NtDelayExecution
+778078da +04c kernel32.dll                            SleepEx
+777c1d9b +00a kernel32.dll                            Sleep
+3006efe2 +38a ProjectUnhook.exe ProjectUnhook 566 +46 CheckDataArrival
+3006f126 +026 ProjectUnhook.exe ProjectUnhook 600  +5 NewConnection
+30004794 +028 ProjectUnhook.exe System                ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept             CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept             ThreadExceptFrame
+77803831 +010 kernel32.dll                            BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                               LdrInitializeThunk
+>> created by thread $efc at:
+3006e0dc +1d4 ProjectUnhook.exe ProjectUnhook 356 +36 ParseData
+
+thread $ecc:
+77d0f7be +00a ntdll.dll                               NtDelayExecution
+778078da +04c kernel32.dll                            SleepEx
+777c1d9b +00a kernel32.dll                            Sleep
+3006efe2 +38a ProjectUnhook.exe ProjectUnhook 566 +46 CheckDataArrival
+3006f126 +026 ProjectUnhook.exe ProjectUnhook 600  +5 NewConnection
+30004794 +028 ProjectUnhook.exe System                ThreadWrapper
+3004cd91 +00d ProjectUnhook.exe madExcept             CallThreadProcSafe
+3004cdfb +037 ProjectUnhook.exe madExcept             ThreadExceptFrame
+77803831 +010 kernel32.dll                            BaseThreadInitThunk
+77cea9bb +04b ntdll.dll                               LdrInitializeThunk
+>> created by thread $efc at:
+3006e0dc +1d4 ProjectUnhook.exe ProjectUnhook 356 +36 ParseData
+
+modules:
+30000000 ProjectUnhook.exe                  C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+6f010000 avicap32.dll      6.0.6000.16513   C:\Windows\system32
+6fb50000 pstorec.dll       6.0.6000.16386   C:\Windows\system32
+72fe0000 dbghelp.dll       6.0.6000.16386   C:\Windows\system32
+73120000 pnrpnsp.dll       6.0.6000.16386   C:\Windows\system32
+73160000 napinsp.dll       6.0.6000.16386   C:\Windows\system32
+73170000 winrnr.dll        6.0.6000.16386   C:\Windows\System32
+73190000 rasadhlp.dll      6.0.6000.16386   C:\Windows\system32
+732b0000 advpack.dll       7.0.6000.16757   C:\Windows\system32
+73390000 wsock32.dll       6.0.6000.16386   C:\Windows\system32
+73de0000 comctl32.dll      5.82.6000.16386  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.6000.16386_none_87e0cb09378714f1
+747f0000 msacm32.dll       6.0.6000.16386   C:\Windows\system32
+749a0000 MSVFW32.dll       6.0.6000.16513   C:\Windows\system32
+74ca0000 ATL.DLL           3.5.2284.0       C:\Windows\system32
+74ce0000 OLEACC.dll        4.2.5406.0       C:\Windows\system32
+74d20000 winmm.dll         6.0.6000.16386   C:\Windows\system32
+75310000 comctl32.dll      6.10.6000.16386  C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.6000.16386_none_5d07289e07e1d100
+75610000 uxtheme.dll       6.0.6000.16386   C:\Windows\system32
+757d0000 NLAapi.dll        6.0.6000.16386   C:\Windows\system32
+758a0000 wshtcpip.dll      6.0.6000.16386   C:\Windows\System32
+75c00000 mswsock.dll       6.0.6000.16386   C:\Windows\system32
+75c70000 version.dll       6.0.6000.16386   C:\Windows\system32
+75dc0000 dhcpcsvc6.DLL     6.0.6000.16512   C:\Windows\system32
+75de0000 WINNSI.DLL        6.0.6000.16386   C:\Windows\system32
+75df0000 dhcpcsvc.DLL      6.0.6000.16512   C:\Windows\system32
+75e30000 IPHLPAPI.DLL      6.0.6000.16386   C:\Windows\system32
+760e0000 DNSAPI.dll        6.0.6000.16615   C:\Windows\system32
+76400000 Secur32.dll       6.0.6000.16386   C:\Windows\system32
+764d0000 PSAPI.DLL         6.0.6000.16386   C:\Windows\system32
+76570000 msvcrt.dll        7.0.6000.16386   C:\Windows\system32
+76620000 ole32.dll         6.0.6000.16386   C:\Windows\system32
+76770000 shell32.dll       6.0.6000.16680   C:\Windows\system32
+77240000 MSCTF.dll         6.0.6000.16386   C:\Windows\system32
+77310000 NSI.dll           6.0.6000.16386   C:\Windows\system32
+77570000 user32.dll        6.0.6000.16438   C:\Windows\system32
+77610000 RPCRT4.dll        6.0.6000.16525   C:\Windows\system32
+776e0000 WLDAP32.dll       6.0.6000.16386   C:\Windows\system32
+777c0000 kernel32.dll      6.0.6000.16386   C:\Windows\system32
+778a0000 SHLWAPI.dll       6.0.6000.16386   C:\Windows\system32
+77900000 oleaut32.dll      6.0.6000.16609   C:\Windows\system32
+77990000 comdlg32.dll      6.0.6000.16386   C:\Windows\system32
+77a10000 ADVAPI32.dll      6.0.6000.16386   C:\Windows\system32
+77ad0000 GDI32.dll         6.0.6000.16643   C:\Windows\system32
+77b20000 SETUPAPI.dll      6.0.6000.16609   C:\Windows\system32
+77cb0000 ntdll.dll         6.0.6000.16386   C:\Windows\system32
+77de0000 IMAGEHLP.DLL      6.0.6000.16470   C:\Windows\system32
+77e10000 LPK.DLL           6.0.6000.16386   C:\Windows\system32
+77e20000 IMM32.DLL         6.0.6000.16386   C:\Windows\system32
+77e40000 USP10.dll         1.626.6000.16386 C:\Windows\system32
+77ec0000 WS2_32.dll        6.0.6000.16386   C:\Windows\system32
+
+processes:
+000 Idle                   0
+004 System                 0
+18c smss.exe               0
+214 csrss.exe              0
+23c wininit.exe            0
+248 csrss.exe              1
+268 services.exe           0
+274 lsass.exe              0
+280 lsm.exe                0
+2e8 winlogon.exe           1
+344 svchost.exe            0
+37c svchost.exe            0
+3a4 svchost.exe            0
+3f8 svchost.exe            0
+410 svchost.exe            0
+424 svchost.exe            0
+4ac audiodg.exe            0
+4dc SLsvc.exe              0
+500 svchost.exe            0
+588 svchost.exe            0
+650 spoolsv.exe            0
+66c svchost.exe            0
+7a4 Dwm.exe                1 high   C:\Windows\system32
+7cc Explorer.EXE           1 normal C:\Windows
+564 realsched.exe          1 normal C:\Program Files\Common Files\Real\Update_OB
+574 daemon.exe             1 normal C:\Program Files\DAEMON Tools Lite
+5a8 DAP.exe                1 normal C:\Program Files\DAP
+00c mdm.exe                0
+3e0 svchost.exe            0
+698 TeamViewer_Service.exe 0
+320 svchost.exe            0
+804 SearchIndexer.exe      0
+90c taskeng.exe            1 normal C:\Windows\system32
+9f4 taskeng.exe            0
+f88 msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+a90 wlcomm.exe             1 normal C:\Program Files\Windows Live\Contacts
+e9c wuauclt.exe            1 normal C:\Windows\system32
+738 msnmsgr.exe            1 normal C:\Program Files\Windows Live\Messenger
+ba0 firefox.exe            1 normal C:\Program Files\Mozilla Firefox
+bf0 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+b88 delphi32.exe           1 normal C:\Program Files\Delphi7SE\Bin
+8cc ProjectUnhook.exe      1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\ServerModdedNewEncryption
+e94 SearchProtocolHost.exe 0
+e4c Client.exe             1 normal C:\Users\Gareth\Documents\Programming\FTP_RAT\Client
+f20 SearchFilterHost.exe   0 idle   C:\Windows\system32
+
+hardware:
++ Batteries
+  - Microsoft AC Adapter
+  - Microsoft ACPI-Compliant Control Method Battery
++ Computer
+  - ACPI x86-based PC
++ Disk drives
+  - Hitachi HTS541280H9SA00 ATA Device
++ Display adapters
+  - Mobile Intel(R) 945GM Express Chipset Controller 0 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
+  - Mobile Intel(R) 945GM Express Chipset Controller 1 (Microsoft Corporation - WDDM) (driver 7.14.10.1103)
++ DVD/CD-ROM drives
+  - LIB F4HENC9E SCSI CdRom Device
++ IDE ATA/ATAPI controllers
+  - IDE Channel
+  - IDE Channel
+  - IDE Channel
+  - Intel(R) 82801G (ICH7 Family) Ultra ATA Storage Controllers - 27DF
+  - Intel(R) 82801GBM/GHM (ICH7-M Family) Serial ATA Storage Controller - 27C4
++ Keyboards
+  - Standard PS/2 Keyboard
++ Mice and other pointing devices
+  - PS/2 Compatible Mouse
++ Monitors
+  - Generic PnP Monitor
++ Network adapters
+  - Realtek RTL8139/810x Family Fast Ethernet NIC
+  - RT73 USB Wireless LAN Card (driver 3.1.4.0)
++ Processors
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
+  - Genuine Intel(R) CPU           T2080  @ 1.73GHz
++ Sound, video and game controllers
+  - High Definition Audio Device
+  - WebcamMax, WDM Video Capture
++ Storage controllers
+  - ACANEWPW IDE Controller
+  - Microsoft iSCSI Initiator
++ Storage volume shadow copies
+  - Generic volume shadow copy
+  - Generic volume shadow copy
+  - Generic volume shadow copy
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Lid
+  - ACPI Power Button
+  - ACPI Sleep Button
+  - ACPI Thermal Zone
+  - Direct memory access controller
+  - Extended IO Bus
+  - High Definition Audio Controller
+  - High precision event timer
+  - Intel(R) 82801 PCI Bridge - 2448
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D0
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D2
+  - Intel(R) 82801G (ICH7 Family) PCI Express Root Port - 27D4
+  - Intel(R) 82801G (ICH7 Family) SMBus Controller - 27DA
+  - Intel(R) 82801GBM (ICH7-M) LPC Interface Controller - 27B9
+  - Intel(R) 82802 Firmware Hub Device
+  - Microsoft ACPI-Compliant Embedded Controller
+  - Microsoft ACPI-Compliant System
+  - Microsoft Composite Battery
+  - Microsoft System Management BIOS Driver
+  - Mobile Intel(R) 945GM/PM/GMS/940GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0
+  - Motherboard resources
+  - Motherboard resources
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Programmable interrupt controller
+  - System CMOS/real time clock
+  - System timer
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - UMBus Enumerator
+  - UMBus Root Bus Enumerator
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C8
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27C9
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CA
+  - Intel(R) 82801G (ICH7 Family) USB Universal Host Controller - 27CB
+  - Intel(R) 82801G (ICH7 Family) USB2 Enhanced Host Controller - 27CC
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 047a9000
+ebx = 00000000
+ecx = 043df86c
+edx = 044d040f
+esi = 043df8a8
+edi = 00000000
+eip = 30055371
+esp = 043df830
+ebp = 000f0403
+
+stack dump:
+043df830  00 00 00 00 a8 f8 3d 04 - b6 63 05 30 0f 04 4d 04  ......=..c.0..M.
+043df840  03 04 0f 00 18 00 6a 04 - f0 fc 3d 04 00 00 6a 04  ......j...=...j.
+043df850  0c 00 3e 04 8d 03 4d 04 - 00 00 00 00 00 00 00 00  ..>...M.........
+043df860  fa 03 0f 00 27 7d 01 00 - 09 00 00 00 e5 40 00 00  ....'}.......@..
+043df870  03 00 00 00 00 00 00 00 - 00 00 00 00 e5 40 00 00  .............@..
+043df880  03 00 00 00 00 00 00 00 - 00 00 00 00 d3 66 05 30  .............f.0
+043df890  0c 00 3e 04 18 00 6a 04 - 20 81 10 00 03 04 0f 00  ..>...j.........
+043df8a0  00 00 00 00 00 00 00 00 - 00 00 60 04 18 a0 65 04  ..........`...e.
+043df8b0  18 a4 65 04 18 a8 65 04 - 18 ac 65 04 18 b0 65 04  ..e...e...e...e.
+043df8c0  18 b4 65 04 18 b8 65 04 - 18 bc 65 04 18 c0 65 04  ..e...e...e...e.
+043df8d0  18 c4 65 04 18 c8 65 04 - 18 cc 65 04 18 d0 65 04  ..e...e...e...e.
+043df8e0  18 d4 65 04 18 d8 65 04 - 18 dc 65 04 18 e0 65 04  ..e...e...e...e.
+043df8f0  18 e4 65 04 18 e8 65 04 - 18 ec 65 04 18 f0 65 04  ..e...e...e...e.
+043df900  18 f4 65 04 18 f8 65 04 - 18 fc 65 04 18 00 66 04  ..e...e...e...f.
+043df910  18 04 66 04 18 08 66 04 - 18 0c 66 04 18 10 66 04  ..f...f...f...f.
+043df920  18 14 66 04 18 18 66 04 - 18 1c 66 04 18 20 66 04  ..f...f...f...f.
+043df930  18 24 66 04 18 28 66 04 - 18 2c 66 04 18 30 66 04  .$f..(f..,f..0f.
+043df940  18 34 66 04 18 38 66 04 - 18 3c 66 04 18 40 66 04  .4f..8f..<f..@f.
+043df950  18 44 66 04 18 48 66 04 - 18 4c 66 04 18 50 66 04  .Df..Hf..Lf..Pf.
+043df960  18 54 66 04 18 58 66 04 - 18 5c 66 04 18 60 66 04  .Tf..Xf..\f..`f.
+
+disassembling:
+30055004    public untaPlib...:              ; function entry point
+30055004 96   mov     eax, [esp+4]
+30055008      cmp     eax, 2
+3005500b      jge     loc_30055015
+3005500d      mov     eax, $64
+30055012      ret     4
+30055015      cmp     eax, 4
+30055018      jge     loc_30055022
+3005501a      mov     eax, 2
+3005501f      ret     4
+30055022      cmp     eax, 8
+30055025      jge     loc_3005502f
+30055027      mov     eax, 4
+3005502c      ret     4
+3005502f      cmp     eax, $10
+30055032      jge     loc_3005503c
+30055034      mov     eax, 6
+30055039      ret     4
+3005503c      cmp     eax, $20
+3005503f      jge     loc_30055049
+30055041      mov     eax, 8
+30055046      ret     4
+30055049      cmp     eax, $40
+3005504c      jge     loc_30055056
+3005504e      mov     eax, $a
+30055053      ret     4
+30055056      cmp     eax, $80
+3005505b      jge     loc_30055065
+3005505d      mov     eax, $c
+30055062      ret     4
+30055065      cmp     eax, $100
+3005506a      jge     loc_30055074
+3005506c      mov     eax, $e
+30055071      ret     4
+30055074      cmp     eax, $200
+30055079      jge     loc_30055083
+3005507b      mov     eax, $10
+30055080      ret     4
+30055083      cmp     eax, $400
+30055088      jge     loc_30055092
+3005508a      mov     eax, $12
+3005508f      ret     4
+30055092      cmp     eax, $800
+30055097      jge     loc_300550a1
+30055099      mov     eax, $14
+3005509e      ret     4
+300550a1      cmp     eax, $1000
+300550a6      jge     loc_300550b0
+300550a8      mov     eax, $16
+300550ad      ret     4
+300550b0      cmp     eax, $2000
+300550b5      jge     loc_300550bf
+300550b7      mov     eax, $18
+300550bc      ret     4
+300550bf      cmp     eax, $4000
+300550c4      jge     loc_300550ce
+300550c6      mov     eax, $1a
+300550cb      ret     4
+300550ce      cmp     eax, $8000
+300550d3      jge     loc_300550dd
+300550d5      mov     eax, $1c
+300550da      ret     4
+300550dd      xor     ecx, ecx
+300550df      cmp     eax, $10000
+300550e4      setge   cl
+300550e7      lea     ecx, [ecx+ecx+$1e]
+300550eb      mov     eax, ecx
+300550ed      ret     4
+

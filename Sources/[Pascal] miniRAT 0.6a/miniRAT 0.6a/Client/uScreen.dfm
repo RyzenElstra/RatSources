@@ -1,0 +1,138 @@
+object Form4: TForm4
+  Left = 388
+  Top = 218
+  Width = 644
+  Height = 467
+  Caption = 'Form4'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  DesignSize = (
+    636
+    433)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lbl1: TLabel
+    Left = 8
+    Top = 40
+    Width = 23
+    Height = 13
+    Caption = 'Size:'
+  end
+  object lbl2: TLabel
+    Left = 40
+    Top = 40
+    Width = 38
+    Height = 13
+    Caption = 'Quality:'
+  end
+  object img1: TImage
+    Left = 104
+    Top = 8
+    Width = 529
+    Height = 401
+    Anchors = [akLeft, akTop, akRight, akBottom]
+  end
+  object stat1: TStatusBar
+    Left = 0
+    Top = 414
+    Width = 636
+    Height = 19
+    Panels = <
+      item
+        Text = '0'
+        Width = 100
+      end
+      item
+        Text = '127.0.0.1'
+        Width = 50
+      end>
+  end
+  object TrackBar1: TTrackBar
+    Left = 8
+    Top = 56
+    Width = 25
+    Height = 352
+    Anchors = [akLeft, akTop, akBottom]
+    Max = 100
+    Min = 1
+    Orientation = trVertical
+    Position = 50
+    TabOrder = 1
+  end
+  object TrackBar2: TTrackBar
+    Left = 40
+    Top = 56
+    Width = 33
+    Height = 352
+    Anchors = [akLeft, akTop, akBottom]
+    Max = 100
+    Min = 1
+    Orientation = trVertical
+    Position = 50
+    TabOrder = 2
+  end
+  object PngBitBtn1: TPngBitBtn
+    Left = 8
+    Top = 8
+    Width = 89
+    Height = 25
+    Caption = 'Start'
+    TabOrder = 3
+    OnClick = PngBitBtn1Click
+    PngImage.Data = {
+      89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+      610000001974455874536F6674776172650041646F626520496D616765526561
+      647971C9653C000002944944415478DA6D534D48A25114BD4FCBA846312D08D2
+      896470634420B868539BB6B56816B9912C30B231C4D1B05CB4D041C9181D9C8C
+      02450417AE06176D8256418BC082A081202CC28560FE940A6964BDFBE8FB4618
+      0F5C0E7CEFBEF3DD7BEE7DE4EDED0D5A118FC765944C347434B4348434D21FB1
+      673018F2ADF9A45520168B79BBBABA9C6AB51AFAFBFB412E970321040A85028B
+      EBEB6B787E7EF62F2C2CACFF27108944420A85E2DBD4D41488442268369B2CF0
+      5C28148240208097971738393981BBBBBBBDA5A525332F707070E0191E1E764D
+      4F4FC3EBEB2B4B6C878E8E0EE8ECEC84E3E363C864327E93C9B44EC2E1F0102D
+      3BABD7EBD95FEAF53A4BBEBCBC84B1B1319E396075D8563299845AADA620A150
+      C8A3D3E95C5AAD169E9E9EF844AFD70B1B1B1B8C67666640A3D1F067128904D2
+      E9349C9D9DFD208140E0627E7E7EBCA7A7070DE293767676C06EB73346A0089A
+      8BA01543A3D1804422F197F8FDFEBAC56211954A25661A8760300856AB953107
+      1451A954ACD5BEBE3EA0D537082DB1B2B6B6F6A9582C320339ECEEEEC2EAEA2A
+      630E9B9B9BF0F8F8C80406060650BC41DC6EF785D1681C4787ABD52A9FBCBFBF
+      0FCBCBCB8CB9CBB80B88EEEE6E36113ABD1BB2B5B5E5999C9C744D4C4CC0EDED
+      2D2F108D4661717191315ECEE572FCD9C8C80833F1E8E8E83771B95C4362B138
+      6B369BA152A900B682A04B05D96C96670E52A914643219F68FF91AB6484EA773
+      9BCEDA31373707F97C1E1E1E1EDA2E121A37383808A9540ACECFCF7FF97C3E2B
+      BFCA0E87234C4556666767D9B2DCDFDFF39EF4F6F68252A964261F1E1E62F97B
+      747AFF569983CD66DBA6ED38D08FD1D151F6981038E2ABAB2B383D3D8572B9FC
+      93E27BDBD788A0B3FF4C6985C6571A5F3E3EA3BB7FF039D3D1DDB4E6BF03CB90
+      2FDB4D67CEB00000000049454E44AE426082}
+  end
+  object btn1: TButton
+    Left = 824
+    Top = 8
+    Width = 33
+    Height = 25
+    TabOrder = 4
+    Visible = False
+  end
+  object pb1: TProgressBar
+    Left = 80
+    Top = 40
+    Width = 17
+    Height = 361
+    Anchors = [akLeft, akTop, akBottom]
+    Orientation = pbVertical
+    TabOrder = 5
+  end
+  object tmr1: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = tmr1Timer
+    Left = 104
+    Top = 32
+  end
+end

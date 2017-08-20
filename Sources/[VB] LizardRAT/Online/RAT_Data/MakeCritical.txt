@@ -1,0 +1,2 @@
+﻿AddHandler Microsoft.Win32.SystemEvents.SessionEnding, AddressOf Handler_SessionEnding
+critical.Enable()

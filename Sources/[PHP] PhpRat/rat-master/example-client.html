@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf8" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	</head>
+	<body>
+		<input type="text" id="sender"></input>
+		<a id="butt" href="javascript:void(0)">[ ÏÐÁÉØ]</a>
+		<br/>
+		<ul class="list">
+
+		</ul>
+		<script>
+			$(document).ready(function(){
+				var conn = new WebSocket('ws://dadivir.ru:8080');
+				$('#butt').click(function(){
+					dataz = $('#sender').val();
+					conn.send('{"message":"'+dataz+'"}');
+					$('.list').append('<li>'+dataz+'</li>')
+				})
+			});
+		</script>
+	</body>
+</html>

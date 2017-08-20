@@ -1,0 +1,11 @@
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\bin\Debug\Argus - RAT ~ Server.exe.config
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\bin\Debug\Argus - RAT ~ Server.exe
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\bin\Debug\Argus - RAT ~ Server.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\obj\Debug\Argus___RAT___Server.AddClient.resources
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\obj\Debug\Argus___RAT___Server.CategoryMessaging.resources
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\obj\Debug\Argus___RAT___Server.MainForm.resources
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\obj\Debug\Argus___RAT___Server.Properties.Resources.resources
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\obj\Debug\Argus - RAT ~ Server.csproj.GenerateResource.Cache
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\obj\Debug\Argus - RAT ~ Server.exe
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\obj\Debug\Argus - RAT ~ Server.pdb
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT ~ Server\bin\Debug\OpenPop.dll

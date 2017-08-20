@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011/11/02 20:21:52.447.pas,C:\Users\Rafael\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\Rafael\Desktop\Xtreme RAT Unicode\UnitHardwareID.pas</Transaction>
+    <Transaction>2011/11/02 20:21:52.447.dfm,C:\Users\Rafael\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Rafael\Desktop\Xtreme RAT Unicode\UnitHardwareID.dfm</Transaction>
+    <Transaction>2011/11/02 20:22:13.381.dproj,C:\Users\Rafael\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Rafael\Desktop\Xtreme RAT Unicode\HardwareID.dproj</Transaction>
+    <Transaction>2011/11/02 20:26:37.796.dproj,C:\Users\Rafael\Desktop\Xtreme RAT Unicode\HardwareID.dproj=C:\Users\Rafael\Desktop\Xtreme RAT Unicode\GetHardwareID.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

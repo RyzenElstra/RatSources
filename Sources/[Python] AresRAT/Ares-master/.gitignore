@@ -1,0 +1,8 @@
+*.pyc
+*.spec
+*.exe
+*.db
+*.db-journal
+uploads/
+build/
+dist/

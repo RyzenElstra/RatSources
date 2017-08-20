@@ -1,0 +1,118 @@
+THIS IS NOT A COMPETE LIST OF THE CODES.
+NOT ALL HAVE BEEN ADDED INTO THE FUNCTION LISTS.
+
+server / internet
+end server 000
+
+modem
+phone call 010
+disconnect internet 088
+prompt user to connect to the net 089
+force connection 090
+
+keylogger
+start keylogging 102
+end keylogging 103
+
+computer information
+load information 104
+
+miscella'neous
+message popup 001
+play sound 022
+print text 036
+open cd rom 040
+close cd rom 041
+check if paths exeutable 071
+change wallpaper 101
+
+clipboard
+empty clipboard 082
+set text to clipboard 084
+get clipboard text 085
+set clipboard picture 086
+get clipboard picture 087
+
+keyboard
+get keyboard type 002
+get caret blink rate 003
+set caret blink rate 004
+set capslock on 011
+set num lock on 012
+set scroll lock on 013
+disable the keyboard 094
+
+mouse
+get bouble click rate 005
+enable / disable mouse 014
+set cursor position 037
+get cursor position X 038
+get cursor position Y 039
+disable the mouse 095
+set mouse trail 096
+swap mouse buttons 099
+restore mouse buttons 100
+
+system
+open system information dialog 006
+clear documents 008
+add to documents list  009
+check for a sound card 015
+get window name 077
+
+file / directory miscella'neous
+open file information 007
+kill file 078
+remove directory 079
+make directory 080
+copy file to new location 081
+
+fun
+hide taskbar 018
+show taskbar 019
+hide desktop 020
+show desktop 021
+hide start button 049
+show start button 050
+hide taskbar clock 051
+show taskbar clock 052
+hide taskbar icons 053
+show taskbar icons 054
+hide programs showing in taskbar 055
+show programs showing in taskbar 056
+hide window toolbar 057
+show window toolbar 058
+best way to hide desktop icons 066
+best way to show desktop icons 067
+
+run
+start document 023
+open find dialog 065
+open exe icon change dialog 068
+open format drive dialog 070
+display run dialog 073
+run program 083
+run desktop properties shortcut in system tray 091
+
+registry
+set dword value 024
+get dword value 025
+set binary value 026
+get binary value 027
+delete key 028
+get string value 029
+create key 030
+set string value 031
+
+control
+disable ctrl alt del 059
+enable ctrl alt del 060
+windows log off 061
+windows force shutdown 062
+windows shutdown 063
+windows reboot 064
+exit windows message dialogs 072
+minimise all internet explorer windows 075
+restore all internet explorer windows 076
+shutdown monitor 097
+turn on monitor 098

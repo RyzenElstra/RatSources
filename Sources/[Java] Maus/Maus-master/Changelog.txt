@@ -1,0 +1,139 @@
+::Maus 2.0b::
+We've got a beta (v2)!
+
+I love some of the feedback I received from you guys, hopefully you like the redesign. 
+
+==Current Working Features:
+Full Maus UI (updated)!
+Client Builder - create and distribute .jar files for client connections.
+Client nick names
+Client notifications (with sound!)
+Server settings
+Send commands
+File explorer
+File download
+Program persistence (Windows / Maybe mac / linux?) 
+Client persistence (Windows)
+ 
+
+==Known bugs:
+JavaFX IpContext menu visual bug (rare - does not affect functionality)
+File explorer won't re open after working 
+Uninstall server (Does not remove registry key / files yet)
+Is not currently fully cross-platform compatible (will be soon (TM) )
+
+==Upcoming:
+Delete file (explorer view)
+Fully cross platform
+More persistence 
+Client update check / download 
+
+::Maus 1.0b::
+We've got a beta!
+
+It's been a long process with some slow development but I feel comfortable releasing Maus as a beta software.
+
+==Current Working Features:
+Full Maus UI.
+Client Builder - create and distribute .jar files for client connections.
+Client nick names
+Client notifications (with sound!)
+Server settings
+Send commands
+File explorer
+File download
+
+==Known bugs:
+JavaFX IpContext menu visual bug (rare - does not affect functionality)
+File explorer disconnect (possibly due to restricted folders)
+Uninstall server (may not always work, however due to not currently being persistent it is fine.)
+Is not currently fully cross-platform compatible (will be soon)
+
+==Upcoming:
+Persistent server option
+Delete file (explorer view)
+Optimize code
+Fully cross platform
+
+::Maus 0.6a::
+==Current Working Features:
+Send and view remote command line commands
+View specific remote file directory
+Copy IP address of client
+Notifications on new connections
+Client Builder (partial)
+
+==Known bugs:
+JavaFX IpContext menu visual bug
+
+==Upcoming:
+Completed file manager (download, delete, etc.)
+Completed persistence
+
+
+::Maus 0.5a::
+_______________
+
+==Current Working Features:
+
+Execute remote commands on client
+Uninstall client server ( Partial )
+Copy IP Address of client
+Notifications on new connections
+Client.Client Builder ( Partial )
+
+
+==Known bugs:
+
+Cannot view CMD response after command execution
+Context menu visual bug with multiple instances
+Context menu color bug (text)
+Uninstall server does not fully work
+FileNotFound during the loading of .mauscs and other /out/production located files
+
+==Upcoming Features:
+
+Fully integrated command line control
+Persistent client connection
+File explorer
+Beacon
+Client.Client clipboard control
+UI Improvements
+Client.Client Executable Builder
+Save client nicknames on close (Partially Integrated)
+Allow background notifications + icon in taskbar
+
+== PRIOR VERSIONS: ==
+
+::Maus 0.1a::
+_______________
+
+==Current Working Features:
+
+Execute remote commands on client
+Uninstall client server ( Partial )
+Copy IP Address of client
+Notifications on new connections
+
+
+==Known bugs:
+
+Cannot view CMD response after command execution
+Context menu visual bug with multiple instances
+Context menu color bug (text)
+Online/Offline status not fully integrated
+Uninstall server does not fully work
+Certain CMD commands will cause server disconnect
+On client reconnect, nickname + client name change
+
+==Upcoming Features:
+
+Fully integrated command line control
+Persistent client connection
+File explorer
+Beacon
+Client.Client clipboard control
+UI Improvements
+Client.Client Executable Builder
+Save client nicknames on close (Partially Integrated)
+Allow background notifications + icon in taskbar

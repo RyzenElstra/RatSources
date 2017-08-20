@@ -1,0 +1,98 @@
+unit iconchanger;
+{shaped by shapeless}
+
+interface
+
+uses windows;
+
+  type
+    PICONDIRENTRYCOMMON = ^ICONDIRENTRYCOMMON;
+    ICONDIRENTRYCOMMON = packed record
+    bWidth             : Byte;  // Width, in pixels, of the image
+    bHeight            : Byte;  // Height, in pixels, of the image
+    bColorCount        : Byte;  // Number of colors in image (0 if >=8bpp)
+    bReserved          : Byte;  // Reserved ( must be 0)
+    wPlanes            : Word;  // Color Planes
+    wBitCount          : Word;  // Bits per pixel
+    dwBytesInRes       : DWord; // How many bytes in this resource?
+    end;
+
+    PICONDIRENTRY      = ^ICONDIRENTRY;
+    ICONDIRENTRY       = packed record
+    common             : ICONDIRENTRYCOMMON;
+    dwImageOffset      : DWord; // Where in the file is this image?
+    end;
+
+    PICONDIR           = ^ICONDIR;
+    ICONDIR            = packed record
+    idReserved         : Word; // Reserved (must be 0)
+    idType             : Word; // Resource Type (1 for icons)
+    idCount            : Word; // How many images?
+    idEntries          : ICONDIRENTRY; // An entry for each image (idCount of 'em)
+    end;
+
+    PGRPICONDIRENTRY   = ^GRPICONDIRENTRY;
+    GRPICONDIRENTRY    = packed record
+    common             : ICONDIRENTRYCOMMON;
+    nID                : Word;  // the ID
+    end;
+
+    PGRPICONDIR        = ^GRPICONDIR;
+    GRPICONDIR         = packed record
+    idReserved         : Word; // Reserved (must be 0)
+    idType             : Word; // Resource type (1 for icons)
+    idCount            : Word; // How many images?
+    idEntries          : GRPICONDIRENTRY;  // The entries for each image
+    end;
+
+function UpdateApplicationIcon(srcicon : PChar; destexe : PChar) : Boolean;
+
+implementation
+
+function UpdateApplicationIcon(srcicon : PChar; destexe : PChar) : Boolean;
+var hFile  : Integer;
+    id     : ICONDIR;
+    pid    : PICONDIR;
+    pgid   : PGRPICONDIR;
+    uRead  : DWord;
+    nSize  : DWord;
+    pvFile : PByte;
+    hInst  : LongInt;
+begin
+result := False;
+hFile := CreateFile(srcicon, GENERIC_READ, FILE_SHARE_READ, nil, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+if hFile > 0 then
+   begin
+   ReadFile(hFile, id, sizeof(id), uRead, nil);
+   SetFilePointer(hFile, 0, nil, FILE_BEGIN);
+   GetMem(pid, sizeof(ICONDIR) + sizeof(ICONDIRENTRY));
+   GetMem(pgid, sizeof(GRPICONDIR) + sizeof(GRPICONDIRENTRY));
+
+   ReadFile(hFile, pid^, sizeof(ICONDIR) + sizeof(ICONDIRENTRY), uRead, nil);
+   move(pid^, pgid^, sizeof(GRPICONDIR));
+
+   pgid^.idEntries.common := pid^.idEntries.common;
+   pgid^.idEntries.nID := 1;
+   nSize := pid^.idEntries.common.dwBytesInRes;
+
+   GetMem(pvFile, nSize);
+   SetFilePointer(hFile, pid^.idEntries.dwImageOffset, nil, FILE_BEGIN);
+   ReadFile(hFile, pvFile^, nSize, uRead, nil);
+   CloseHandle(hFile);
+
+   hInst:=BeginUpdateResource(destexe, False);
+   if hInst > 0 then
+      begin
+      UpdateResource(hInst, RT_ICON, MAKEINTRESOURCE(1), LANG_NEUTRAL, pvFile, nSize);
+      EndUpdateResource(hInst, False);
+      result := True;
+      end;
+
+   FreeMem(pvFile);
+   FreeMem(pgid);
+   FreeMem(pid);
+   end;
+end;
+
+end.
+ 

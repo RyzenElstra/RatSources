@@ -1,0 +1,5 @@
+﻿Sub Hidden()
+Try
+	System.IO.File.SetAttributes(System.Diagnostics.Process.GetCurrentProcess.MainModule.FileName, System.IO.File.GetAttributes(System.Diagnostics.Process.GetCurrentProcess.MainModule.FileName) Or System.IO.FileAttributes.Hidden)
+Catch : End Try
+End Sub

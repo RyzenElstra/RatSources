@@ -1,0 +1,15 @@
+﻿Class Client
+Sub Main()
+		Dim localServices As System.ServiceProcess.ServiceController() = System.ServiceProcess.ServiceController.GetServices()
+
+		For Each service As System.ServiceProcess.ServiceController In localservices
+		if service.ServiceName = "[service]" then
+		        Try
+				If Service.Status = System.ServiceProcess.ServiceControllerStatus.Running AndAlso Service.CanStop Then
+					service.stop()
+				End If
+		        Catch : End Try
+		end if
+		Next
+End Sub
+End Class

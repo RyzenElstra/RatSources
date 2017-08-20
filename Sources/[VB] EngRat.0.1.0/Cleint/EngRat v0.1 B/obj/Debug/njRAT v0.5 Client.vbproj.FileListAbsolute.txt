@@ -1,0 +1,56 @@
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.Form1.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.Resources.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT v0.5 Client.vbproj.GenerateResource.Cache
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT v0.5 Client.exe
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT v0.5 Client.xml
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT v0.5 Client.pdb
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client.exe
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client.pdb
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client.xml
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.up.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.FURL.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.nt.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.Script.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.reg.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.chat.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.DW.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.kl.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.PASS.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.rgv.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.sc.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.shl.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.Proc.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.cam.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.FM.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.Note.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.logs.resources
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT v0.5 Client.vbprojResolveAssemblyReference.cache
+E:\My_Pro_DR\njRAT\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT_v0._5_Client.Builder.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\njRAT v0.5 Client.vbproj.GenerateResource.Cache
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client.exe
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Builder.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.cam.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.chat.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.DW.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.FM.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Form1.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.FURL.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.kl.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.logs.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Resources.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Note.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.nt.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.PASS.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Proc.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Reg.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.rgv.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.sc.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Script.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.shl.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.up.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1.0B.exe
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1.0B.xml
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1.0B.pdb
+C:\Users\EGY\Desktop\njRAT v0.5 Client\EngRat v0.1.0B.exe
+C:\Users\EGY\Desktop\njRAT v0.5 Client\EngRat v0.1.0B.pdb
+C:\Users\EGY\Desktop\njRAT v0.5 Client\EngRat v0.1.0B.xml

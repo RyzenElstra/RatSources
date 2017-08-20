@@ -1,0 +1,22 @@
+---------------------------------------------
+Fear Remote Administration Tool 1.0
+By: Alan Walker
+Made In: Visual Basic 6.0 Enterprise Edition
+http://www.ulair.cjb.net
+---------------------------------------------
+
+Description: 
+I made this because many people where asking
+me to make a Trojan example like netbus or sub 7. 
+This is in no way like either of them, but it does show 
+you the basics and you could easily make it just as 
+good as the top of the line trojans. I am planning to
+make a next version of this example in Delphi 5
+so there will be no runtime files.
+
+----------------------------------------------
+
+I hope you like it!
+
+Alan Walker a.k.a. AL-N
+http://www.ulair.cjb.net

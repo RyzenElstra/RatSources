@@ -1,0 +1,8 @@
+TARGETNAME = agony
+TARGETPATH = .
+TARGETTYPE = DRIVER
+
+INCLUDES   = %BUILD%\inc
+LIBS       = %BUILD%\lib
+
+SOURCES    = driver.c process.c file.c reg.c port.c disk.c service.c

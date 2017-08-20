@@ -1,0 +1,6 @@
+[submodule "uNet2"]
+	path = uNet2
+	url = https://github.com/UbbeLoL/uNet2
+[submodule "dnlib"]
+	path = dnlib
+	url = https://github.com/0xd4d/dnlib.git

@@ -1,0 +1,58 @@
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Builder.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.cam.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.chat.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.DW.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.FM.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Form1.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.FURL.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.kl.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.logs.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Resources.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Note.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.nt.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.PASS.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Proc.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Reg.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.rgv.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.sc.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.Script.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.shl.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.up.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1 B.vbproj.GenerateResource.Cache
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1.0B.exe
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1.0B.xml
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1.0B.pdb
+C:\Users\EGY\Desktop\njRAT v0.5 Client\EngRat v0.1.0B.exe
+C:\Users\EGY\Desktop\njRAT v0.5 Client\EngRat v0.1.0B.pdb
+C:\Users\EGY\Desktop\njRAT v0.5 Client\EngRat v0.1.0B.xml
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat_v0._1_B.About.resources
+C:\Users\EGY\Desktop\njRAT v0.5 Client\njRAT v0.5 Client\obj\Debug\EngRat v0.1 B.vbprojResolveAssemblyReference.cache
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat v0.1.0B.exe
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat v0.1.0B.xml
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat v0.1.0B.pdb
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat v0.1 B.vbprojResolveAssemblyReference.cache
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.About.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.Builder.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.cam.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.chat.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.DW.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.FM.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.Form1.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.FURL.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.kl.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.logs.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.Resources.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.Note.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.nt.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.PASS.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.Proc.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.Reg.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.rgv.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.sc.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.Script.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.shl.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat_v0._1_B.up.resources
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1 B\obj\Debug\EngRat v0.1 B.vbproj.GenerateResource.Cache
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1.0B.exe
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1.0B.pdb
+C:\Users\EGY\Desktop\EngRat v0.1.0B Src\Cleint\EngRat v0.1.0B.xml

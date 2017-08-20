@@ -1,0 +1,24 @@
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Argus - RAT.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\FormsViewGroup.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\OpenPop.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.Design.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.v4.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.v7.AppCompat.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.v7.CardView.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.v7.MediaRouter.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.v7.RecyclerView.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Android.Support.Vector.Drawable.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Forms.Core.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Forms.Platform.Android.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Forms.Platform.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Xamarin.Forms.Xaml.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Java.Interop.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\Mono.Android.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\mscorlib.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\System.Core.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\System.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\System.Xml.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\System.Net.Http.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\System.Runtime.Serialization.dll
+D:\Wizzor\Projects\Argus - RAT\Argus - RAT\obj\Release\android\assets\System.ServiceModel.Internals.dll

@@ -1,0 +1,23 @@
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\Interop.NATUPNPLib.dll
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent RAT.csproj.ResolveComReference.cache
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\bin\Debug\DarkAgent RAT.exe
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\bin\Debug\DarkAgent RAT.pdb
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\bin\Debug\Interop.NATUPNPLib.dll
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent RAT.csprojResolveAssemblyReference.cache
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.ClipboardManager.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.CreateListener.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.FileManager.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.Form1.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.Keylogger.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.LoadedDll.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.Passwords.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.RemoteControl.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.ProcessMgr.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.ProcessorInfo.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.ProcessThreads.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent_RAT.Properties.Resources.resources
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent RAT.csproj.GenerateResource.Cache
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent RAT.exe
+C:\Users\david\Desktop\DarkAgent-master\DarkAgent RAT\obj\Debug\DarkAgent RAT.pdb

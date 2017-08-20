@@ -1,0 +1,187 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Lizard RAT
+</name>
+</assembly>
+<members>
+<member name="T:RWXServer.My.Resources.Resources">
+<summary>
+  Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+</summary>
+</member>
+<member name="P:RWXServer.My.Resources.Resources.ResourceManager">
+<summary>
+  Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+</summary>
+</member>
+<member name="P:RWXServer.My.Resources.Resources.Culture">
+<summary>
+  Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+  Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+</summary>
+</member>
+<member name="P:RWXServer.My.Resources.Resources.network_connection_control_panel">
+<summary>
+  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="E:RWXServer.NetSeal.Broker.LicenseSuspended">
+ <summary>
+ Occurs when the user's license is suspended.
+ </summary>
+</member>
+<member name="E:RWXServer.NetSeal.Broker.LicenseAuthorized">
+ <summary>
+ Occurs when the user's license is authorized by the server.
+ </summary>
+</member>
+<member name="E:RWXServer.NetSeal.Broker.LicenseRefreshed">
+ <summary>
+ Occurs when the user's license is reauthorized by the server.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.IPAddress">
+ <summary>
+ Gets the user's wide area network IPv4 address.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.UserName">
+ <summary>
+ Gets the user's sign-in name.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.CreationDate">
+ <summary>
+ Gets the date the user's license was first created. 
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.ExpirationDate">
+ <summary>
+ Gets the expiration date of the user's license, when <see cref="P:RWXServer.NetSeal.Broker.LicenseExpires"/> is True. 
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.TimeRemaining">
+ <summary>
+ Gets the time remaining on the user's license, when <see cref="P:RWXServer.NetSeal.Broker.LicenseExpires"/> is True. 
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.LicenseType">
+ <summary>
+ Gets the license type associated with the user's license.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.LicenseExpires">
+ <summary>
+ Gets a value indicating whether the user's license will expire.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.Broker.MachineId">
+ <summary>
+ Gets a unique identifier for the machine. This value is not static.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.GetPublicToken">
+ <summary>
+ Gets a token representing the key returned by <see cref="M:RWXServer.NetSeal.Broker.GetPrivateKey"/> which can be decoded with the PrivateKey web API.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.GetPrivateKey">
+ <summary>
+ Gets a secret key that can be used for encryption.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.GetUsersOnline">
+ <summary>
+ Gets the number of users currently signed in and using the program.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.GetUpdatesAvailable">
+ <summary>
+ Gets a value indicating whether updates are available.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.GetBlogPosts">
+ <summary>
+ Gets blog posts submitted by the application developer.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.GetSetting(System.String)">
+ <summary>
+ Gets settings defined by the application developer.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.InstallUpdates">
+ <summary>
+ Downloads and installs updates if they are available.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.SuspendUser(System.String)">
+ <summary>
+ Suspends the currently signed in user's license.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.Initialize(System.String)">
+ <summary>
+ Initializes the authenticator and shows the authentication dialog.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.Broker.Initialize(System.String,RWXServer.NetSeal.BrokerSettings)">
+ <summary>
+ Initializes the authenticator and shows the authentication dialog.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BlogPost.Id">
+ <summary>
+ Gets the unique id for the post.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BlogPost.Title">
+ <summary>
+ Gets the title for the post.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BlogPost.TimesRead">
+ <summary>
+ Gets the number of times the post has been read by users.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BlogPost.DatePosted">
+ <summary>
+ Gets the date that the post was originally posted.
+ </summary>
+</member>
+<member name="M:RWXServer.NetSeal.BlogPost.GetPostBody">
+ <summary>
+ Gets the body for the post.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BrokerSettings.DialogTheme">
+ <summary>
+ Gets or sets the theme that will be used by the authentication dialog.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BrokerSettings.CatchUnhandledExceptions">
+ <summary>
+ Gets or sets a value indicating whether to catch unhandled exceptions and report them to the server.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BrokerSettings.DeferAutomaticUpdates">
+ <summary>
+ Gets or sets a value indicating whether to ignore automatic updates.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BrokerSettings.SilentAuthentication">
+ <summary>
+ Gets or sets a value indicating whether the authentication window will be shown. This option should only be used in
+ products that provide lifetime licenses.
+ </summary>
+</member>
+<member name="P:RWXServer.NetSeal.BrokerSettings.VerifyRuntimeIntegrity">
+ <summary>
+ Gets or sets a value indicating whether to verify the integrity of core runtime files (mscorlib, System, and System.Security). 
+ </summary>
+</member>
+</members>
+</doc>

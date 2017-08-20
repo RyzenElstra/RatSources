@@ -1,0 +1,9 @@
+HeroRat is a revolutionnary system to manage and control remote computers.
+It works under Windows, Linux and Mac OS.
+
+"One tool to rules them all" would have said Frodon if he had viewed this.
+
+The 'HeroRat' folder contains the manager, this is what you need to encrypt and put on your web server.
+The 'HeroRat_loader' folder is what you share with your customer. This is basically is simple login which download and decrypt the previous project.
+The 'HeroRat_Server' folder is the app that should be installed on each computer you want to control.
+The 'HeroRat_WebValidation' folder is what you should put on your website to generate new manager clients.

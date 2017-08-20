@@ -1,0 +1,4 @@
+fix|1.5.2.1|Fixed Spoofer
+add|1.5.2.0|Added Binder , Spoofer
+add|1.5.1.0|Added Scanner , uPnP , Backup Host
+update|1.5.0.0|Initial Release

@@ -1,0 +1,2 @@
+C:\Users\EGY\Desktop\W\W\bin\Release\w.exe
+C:\Users\EGY\Desktop\W\W\obj\Release\w.exe

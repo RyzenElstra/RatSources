@@ -1,0 +1,28 @@
+ * This contents file was created with the free trial version of HelpScribble 6.3.2
+ * Help files created with the free trial version must not be distributed.
+
+:BASE Handle-X.hlp
+:TITLE 
+1 About Handle-X=Scribble160
+1 Handle-X options
+2 Ip manager=Scribble10
+2 Chat manager=Scribble20
+2 File browser=Scribble30
+2 Task manager=Scribble40
+2 Registery manager=Scribble50
+2 Device manager=Scribble60
+2 Internet manager=Scribble70
+2 Screen capture=Scribble80
+2 Edit server=Scribble90
+1 Other options
+2 Download manager=Scribble110
+2 Upload manager=Scribble115
+2 X-Editor=Scribble117
+2 Sendkeys=Scribble120
+2 Registry Editor Keys=Scribble170
+1 X-Firewall
+2 X-Firewall=Scribble100
+1 Error messages
+2 Download manager errors=Scribble130
+2 File browser errors=Scribble140
+2 Task manager errors=Scribble150

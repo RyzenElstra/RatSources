@@ -1,0 +1,46 @@
+These are planned and already finished features for this project.
+If I got new ideas, I will add them here. If you got a good idea, open an Issue or even a Pull Request.
+
+ - Web GUI
+	- [x] Simple and functional Web GUI
+	- [x] Basic scripting support
+	- [x] Screenshot function
+	- [ ] Savable presets
+	- [x] Sharing Code for presets
+	- [x] Panic function
+	- [x] Multi-User support (auto update)
+	- [x] Upload support
+		- [ ] Upload File Manager
+	- [x] Search function
+ - API
+	- [x] Basic API for Payloads, Actions and Settings
+	- [x] Plugin support
+	- [ ] Support for random Payload Delays
+	- [x] Plugins can provide their own JavaScript additions
+	- [x] API for Global Actions (e.g. Screenshot and Run Script)
+ - Coding
+	- [x] Split server commands into multiple classes
+	- [x] Firewall support
+	- [ ] Add startup messages (Disclaimer, quick tutorial etc.)
+	- [ ] Ability to change port
+	- [ ] Better timing handling
+ - Payloads
+	- [x] Simple payloads from MEMZ
+		- [x] Ability to change MessageBox text
+		- [x] Ability to change MessageBox icon
+	- [x] Restore function for MessageBoxes and visual payloads
+	- [x] Open Program/Website
+	- [x] Melting Screen
+	- [x] Train/Elevator effect
+	- [x] Draw Pixels to Screen
+	- [x] Crash PC
+	- [x] Earthquake (Shaking Screen)
+	- [ ] Shaking Windows
+	- [ ] Show/Hide Windows
+	- [x] Crash single Program
+	- [x] Draw uploaded Images
+		- [x] Draw to layered window
+		- [ ] VineMEMZ Drawing Effect
+	- [ ] Play uploaded Sounds
+	- [x] Text to Speech Output
+	- [ ] Multi-Monitor support for payloads

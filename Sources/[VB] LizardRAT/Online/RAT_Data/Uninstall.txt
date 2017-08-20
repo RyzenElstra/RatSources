@@ -1,0 +1,43 @@
+﻿Imports System.Diagnostics
+Imports System.Runtime.InteropServices
+
+Class Client
+
+Sub Main()
+FuncHKLM()
+FuncHKCU()
+FuncDel()
+
+End Sub
+
+Sub FuncHKLM()
+        Try
+            Dim i As Integer = 0
+            For i = 0 To 100
+                    Microsoft.Win32.Registry.LocalMachine.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Run", True).DeleteValue("*-*startnameLM*-*")
+            Next
+        Catch : End Try
+End Sub
+
+Sub FuncHKCU()
+        Try
+            Dim i As Integer = 0
+            For i = 0 To 100
+                    Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Run", True).DeleteValue("*-*startname*-*")
+            Next
+        Catch : End Try
+End Sub
+
+Sub FuncDel()
+try
+				Dim Info As System.Diagnostics.ProcessStartInfo = New System.Diagnostics.ProcessStartInfo()
+				Info.Arguments = "/C choice /C Y /N /D Y /T 3 & Del " & Microsoft.VisualBasic.Chr(34) & System.Diagnostics.Process.GetCurrentProcess.MainModule.FileName & Microsoft.VisualBasic.Chr(34)
+				Info.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+				Info.CreateNoWindow = True
+				Info.FileName = "cmd.exe"
+				System.Diagnostics.Process.Start(Info)
+				system.Environment.Exit(0)
+catch : end try
+End Sub
+
+End Class

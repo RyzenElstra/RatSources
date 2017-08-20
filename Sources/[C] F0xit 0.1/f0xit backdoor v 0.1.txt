@@ -1,0 +1,25 @@
+Coded in C by Kad- 
+
+f0xit Backdoor v0.1 is reverse connect but not FWB+ (for future versions ;) ) 
+-> Download file from internet (via url)
+-> keylogger
+-> send ftp commands
+-> command prompt (Shell) 
+-> desinfect the pc (normally) 
+
+tape "exit" to stop the connection, 
+
+timing, all the 3 minutes, the server is trying to connect to the host 
+(in this example, 127.0.0.1 (localhost) ) 
+
+tape "!help" if you want to know how to use the commands 
+
+if you want to do a "dir" on other folders, you have to do : dir ..\ or dir ..\..\ 
+
+
+Greetz : Aerox, unkn0wn, uk , iz :) 
+
+Credits : http://www.cppfrance.com/codes/KEYLOGGER-HOOK-CLAVIER-SANS-DLL_39864.aspx
+(this autor ;) ) 
+Goundy and persons that i know =]
+

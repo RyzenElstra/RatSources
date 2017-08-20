@@ -1,0 +1,32 @@
+ ------	 ________
+|      ||        |
+|  ----	|  ------
+|  |___	|  |
+|      ||  -----
+ ----  ||  -----
+    |  ||  |
+ ----  ||  ------
+|______||________|RAT
+SwartEngel RAT Changelog
+Created by dn5
+
+-Version 0.0.1
+[*] Improved GUI
+
+-Version 0.1
+[*] Improved GUI more
+[*] Added Fun in manager list (only GUI)
+[*] Coded Run Visible (Execute File)
+[*] Added Flags
+[*] Better File manager
+[*] Added more info at Connections list
+
+-Version 0.1a1
+[*] Improved File Manager (Back etc.)
+[*] Added 'Privilegies' in online connection list
+[*] Added notification
+
+-Version 1.0
+[*] Improved GUI
+[*] Added About box
+[*] Added "Path" textbox in File Manager

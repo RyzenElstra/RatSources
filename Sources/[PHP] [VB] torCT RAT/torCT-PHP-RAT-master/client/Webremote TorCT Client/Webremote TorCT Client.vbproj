@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>dbb48ed0-0606-4a4c-9932-6276046da04c</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Webremote TorCT Client</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="Global.vb" />
+    <Compile Include="Webremote_TorCT_5_1\My\MyApplication.vb" />
+    <Compile Include="Webremote_TorCT_5_1\My\MyComputer.vb" />
+    <Compile Include="Webremote_TorCT_5_1\My\MyProject.vb" />
+    <Compile Include="Webremote_TorCT_5_1\Chat.vb" />
+    <Compile Include="Webremote_TorCT_5_1\Client.vb" />
+    <Compile Include="Webremote_TorCT_5_1\Clientpasswordwindows.vb" />
+    <Compile Include="Webremote_TorCT_5_1\CMDScript.vb" />
+    <Compile Include="Webremote_TorCT_5_1\CreateServer.vb" />
+    <Compile Include="Webremote_TorCT_5_1\FileBrowser.vb" />
+    <Compile Include="Webremote_TorCT_5_1\Loding_Screen.vb" />
+    <Compile Include="Webremote_TorCT_5_1\getactivewindow.vb" />
+    <Compile Include="Webremote_TorCT_5_1\My\Resources\Resources.vb" />
+    <Compile Include="Webremote_TorCT_5_1\My\MySettings.vb" />
+    <Compile Include="Webremote_TorCT_5_1\ProcessView.vb" />
+    <Compile Include="Webremote_TorCT_5_1\processviewer.vb" />
+    <Compile Include="Webremote_TorCT_5_1\SetupClient.vb" />
+    <Compile Include="Webremote_TorCT_5_1\ShowImageScreen.vb" />
+    <Compile Include="Webremote_TorCT_5_1\UdpForum.vb" />
+    <Compile Include="Webremote_TorCT_5_1\UploadFileTo.vb" />
+    <Compile Include="Webremote_TorCT_5_1\WebOrScreenCapture.vb" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.CMDScript.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.ProcessView.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.Resources.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.getactivewindow.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.Chat.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.UdpForum.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.WebOrScreenCapture.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.Client.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.UploadFileTo.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.SetupClient.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.processviewer.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.ShowImageScreen.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.Clientpasswordwindows.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.Loding_Screen.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.CreateServer.resources" />
+    <EmbeddedResource Include="Webremote_TorCT_5_1.FileBrowser.resources" />
+  </ItemGroup>
+</Project>

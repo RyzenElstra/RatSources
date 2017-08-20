@@ -1,0 +1,79 @@
+.led-red {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: -5px;
+
+    width: 12px;
+    height: 12px;
+    background-color: #A7261A;
+    border-radius: 50%;
+    box-shadow: #666 0 -1px 1px 1px, inset #600 0 -1px 2px, #F00 0 1px 2px;
+}
+
+.led-yellow {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: -5px;
+    width: 12px;
+    height: 12px;
+    background-color: #EBD300;
+    border-radius: 50%;
+    box-shadow: rgba(150, 150, 65, 0.68) 0 -1px 5px 1px, inset #A5A54A 0 -1px 2px, #DD0 0 1px 2px;
+}
+
+.led-green {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: -5px;
+    width: 12px;
+    height: 12px;
+    background-color: #00d256;
+    border-radius: 50%;
+    box-shadow: #659158 0 -1px 1px 1px, inset #460 0 -1px 2px, #7D0 0px 1px 2px;
+}
+
+.led-blue {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: -5px;
+    width: 12px;
+    height: 12px;
+    background-color: #4AB;
+    border-radius: 50%;
+    box-shadow: #000 0 -1px 7px 1px, inset #006 0 -1px 9px, #06F 0 2px 14px;
+}
+
+.blink {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}

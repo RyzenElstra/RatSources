@@ -1,0 +1,24 @@
+﻿<div class="modal fade" id="yesNoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="yesNoTitle"></h4>
+            </div>
+            <div class="modal-body" id="yesNoContent"></div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">No</button>
+                <button type="button" data-dismiss="modal" id="yesBtn" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function showYesNo(message, title, yesAction) {
+        $("#yesBtn").attr("onclick", yesAction);
+        $("#yesNoTitle").html(title);
+        $("#yesNoContent").html(message);
+        $("#yesNoModal").modal();
+    }
+</script>

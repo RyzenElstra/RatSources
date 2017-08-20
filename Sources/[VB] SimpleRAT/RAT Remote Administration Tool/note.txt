@@ -1,0 +1,60 @@
+suffix 3333 ------------ to start a program in shell
+suffix 1111 ------------ to change computer name
+suffix 2222 ------------ nick name in chat
+suffix 4444 ------------ play sound
+suffix 5555 ------------ double click time
+suffix 6666 ------------ set cursor position
+suffix 7777 ------------ play a beep
+suffix 8888 ------------ terminate 
+suffix 9999 ------------ message
+
+suffix x... ------------ to have full text length, in cursor
+
+_______________________________________________________________________________________
+
+intermediate code
+
+SSS - shutdown
+RRR - restart
+LLL - log off
+
+________________________________________________________________________________________
+
+
+prefix WRT  ------------ Windows Running Time
+prefix GWD  ------------ Currently Opened Windows
+prefix GDI  ------------ Get Drive Information
+prefix GSI  ------------ Get System Information
+
+________________________________________________________________________________________
+
+
+port 3333------------- main server communication
+port 3334------------- chat communication
+
+________________________________________________________________________________________
+
+
+-----------socket states------------------------------------
+0 - nothing had done
+6 - connecting
+7 - connected
+8 - server closed
+9 - no server
+
+________________________________________________________________________________________
+
+
+-------------message constants-----------------------------
+222 - exclamation
+111 - critical
+333- information
+555 - question
+444 - ok only
+
+
+
+
+_______________________________________________________________________________________
+
+

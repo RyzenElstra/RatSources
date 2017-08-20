@@ -1,0 +1,21 @@
+<h4>Test Runs</h4>
+<div class="list-group">
+    <a style="display:block" ng-href="#runs/{{run.name}}" class="list-group-item" ng-repeat="run in runs" 
+        ng-class="{'list-group-item-danger': !run.success, 'list-group-item-success': run.success}">
+        <div>
+            <span>{{ run.project }}</span>
+            <span style="float:right"><ng-pluralize 
+                count="run.suites.length" 
+                when="{'1': 'on 1 device', 'other': 'on {} devices'}">
+            </ng-pluralize></span>
+        </div>
+        <div class="row">
+            <span class="col-lg-9 col-md-9 col-sm-9 hidden-xs" style="display:inline-block" ng-class="secondary(run)">{{ firstLine(run) }}</span>
+            <span class="col-lg-3 col-md-3 col-sm-3" style="text-align:right" ng-class="secondary(run)">{{ prettyPrintTime(run.timestamp) }}</span>
+        </div>
+    </a>
+</div>
+<div class="col-lg-12">
+    <pagination boundary-links="true" max-size="maxPages" total-items="meta.total" ng-model="currentPage"
+        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="onPageChange()"></pagination>
+</div>

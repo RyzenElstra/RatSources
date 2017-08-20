@@ -1,0 +1,27 @@
+Basic DOS Batch File commands:
+
+ECHO text = Print text on screen
+@ECHO OFF = Hide 'ECHO' text when printing on screen
+CD DirectoryName = Change Directory
+CD.. = Go back one directory
+DIR = Display current directory contents
+DEL FileName = Delete File with selected filename in current directory
+DEL *.EXE = Deletes all .exe files in current directory (*exe can be any extension)
+COPY FileName1 FileName2 = Copys File1 to File2 (e.g. COPY server.exe server2.exe)
+PAUSE = PAUSE program and prompt user to press any key to continue
+MKDIR DirectoryName = Makes a new directory
+deltree Directory = Deletes Directory specified and all files in directory.
+
+Now an example...
+
+@ECHO OFF
+ECHO Messiah Trojan Horse running - Example batch Command
+echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mkdir c:\Test
+echo C:\Test directoy created.
+echo Now we are going to delete C:\Test, 
+pause
+deltree -y test
+echo c:\Test which we created has now been deleted.
+
+

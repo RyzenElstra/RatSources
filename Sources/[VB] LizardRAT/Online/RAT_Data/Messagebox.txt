@@ -1,0 +1,5 @@
+ Class Client
+Sub Main()
+	System.Windows.Forms.Messagebox.show("[text]", "[title]")
+End Sub
+End Class

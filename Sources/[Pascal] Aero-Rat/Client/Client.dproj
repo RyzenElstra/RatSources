@@ -1,0 +1,214 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{888F3760-DBF0-48CE-82E0-592B816D2ECE}</ProjectGuid>
+        <MainSource>Client.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <FrameworkType>VCL</FrameworkType>
+        <ProjectVersion>15.4</ProjectVersion>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_N>false</DCC_N>
+        <DCC_ImageBase>00400000</DCC_ImageBase>
+        <DCC_K>false</DCC_K>
+        <DCC_S>false</DCC_S>
+        <SanitizedProjectName>Client</SanitizedProjectName>
+        <DCC_F>false</DCC_F>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=;CFBundleName=</VerInfo_Keys>
+        <DCC_E>false</DCC_E>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Icon_MainIcon>Client_Icon.ico</Icon_MainIcon>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <Icon_MainIcon>Client_Icon.ico</Icon_MainIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="UnitMain.pas">
+            <Form>ClientForm</Form>
+        </DCCReference>
+        <DCCReference Include="UnitConnectionForm.pas">
+            <Form>ConnectionForm</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSharedData.pas"/>
+        <DCCReference Include="UnitScreenCapture.pas">
+            <Form>ScreenCapture</Form>
+        </DCCReference>
+        <DCCReference Include="UnitContainer.pas">
+            <Form>Container</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSettings.pas">
+            <Form>Settings</Form>
+        </DCCReference>
+        <DCCReference Include="UnitFileManager.pas">
+            <Form>FileManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitEditFile.pas">
+            <Form>EditFile</Form>
+        </DCCReference>
+        <DCCReference Include="UnitFileTransfer.pas">
+            <Form>FileTransfer</Form>
+        </DCCReference>
+        <DCCReference Include="UnitThumbDb.pas"/>
+        <DCCReference Include="UnitFileSearch.pas">
+            <Form>FileSearch</Form>
+        </DCCReference>
+        <DCCReference Include="UnitBrowseFolder.pas">
+            <Form>BrowseFolder</Form>
+        </DCCReference>
+        <DCCReference Include="UnitTransferManager.pas">
+            <Form>TransferManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitWebcamCapture.pas">
+            <Form>WebcamCapture</Form>
+        </DCCReference>
+        <DCCReference Include="UnitServiceManager.pas">
+            <Form>ServiceManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitEditService.pas">
+            <Form>EditService</Form>
+        </DCCReference>
+        <DCCReference Include="UnitCreateService.pas">
+            <Form>CreateService</Form>
+        </DCCReference>
+        <DCCReference Include="UnitEditIdentification.pas">
+            <Form>EditIdentification</Form>
+        </DCCReference>
+        <DCCReference Include="UnitWindowManager.pas">
+            <Form>WindowManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSendKeys.pas">
+            <Form>SendKeys</Form>
+        </DCCReference>
+        <DCCReference Include="UnitProcessManager.pas">
+            <Form>ProcessManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitModuleManager.pas">
+            <Form>ModuleManager</Form>
+        </DCCReference>
+        <DCCReference Include="UnitAudioCapture.pas">
+            <Form>AudioCapture</Form>
+        </DCCReference>
+        <DCCReference Include="UnitKeyLogger.pas">
+            <Form>KeyLogger</Form>
+        </DCCReference>
+        <DCCReference Include="UnitInstalledApplications.pas">
+            <Form>InstalledApplications</Form>
+        </DCCReference>
+        <DCCReference Include="UnitRegEdit.pas">
+            <Form>RegEdit</Form>
+        </DCCReference>
+        <DCCReference Include="UnitEditString.pas">
+            <Form>EditString</Form>
+        </DCCReference>
+        <DCCReference Include="UnitRemoteShell.pas">
+            <Form>RemoteShell</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSystemInfo.pas">
+            <Form>SystemInformation</Form>
+        </DCCReference>
+        <DCCReference Include="UnitPasswordAudit.pas">
+            <Form>PasswordAudit</Form>
+        </DCCReference>
+        <DCCReference Include="UnitPasswordSearch.pas">
+            <Form>PasswordSearch</Form>
+        </DCCReference>
+        <DCCReference Include="UnitShareServer.pas">
+            <Form>ShareServer</Form>
+        </DCCReference>
+        <DCCReference Include="UnitCreateServer.pas">
+            <Form>CreateServer</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSplashScreen.pas">
+            <Form>SplashScreen</Form>
+        </DCCReference>
+        <DCCReference Include="UnitKeyLogFilter.pas">
+            <Form>KeyLogFilter</Form>
+        </DCCReference>
+        <DCCReference Include="UnitDisclaimer.pas">
+            <Form>Disclaimer</Form>
+        </DCCReference>
+        <DCCReference Include="UnitSaveProgress.pas">
+            <Form>SaveProgress</Form>
+        </DCCReference>
+        <DCCReference Include="UnitNotes.pas">
+            <Form>Notes</Form>
+        </DCCReference>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">Client.dpr</Source>
+                </Source>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>

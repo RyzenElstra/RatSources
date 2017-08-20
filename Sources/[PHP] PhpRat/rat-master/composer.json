@@ -1,0 +1,15 @@
+{
+    "name": "kapo/rat",
+    "require": {
+        "cboden/Ratchet": "0.2.*"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "authors": [
+        {
+            "name": "Apti U",
+            "email": "joker7789@gmail.com"
+        }
+    ]
+}

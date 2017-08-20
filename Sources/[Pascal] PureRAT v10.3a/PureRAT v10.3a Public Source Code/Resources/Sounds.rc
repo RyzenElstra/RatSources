@@ -1,0 +1,6 @@
+1 WAVE "Welcome.wav"
+2 WAVE "Connection.wav"
+3 WAVE "Disconnection.wav"
+4 WAVE "Password.wav"
+5 WAVE "Chat.wav"
+6 WAVE "Finished.wav"

@@ -1,0 +1,7 @@
+[Settings]
+host=imi-tat0r.noip.me
+port=777
+dataport=778
+password=passwd
+startlisten=True
+checkpw=False

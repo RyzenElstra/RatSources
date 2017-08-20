@@ -1,0 +1,16 @@
+frmMain = 0, 0, 0, 0, C, 22, 29, 811, 654, C
+frmMsg = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmFile = 132, 174, 921, 799, C, 222, 145, 1011, 770, C
+frmScreenSave = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+ModChoose = 0, 0, 0, 0, C
+frmColor = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmMouse = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmExtra = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmChat = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+ModGetSysColors = 0, 0, 0, 0, C
+frmColorMsg = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+ModAPI = 0, 0, 0, 0, C
+clsGradient = 0, 0, 0, 0, C
+frmFullScreen = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmKeyLog = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmDrives = 44, 58, 922, 625, C, 88, 116, 877, 741, C

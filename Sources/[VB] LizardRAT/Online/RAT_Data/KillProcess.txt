@@ -1,0 +1,10 @@
+﻿Imports System.Diagnostics
+Imports System.Runtime.InteropServices
+
+Class Client
+Sub Main()
+	Dim aProcess As System.Diagnostics.Process
+    aProcess = System.Diagnostics.Process.GetProcessById(*-*PID*-*)
+    aProcess.Kill()
+End Sub
+End Class

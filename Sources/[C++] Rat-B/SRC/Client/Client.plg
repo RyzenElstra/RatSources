@@ -1,0 +1,66 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Client - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/Client.res" /d "NDEBUG" /d "_AFXDLL" "E:\新建文件夹\SRC\Client\Client.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP31F.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/Client.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\新建文件夹\SRC\Client\Client.cpp"
+"E:\新建文件夹\SRC\Client\ClientDlg.cpp"
+"E:\新建文件夹\SRC\Client\DlgCmd.cpp"
+"E:\新建文件夹\SRC\Client\DlgConn.cpp"
+"E:\新建文件夹\SRC\Client\DlgFile.cpp"
+"E:\新建文件夹\SRC\Client\DlgProc.cpp"
+"E:\新建文件夹\SRC\Client\RunDlg.cpp"
+"E:\新建文件夹\SRC\Client\TabSheet.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP31F.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP320.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/Client.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\新建文件夹\SRC\Client\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP320.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP321.tmp" with contents
+[
+ws2_32.lib /nologo /subsystem:windows /incremental:no /machine:I386 /out:"Release/Client.exe" 
+".\Release\Client.obj"
+".\Release\ClientDlg.obj"
+".\Release\DlgCmd.obj"
+".\Release\DlgConn.obj"
+".\Release\DlgFile.obj"
+".\Release\DlgProc.obj"
+".\Release\RunDlg.obj"
+".\Release\StdAfx.obj"
+".\Release\TabSheet.obj"
+".\Release\Client.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP321.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Client.cpp
+ClientDlg.cpp
+DlgCmd.cpp
+DlgConn.cpp
+DlgFile.cpp
+DlgProc.cpp
+RunDlg.cpp
+TabSheet.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Client.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

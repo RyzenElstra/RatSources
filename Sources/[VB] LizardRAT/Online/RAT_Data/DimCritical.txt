@@ -1,0 +1,1 @@
+﻿Private critical as CCritical = New CCritical()

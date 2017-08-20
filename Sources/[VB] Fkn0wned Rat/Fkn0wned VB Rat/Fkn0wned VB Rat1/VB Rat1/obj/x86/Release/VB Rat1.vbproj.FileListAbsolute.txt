@@ -1,0 +1,19 @@
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\bin\Release\Fkn0wned RAT.exe
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\bin\Release\Fkn0wned RAT.pdb
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\bin\Release\Fkn0wned RAT.xml
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\fkn0wned_rat.DownloadDialog.resources
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\fkn0wned_rat.KeyloggerViewer.resources
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\fkn0wned_rat.Login.resources
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\fkn0wned_rat.Main.resources
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\fkn0wned_rat.Resources.resources
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\fkn0wned_rat.ScreenShot.resources
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\fkn0wned_rat.SelectPorts.resources
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\Fkn0wned RAT.exe
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\Fkn0wned RAT.xml
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\VB Rat1\obj\x86\Release\Fkn0wned RAT.pdb
+C:\Users\Utlån.admin-PC.000\Downloads\Fkn0wned VB Rat1\VB Rat1\obj\x86\Release\Fkn0wned RAT.exe
+C:\Users\Utlån.admin-PC.000\Downloads\Fkn0wned VB Rat1\VB Rat1\obj\x86\Release\Fkn0wned RAT.xml
+C:\Users\Utlån.admin-PC.000\Downloads\Fkn0wned VB Rat1\VB Rat1\obj\x86\Release\Fkn0wned RAT.pdb

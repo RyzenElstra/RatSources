@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: jjj - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ATmaCA\LOCALS~1\Temp\RSP132.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /D "shell32.lib" /Fp"Release/jjj.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\ATmaCA\Desktop\ProAgent_V1.1_source\ProAgent_V1.1_source\Diger\joiner_visual\jjj.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ATmaCA\LOCALS~1\Temp\RSP132.tmp" 
+Creating temporary file "C:\DOCUME~1\ATmaCA\LOCALS~1\Temp\RSP133.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /D "shell32.lib" /Fp"Release/jjj.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\ATmaCA\Desktop\ProAgent_V1.1_source\ProAgent_V1.1_source\Diger\joiner_visual\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ATmaCA\LOCALS~1\Temp\RSP133.tmp" 
+Creating command line "link.exe shell32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/jjj.pdb" /machine:I386 /out:"Release/jjj.exe"  ".\Release\jjj.obj" ".\Release\StdAfx.obj" "
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+Compiling...
+jjj.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+jjj.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

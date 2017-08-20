@@ -1,0 +1,3 @@
+﻿Sub btn_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+	CloseProg()
+End Sub

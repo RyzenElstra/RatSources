@@ -1,0 +1,5 @@
+CLIENT clientfile Client.exe
+PLUGIN pluginfile Plugin.exe
+WORLDMAP worldmapfile world_map.jpg
+PRLOGO prlogofile purerat_logo.jpg
+SQLITE3 Sqlite3File sqlite3.dll

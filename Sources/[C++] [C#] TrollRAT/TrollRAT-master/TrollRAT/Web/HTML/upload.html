@@ -1,0 +1,64 @@
+﻿<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Upload Manager</h4>
+			</div>
+			<div class="modal-body">
+				<form id="uploadForm" style="margin-bottom: 10px;" action="#">
+					<label class="btn btn-default">
+						Select File
+						<input type="file" name="file" id="file"
+								onchange="$('#uploadFilename').html($(this).val());" style="display: none;" />
+					</label>
+					<span id="uploadFilename"></span>
+				</form>
+
+				<button class="btn btn-primary pull-left" style="margin-right: 7px;" onclick="uploadFile();">Upload</button>
+
+				<div class="progress" style="margin-top: 16px;">
+					<div id="uploadProgress" role="progressbar" class="progress-bar"
+							aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function uploadFile() {
+		$("#uploadProgress").attr("class", "progress-bar")
+			.css("width", "0%").attr("aria-valuenow", "0");
+
+		var formData = new FormData($("#uploadForm")[0]);
+		$.ajax({
+			method: 'POST',
+
+			url: '/upload',
+			data: formData,
+
+			contentType: false,
+			processData: false,
+
+			xhr: function() {
+				var xhr = $.ajaxSettings.xhr();
+
+				if (xhr.upload)
+					xhr.upload.addEventListener("progress", function (e) {
+						if (e.lengthComputable) {
+							var value = Math.round((e.loaded * 100.0) / e.total).toString();
+							$("#uploadProgress").css("width", value + "%").attr("aria-valuenow", value);
+						}
+					}, false);
+
+				return xhr;
+			}
+		}).error(function () {
+			$("#uploadProgress").attr("class", "progress-bar progress-bar-danger")
+				.css("width", "100%").attr("aria-valuenow", "100");
+		}).success(function () {
+			$("#uploadProgress").attr("class", "progress-bar progress-bar-success");
+		});
+	}
+</script>

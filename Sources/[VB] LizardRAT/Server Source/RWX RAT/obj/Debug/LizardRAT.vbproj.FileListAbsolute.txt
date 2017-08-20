@@ -1,0 +1,3 @@
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\bin\Debug\Lizard RAT.exe.config
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\Debug\Interop.NATUPNPLib.dll
+C:\Users\MSI\Desktop\LizardRAT 1.5.2\LizardRAT 1.5.2\Server Source\RWX RAT\obj\Debug\LizardRAT.vbproj.ResolveComReference.cache

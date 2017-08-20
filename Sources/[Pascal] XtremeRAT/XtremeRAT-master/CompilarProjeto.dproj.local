@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/01/12 18:48:55.668.pas,C:\Users\Rafael\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\Rafael\Desktop\Xtreme RAT Unicode PRIVATE\UnitCompilar.pas</Transaction>
+    <Transaction>2012/01/12 18:48:55.668.dfm,C:\Users\Rafael\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Rafael\Desktop\Xtreme RAT Unicode PRIVATE\UnitCompilar.dfm</Transaction>
+    <Transaction>2012/01/12 18:49:05.282.dproj,C:\Users\Rafael\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Rafael\Desktop\Xtreme RAT Unicode PRIVATE\CompilarProjeto.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

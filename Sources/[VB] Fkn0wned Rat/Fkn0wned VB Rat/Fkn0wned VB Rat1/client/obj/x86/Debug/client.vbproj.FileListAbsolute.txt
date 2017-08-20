@@ -1,0 +1,21 @@
+C:\Users\App Developing\Desktop\-\VB Rat1\client\bin\Debug\client.exe
+C:\Users\App Developing\Desktop\-\VB Rat1\client\bin\Debug\client.pdb
+C:\Users\App Developing\Desktop\-\VB Rat1\client\bin\Debug\client.xml
+C:\Users\App Developing\Desktop\-\VB Rat1\client\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\App Developing\Desktop\-\VB Rat1\client\obj\x86\Debug\client.exe
+C:\Users\App Developing\Desktop\-\VB Rat1\client\obj\x86\Debug\client.xml
+C:\Users\App Developing\Desktop\-\VB Rat1\client\obj\x86\Debug\client.pdb
+C:\Users\Nathan\Desktop\VB Rat1\client\bin\Debug\client.exe
+C:\Users\Nathan\Desktop\VB Rat1\client\bin\Debug\client.pdb
+C:\Users\Nathan\Desktop\VB Rat1\client\bin\Debug\client.xml
+C:\Users\Nathan\Desktop\VB Rat1\client\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Nathan\Desktop\VB Rat1\client\obj\x86\Debug\client.exe
+C:\Users\Nathan\Desktop\VB Rat1\client\obj\x86\Debug\client.xml
+C:\Users\Nathan\Desktop\VB Rat1\client\obj\x86\Debug\client.pdb
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\client\bin\Debug\client.exe
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\client\bin\Debug\client.pdb
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\client\bin\Debug\client.xml
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\client\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\client\obj\x86\Debug\client.exe
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\client\obj\x86\Debug\client.xml
+C:\Users\Utlån.admin-PC.000\Downloads\VB Rat1\client\obj\x86\Debug\client.pdb
