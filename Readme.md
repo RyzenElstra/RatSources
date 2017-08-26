@@ -1,3 +1,6 @@
+# Remote Administration Tool Sources Library
+
+```
 ======================================================
 |  `7MM"""Mq.                                         |
 |    MM   `MM.                                        |
@@ -10,14 +13,11 @@
 |              OOb"    |_ | _|_ _ _  _ |_ _ . _       |
 |                      |__|_)|_| (_|| )|_(_|||        |
 ======================================================
+```
 
-Password: ryzenax0nes
+This was made dedicated to [Ax0nes](https://ax0nes.com) family for Education purpose.
+Every changes related to the source, please contact me via [Ax0nes](https://ax0nes.com/profile/1950-ryzen/) :)
 
-	SHA-1: 1e9ab1528969ba4b58c1209882825dedee0b61f7
-	MD5: 71b35144b3b15a70958cd6fce7c065cf
-
-Remote Administration Tool Source Library v1
-
-This was made dedicated to Ax0nes family at Ax0nes.com for Education purpose.
+#### **Every copyright belongs to the original owner.**
 
 Enjoy, mates!
