@@ -18,6 +18,9 @@
 This was made dedicated to [Ax0nes](https://ax0nes.com) family for Education purpose.
 Every changes related to the source, please contact me via [Ax0nes](https://ax0nes.com/profile/1950-ryzen/) :)
 
-#### **Every copyright belongs to the original owner.**
+#### **Every copyright belongs to the original owners.**
+
+## About Ax0nes
+[Ax0nes](https://ax0nes.com/) is a private forum for malware developer or enthusiasts to discuss and share projects and works related to malware and computer security.
 
 Enjoy, mates!
